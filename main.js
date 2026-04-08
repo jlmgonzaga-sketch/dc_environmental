@@ -1,56 +1,38 @@
+/* ── Contact Modal Functions (global scope) ── */
+function openContactModal() {
+  document.getElementById('contactModal').classList.add('open');
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.body.classList.add('modal-open');
+  // Reset form if previously submitted
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  if (form) form.style.display = '';
+  if (success) success.style.display = 'none';
+  // Focus first input
+  setTimeout(() => {
+    const first = document.getElementById('fname');
+    if (first) first.focus();
+  }, 420);
+}
+
+function closeContactModal() {
+  document.getElementById('contactModal').classList.remove('open');
+  document.getElementById('modalBackdrop').classList.remove('open');
+  document.body.classList.remove('modal-open');
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeContactModal();
+});
+
 /* ══════════════════════════════════════════
    DC Environmental Consultancy — main.js
    ══════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Custom Cursor ──────────────────────────────────
-  const dot   = document.getElementById('cursor-dot');
-  const ring  = document.getElementById('cursor-ring');
-  const label = document.getElementById('cursor-label');
-
-  if (dot && ring && label) {
-    let mouseX = 0, mouseY = 0;
-    let ringX  = 0, ringY  = 0;
-    let labelX = 0, labelY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    });
-
-    // Cursor label content per state
-    const labelMap = { cta: 'Let\'s go', card: 'View' };
-
-    // Smooth ring + label follow
-    function animateRing() {
-      ringX  += (mouseX - ringX)  * 0.12;
-      ringY  += (mouseY - ringY)  * 0.12;
-      labelX += (mouseX - labelX) * 0.12;
-      labelY += (mouseY - labelY) * 0.12;
-      ring.style.transform  = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-      label.style.transform = `translate(${labelX + 18}px, ${labelY}px) translateY(-50%)`;
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    // Cursor states per element
-    document.querySelectorAll('[data-cursor]').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        const state = el.dataset.cursor;
-        document.body.className = document.body.className
-          .split(' ').filter(c => !c.startsWith('cursor-')).join(' ');
-        document.body.classList.add(`cursor-${state}`);
-        label.textContent = labelMap[state] || '';
-      });
-      el.addEventListener('mouseleave', () => {
-        document.body.className = document.body.className
-          .split(' ').filter(c => !c.startsWith('cursor-')).join(' ');
-        label.textContent = '';
-      });
-    });
-  }
+  // ── Custom Cursor Disabled — Using normal system cursor ──
 
   // ── Navbar Scroll ──────────────────────────────────
   const navbar    = document.getElementById('navbar');
@@ -239,20 +221,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Contact Form ───────────────────────────────────
+  // ── Contact Modal Form ────────────────────────────
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const fname   = document.getElementById('fname').value.trim();
-      const email   = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if (!fname || !email || !message) {
-        alert('Please fill in all required fields.');
+      const lname   = document.getElementById('lname').value.trim();
+      const message = document.getElementById('mmessage').value.trim();
+      if (!fname || !lname || !message) {
+        alert('Please fill in First Name, Last Name, and Message.');
         return;
       }
       this.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
+      const success = document.getElementById('formSuccess');
+      if (success) success.style.display = 'block';
     });
   }
 

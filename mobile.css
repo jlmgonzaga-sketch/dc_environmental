@@ -1,0 +1,619 @@
+/* ══════════════════════════════════════════════════════════
+   DC Environmental — mobile.css
+   Mobile-only fixes. Link AFTER style.css and experience.css
+   <link rel="stylesheet" href="mobile.css">
+   ══════════════════════════════════════════════════════════ */
+
+
+/* ════════════════════════════════════════════
+   1. BASE MOBILE RESETS (all screens ≤ 768px)
+   ════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Prevent any horizontal overflow */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* ── Tighter global container ── */
+  .container {
+    padding: 0 1.1rem;
+  }
+
+  /* ── Reduce all section padding ── */
+  .section {
+    padding: 2.75rem 0;
+  }
+  .section--alt {
+    padding: 2.75rem 0;
+  }
+
+  /* ── Section header spacing ── */
+  .section-title {
+    margin-bottom: 0.85rem;
+    font-size: 1.65rem;
+  }
+  .section-label {
+    margin-bottom: 0.5rem;
+  }
+  .divider {
+    margin: 1rem 0;
+  }
+
+
+  /* ══════════════════════════════
+     2. NAVBAR — Sticky, compact
+     ══════════════════════════════ */
+
+  /* Always show a solid bg on mobile so content doesn't bleed under */
+  .navbar {
+    padding: 0.75rem 0;
+    background: rgba(26, 74, 46, 0.97) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  }
+  /* Keep logo text white at all times on mobile */
+  .navbar .logo-text strong { color: #fff !important; }
+  .navbar .logo-text span   { color: rgba(255,255,255,0.6) !important; }
+
+  /* ── Hamburger — always visible, always white ── */
+  .hamburger {
+    display: flex;
+    z-index: 1100;
+    padding: 8px;
+    margin-right: -4px; /* optical alignment */
+  }
+  .hamburger span {
+    background: #fff !important;
+  }
+
+  /* ══════════════════════════════
+     3. FULLSCREEN NAV OVERLAY
+     ══════════════════════════════ */
+
+  /*
+   * Strategy: nav-links is ALWAYS in the DOM as flex,
+   * hidden via opacity + pointer-events + translateY.
+   * This avoids the display:none flicker and enables
+   * smooth CSS transitions without JS class hacks.
+   */
+  .nav-links {
+    /* Layout */
+    display: flex !important;               /* override any desktop hide */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+
+    /* Position: true fullscreen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;                         /* dynamic viewport on iOS */
+
+    /* Visual */
+    background: rgba(14, 38, 24, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1050;                          /* above navbar (1000) but below hamburger (1100) */
+
+    /* Hidden state — slide up + fade out */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.32s ease,
+      transform 0.32s ease;
+    overflow-y: auto;
+  }
+
+  /* Open state */
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  /* Prevent body scroll when menu open */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  /* ── Individual nav items ── */
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-links li:first-child {
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-links a,
+  .nav-links .nav-item {
+    display: block !important;
+    width: 100%;
+    padding: 1.1rem 2rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 400 !important;
+    color: rgba(255,255,255,0.88) !important;
+    letter-spacing: 0.02em;
+    transition: background 0.18s, color 0.18s;
+  }
+  .nav-links a:active,
+  .nav-links .nav-item:active {
+    background: rgba(255,255,255,0.08);
+    color: #fff !important;
+  }
+
+  /* Hide the desktop underline animation */
+  .nav-links .nav-item::after {
+    display: none !important;
+  }
+
+  /* ── CTA button inside overlay ── */
+  .nav-links li:last-child {
+    border-bottom: none;
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-links .nav-cta {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2.5rem !important;
+    background: var(--leaf) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 20px rgba(46,125,82,0.40);
+    min-width: 180px;
+  }
+
+  /* ── Hamburger X animation (uses JS to add .open class) ── */
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+
+  /* ══════════════════════════════
+     4. HERO SECTION
+     ══════════════════════════════ */
+  .hero {
+    min-height: 72vh;
+    padding-top: 64px;       /* navbar height */
+    padding-bottom: 3rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide floating hero cards — too heavy on mobile */
+  .hero-visual { display: none !important; }
+
+  .hero-content {
+    text-align: center;
+    padding: 0 0.25rem;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    margin-bottom: 0.9rem;
+  }
+
+  .hero-badge {
+    margin-bottom: 1rem;
+    font-size: 0.72rem;
+  }
+
+  .hero-desc {
+    font-size: 0.93rem;
+    max-width: 100%;
+    margin-bottom: 1.75rem;
+    line-height: 1.65;
+  }
+
+  /* Stack hero buttons, full-width */
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.92rem;
+  }
+
+  /* Carousel arrows — small, safe position */
+  .carousel-arrow {
+    width: 34px;
+    height: 34px;
+    display: flex !important;
+  }
+  .carousel-arrow--prev { left: 0.6rem; }
+  .carousel-arrow--next { right: 0.6rem; }
+
+  /* Caption — hide on mobile to save space */
+  .carousel-caption { display: none; }
+
+
+  /* ══════════════════════════════
+     5. ABOUT SECTION
+     ══════════════════════════════ */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-img-wrap {
+    height: 240px;
+    border-radius: 12px;
+  }
+
+  /* Badge overlaps image — tuck it inside */
+  .about-badge {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+  .about-badge strong { font-size: 1.1rem; }
+
+  .mission-vision {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+  }
+
+
+  /* ══════════════════════════════
+     6. SERVICES SECTION
+     ══════════════════════════════ */
+  .services-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Tabs: horizontally scrollable single row */
+  .services-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.4rem;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    width: 100%;
+  }
+  .services-tabs::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    padding: 0.42rem 0.9rem;
+  }
+
+  /* Service cards: single column */
+  .services-panel.active {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .service-card-body-wrap {
+    padding: 1.1rem 1.25rem 1.25rem;
+  }
+  .service-card .service-icon,
+  .service-card h3,
+  .service-card p,
+  .service-card .service-tags {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .service-card > .service-tags {
+    padding-bottom: 1.25rem;
+  }
+
+
+  /* ══════════════════════════════
+     7. PROJECTS SECTION
+     ══════════════════════════════ */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-thumb { height: 180px; }
+  .project-body  { padding: 1.1rem; }
+
+
+  /* ══════════════════════════════
+     8. CLIENTS / TRACK RECORD
+     ══════════════════════════════ */
+  .track-record-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  .stat-card {
+    padding: 1.25rem 1rem;
+  }
+  .stat-number { font-size: 2.2rem; }
+
+  .clients-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+
+  /* ══════════════════════════════
+     9. HOW IT WORKS
+     ══════════════════════════════ */
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .how-it-works-grid::before { display: none; }
+
+  .how-step {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding: 1rem 1.1rem;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    gap: 1rem;
+  }
+  .how-step-num {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+  /* Remove the arrow pseudo-element on mobile */
+  .how-step:not(:last-child) .how-step-num::before { display: none; }
+
+  .how-step-text { flex: 1; }
+  .how-step h4 { margin-bottom: 0.3rem; }
+  .how-step p  { font-size: 0.85rem; }
+
+
+  /* ══════════════════════════════
+     10. FAQ
+     ══════════════════════════════ */
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+  }
+
+  .faq-q {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.88rem;
+  }
+  .faq-a-inner { padding: 0 1.1rem 1rem; }
+
+
+  /* ══════════════════════════════
+     11. CONTACT SECTION
+     ══════════════════════════════ */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem 1.1rem;
+  }
+  .form-row { grid-template-columns: 1fr; }
+
+
+  /* ══════════════════════════════
+     12. FOOTER
+     ══════════════════════════════ */
+  footer {
+    padding: 3rem 0 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .footer-brand > p { max-width: 100%; }
+
+  .footer-bottom {
+    padding-top: 1.25rem;
+    gap: 0.4rem;
+  }
+  .footer-bottom p   { font-size: 0.78rem; }
+  .disclaimer        { font-size: 0.72rem !important; }
+
+
+  /* ══════════════════════════════
+     13. WHATSAPP FLOAT
+     ══════════════════════════════ */
+  .whatsapp-float {
+    bottom: 1.25rem;
+    right: 1rem;
+    border-radius: 50%;
+    padding: 0.9rem;
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+  }
+  .whatsapp-float span { display: none; }
+
+
+  /* ══════════════════════════════
+     14. CONTACT MODAL
+     ══════════════════════════════ */
+  .contact-modal {
+    width: 100vw;
+  }
+  .modal-form-row      { grid-template-columns: 1fr; }
+  .modal-quick-links   { grid-template-columns: 1fr; }
+  .modal-header        { padding: 1.1rem 1.1rem; }
+  .modal-body          { padding: 1.1rem; }
+
+
+  /* ══════════════════════════════
+     15. MISC TOUCH-FRIENDLY FIXES
+     ══════════════════════════════ */
+
+  /* All interactive elements: minimum 44px tap target */
+  .btn-primary,
+  .btn-outline,
+  .btn-submit,
+  .nav-cta,
+  .tab-btn,
+  .faq-q,
+  .dot {
+    min-height: 44px;
+  }
+
+  /* Remove desktop hover transforms that misfire on touch */
+  .service-card:hover,
+  .project-card:hover,
+  .stat-card:hover,
+  .mv-card:hover {
+    transform: none;
+  }
+
+  /* Disable cursor customisation */
+  #cursor-dot, #cursor-ring, #cursor-label { display: none !important; }
+  body   { cursor: auto; }
+  button { cursor: pointer; }
+
+  /* Utility: prevent text overflow */
+  p, h1, h2, h3, h4, li, span, a {
+    word-break: break-word;
+  }
+
+} /* end @media 768px */
+
+
+/* ════════════════════════════════════════════
+   SMALL PHONES (≤ 480px) — extra tightening
+   ════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .container { padding: 0 0.9rem; }
+
+  .section { padding: 2.25rem 0; }
+
+  .hero { min-height: 65vh; }
+  .hero h1 { font-size: 1.65rem; }
+  .hero-desc { font-size: 0.88rem; }
+
+  .section-title { font-size: 1.45rem; }
+
+  .about-img-wrap { height: 210px; }
+
+  .track-record-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .stat-card { padding: 1rem 0.85rem; }
+  .stat-number { font-size: 1.9rem; }
+  .stat-label { font-size: 0.8rem; }
+
+  .tab-btn { font-size: 0.76rem; padding: 0.38rem 0.75rem; }
+
+  .services-panel.active { gap: 0.85rem; }
+
+  footer { padding: 2.5rem 0 1.25rem; }
+
+  /* Modal fills screen entirely */
+  .contact-modal { border-radius: 0; }
+
+} /* end @media 480px */
+
+
+/* ════════════════════════════════════════════
+   EXPERIENCE PAGE — mobile.css overrides
+   ════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .exp-hero {
+    min-height: 52vh;
+    padding-bottom: 3rem;
+    padding-top: 64px;
+  }
+  .exp-hero-title { font-size: 1.8rem; line-height: 1.2; }
+  .exp-hero-sub   { font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+  .exp-hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+  .exp-hero-cta .btn-primary,
+  .exp-hero-cta .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .exp-scroll-indicator { display: none; }
+
+  .exp-stats-section { padding: 2.5rem 0 2rem; }
+  .exp-stats-grid    { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+  .exp-stat-card     { padding: 1.5rem 1rem; }
+  .exp-stat-num      { font-size: 2.2rem; }
+
+  .exp-section-header { margin-bottom: 1.75rem; }
+
+  .exp-industry-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .exp-industry-img  { height: 170px; }
+  .exp-industry-body { padding: 1.25rem; }
+  .exp-client-list   { grid-template-columns: 1fr; }
+
+  .exp-why-grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+  .exp-why-card { padding: 1.5rem 1.1rem; }
+
+  .exp-cta-section  { padding: 3.5rem 0; }
+  .exp-cta-inner h2 { font-size: 1.7rem; }
+  .exp-cta-actions  {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+  .exp-cta-actions .btn-primary,
+  .exp-cta-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .exp-hero-title { font-size: 1.5rem; }
+  .exp-stats-grid { gap: 0.65rem; }
+  .exp-stat-num   { font-size: 1.85rem; }
+  .exp-stat-card  { padding: 1.1rem 0.85rem; }
+  .exp-why-grid   { grid-template-columns: 1fr; }
+  .exp-cta-section { padding: 2.75rem 0; }
+}

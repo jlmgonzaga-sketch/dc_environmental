@@ -1112,20 +1112,72 @@ footer {
 }
 
 @media (max-width: 768px) {
-  /* Nav mobile */
+  /* ── Mobile Nav: compact dropdown, NOT full-screen ── */
   .nav-links {
-    display: none;
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(26,74,46,0.97);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    /* Slides down from top, height is auto — not bottom:0 */
+    background: rgba(20, 56, 36, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 1.5rem;
+    align-items: stretch;
+    gap: 0;
     z-index: 999;
-    backdrop-filter: blur(8px);
+    padding: 0;
+    /* Hidden state: translate up out of view */
+    transform: translateY(-110%);
+    transition: transform 0.38s cubic-bezier(0.32, 0, 0.17, 1);
+    display: flex; /* always flex, controlled by transform */
+    pointer-events: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
   }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1.2rem; color: rgba(255,255,255,0.88) !important; padding: 0.5rem 1.5rem; }
-  .nav-cta { background: var(--leaf) !important; border-radius: 8px !important; }
+  .nav-links.open {
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  /* Nav items: stacked list with dividers */
+  .nav-links li {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-links li:first-child {
+    margin-top: 68px; /* clear the navbar height */
+  }
+  .nav-links a, .nav-links .nav-item {
+    display: block;
+    font-size: 0.98rem !important;
+    color: rgba(255,255,255,0.9) !important;
+    padding: 1rem 1.5rem !important;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-links a:hover, .nav-links .nav-item:hover {
+    background: rgba(255,255,255,0.07);
+    color: #fff !important;
+  }
+  /* Active underline animation — hide on mobile */
+  .nav-links .nav-item::after { display: none; }
+
+  /* CTA button in nav: full-width pill in the list */
+  .nav-links li:last-child {
+    border-bottom: none;
+    padding: 1rem 1.5rem 1.5rem;
+  }
+  .nav-links .nav-cta {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 1rem !important;
+    background: var(--leaf) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 3px 14px rgba(46,125,82,0.35);
+  }
+
   .hamburger { display: flex; z-index: 1001; }
 
   /* Cursor off on mobile */
@@ -1133,7 +1185,8 @@ footer {
   body { cursor: auto; }
   button { cursor: pointer; }
 
-  .section { padding: 4rem 0; }
+  /* ── Tighter section padding ── */
+  .section { padding: 3rem 0; }
   .mission-vision { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
@@ -1142,18 +1195,54 @@ footer {
   .about-badge { bottom: -1rem; right: 0; }
   .whatsapp-float span { display: none; }
   .whatsapp-float { border-radius: 50%; padding: 1rem; }
-  .how-it-works-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .how-it-works-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .carousel-arrow { width: 36px; height: 36px; }
   .carousel-arrow--prev { left: 0.75rem; }
   .carousel-arrow--next { right: 0.75rem; }
+
+  /* ── Shorter hero on mobile ── */
+  .hero { min-height: 75vh; padding-top: 70px; }
+  .hero-desc { font-size: 0.95rem; margin-bottom: 1.75rem; }
+  .hero-actions { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline { width: 100%; justify-content: center; padding: 0.85rem 1.5rem; }
+
+  /* ── Tighter about section ── */
+  .about-grid { gap: 2.5rem; }
+  .about-img-wrap { height: 260px; }
+
+  /* ── Services tabs: horizontal scroll ── */
+  .services-tabs {
+    display: flex; flex-wrap: nowrap;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    gap: 0.4rem; padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+  .services-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn { white-space: nowrap; flex-shrink: 0; }
+
+  /* ── Footer tighter ── */
+  .footer-grid { gap: 2rem; }
 }
 
 @media (max-width: 480px) {
-  .container { padding: 0 1.25rem; }
-  h1 { font-size: 2rem; }
-  .about-img-wrap { height: 300px; }
+  .container { padding: 0 1rem; }
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.5rem; }
+  .section { padding: 2.5rem 0; }
+  .about-img-wrap { height: 220px; }
   .services-tabs { gap: 0.35rem; }
   .tab-btn { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
+
+  /* Stat / card grids: 2 col on small phones */
+  .how-it-works-grid { grid-template-columns: 1fr; }
+
+  /* Footer: single column */
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  /* Hero even shorter */
+  .hero { min-height: 68vh; }
+  .hero h1 { font-size: 1.85rem; }
 }
 /* ════════════════════════════════
    CONTACT MODAL DRAWER

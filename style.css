@@ -1035,7 +1035,7 @@ footer {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1fr 1fr;
   gap: 3rem; margin-bottom: 3rem;
 }
 .footer-brand .logo { margin-bottom: 1.25rem; }
@@ -1105,20 +1105,54 @@ footer {
   .about-badge { right: 0; }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .how-it-works-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }  .how-it-works-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
   .how-it-works-grid::before { display: none; }
   .faq-grid { grid-template-columns: 1fr; }
 }
 
-/*
- * Mobile responsive rules are handled by mobile.css
- * which must be linked AFTER this file.
- * Only keeping fallback hamburger display here for cases
- * where mobile.css is absent.
- */
 @media (max-width: 768px) {
+  /* Nav mobile */
+  .nav-links {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26,74,46,0.97);
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1.5rem;
+    z-index: 999;
+    backdrop-filter: blur(8px);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.2rem; color: rgba(255,255,255,0.88) !important; padding: 0.5rem 1.5rem; }
+  .nav-cta { background: var(--leaf) !important; border-radius: 8px !important; }
   .hamburger { display: flex; z-index: 1001; }
+
+  /* Cursor off on mobile */
+  #cursor-dot, #cursor-ring, #cursor-label { display: none; }
+  body { cursor: auto; }
+  button { cursor: pointer; }
+
+  .section { padding: 4rem 0; }
+  .mission-vision { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+  .about-badge { bottom: -1rem; right: 0; }
+  .whatsapp-float span { display: none; }
+  .whatsapp-float { border-radius: 50%; padding: 1rem; }
+  .how-it-works-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .carousel-arrow { width: 36px; height: 36px; }
+  .carousel-arrow--prev { left: 0.75rem; }
+  .carousel-arrow--next { right: 0.75rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 1.25rem; }
+  h1 { font-size: 2rem; }
+  .about-img-wrap { height: 300px; }
+  .services-tabs { gap: 0.35rem; }
+  .tab-btn { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
 }
 /* ════════════════════════════════
    CONTACT MODAL DRAWER
@@ -1295,7 +1329,8 @@ footer {
 /* Prevent page scroll when modal open */
 body.modal-open { overflow: hidden; }
 
-/* Hero — actions gap */
+/* Hero — hide visual column, center content */
+.hero-container { grid-template-columns: 1fr !important; max-width: 700px; }
 .hero-actions { gap: 1rem; }
 
 /* Navbar button style for modal trigger */

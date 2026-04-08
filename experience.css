@@ -350,18 +350,28 @@ body.exp-page { background: var(--cream); }
 }
 
 @media (max-width: 768px) {
-  .exp-hero { min-height: 55vh; padding-bottom: 4rem; }
-  .exp-hero-title { font-size: 2.2rem; }
+  .exp-hero { min-height: 48vh; padding-bottom: 3rem; padding-top: 70px; }
+  .exp-hero-title { font-size: 1.9rem; }
+  .exp-hero-sub { font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .exp-hero-cta { flex-direction: column; gap: 0.75rem; }
+  .exp-hero-cta .btn-primary,
+  .exp-hero-cta .btn-outline { width: 100%; justify-content: center; }
   .exp-industry-grid { grid-template-columns: 1fr; }
   .exp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .exp-why-grid { grid-template-columns: 1fr 1fr; }
   .exp-scroll-indicator { display: none; }
   .exp-client-list { grid-template-columns: 1fr; }
+  .exp-stats-section { padding: 3rem 0 2.5rem; }
+  .exp-section-header { margin-bottom: 2rem; }
+  .exp-cta-section { padding: 4rem 0; }
 }
 
 @media (max-width: 480px) {
-  .exp-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.85rem; }
-  .exp-stat-num { font-size: 2.4rem; }
+  .exp-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .exp-stat-num { font-size: 2.2rem; }
+  .exp-stat-card { padding: 1.5rem 1.25rem; }
   .exp-why-grid { grid-template-columns: 1fr; }
-  .exp-cta-section { padding: 4rem 0; }
+  .exp-cta-section { padding: 3rem 0; }
+  .exp-industry-body { padding: 1.25rem 1.25rem 1.5rem; }
+  .exp-hero-title { font-size: 1.65rem; }
 }

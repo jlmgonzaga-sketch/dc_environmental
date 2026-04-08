@@ -21,9 +21,20 @@ function closeContactModal() {
   document.body.classList.remove('modal-open');
 }
 
-// Close on Escape key
+// Close on Escape key (contact modal and nav)
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeContactModal();
+  if (e.key === 'Escape') {
+    closeContactModal();
+    // Close nav if open
+    const navLinks = document.getElementById('navLinks');
+    const hamburger = document.getElementById('hamburger');
+    if (navLinks && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      hamburger && hamburger.classList.remove('open');
+      hamburger && hamburger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    }
+  }
 });
 
 /* ══════════════════════════════════════════
@@ -43,20 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
 
+  function openNav() {
+    hamburger.classList.add('open');
+    navLinks.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  }
+
+  function closeNav() {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+
   hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    navLinks.classList.contains('open') ? closeNav() : openNav();
   });
 
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+  // Close on any nav link or button click (handles CTA inside nav too)
+  navLinks.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', closeNav);
   });
 
   // ── Active Nav Link on Scroll ──────────────────────

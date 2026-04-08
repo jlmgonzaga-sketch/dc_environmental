@@ -4,396 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DC Environmental Consultancy Services</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  /* ── Variables ── */
-  :root {
-    --forest:   #1a4a2e;
-    --leaf:     #2e7d52;
-    --sage:     #5a9e7a;
-    --mist:     #c8ddd1;
-    --sky:      #1b4f72;
-    --water:    #2e86ab;
-    --sand:     #f5f1eb;
-    --cream:    #faf8f4;
-    --charcoal: #1c1c1c;
-    --gray:     #5a5a5a;
-    --light:    #e8f0eb;
-    --white:    #ffffff;
-    --radius:   12px;
-    --transition: 0.3s ease;
-  }
-
-  /* ── Reset ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-  body { font-family: 'DM Sans', sans-serif; color: var(--charcoal); background: var(--cream); line-height: 1.7; overflow-x: hidden; }
-  img { max-width: 100%; display: block; }
-  a { text-decoration: none; color: inherit; }
-  ul { list-style: none; }
-  button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-  /* ── Typography ── */
-  h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.25; }
-  h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 600; }
-  h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 400; }
-  h3 { font-size: 1.2rem; font-weight: 600; }
-  p  { font-size: 1rem; color: var(--gray); }
-
-  /* ── Layout Helpers ── */
-  .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
-  .section { padding: 6rem 0; }
-  .section--alt { background: var(--sand); }
-  .section-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--leaf); margin-bottom: 0.75rem; }
-  .section-title { color: var(--forest); margin-bottom: 1.25rem; }
-  .section-subtitle { max-width: 560px; font-size: 1.05rem; }
-  .divider { width: 48px; height: 3px; background: var(--leaf); border-radius: 2px; margin: 1.5rem 0; }
-
-  /* ── Fade-in Animation ── */
-  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── Navbar ── */
-  .navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    padding: 1.1rem 0;
-    background: transparent;
-    transition: background var(--transition), box-shadow var(--transition);
-  }
-  .navbar.scrolled { background: var(--white); box-shadow: 0 1px 24px rgba(26,74,46,0.08); }
-  .navbar .container { display: flex; align-items: center; justify-content: space-between; }
-  .logo { display: flex; align-items: center; gap: 0.65rem; }
-  .logo-mark {
-    width: 38px; height: 38px; border-radius: 8px;
-    background: var(--forest);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .logo-mark svg { width: 22px; height: 22px; }
-  .logo-text { line-height: 1.2; }
-  .logo-text strong { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.85rem; color: var(--forest); letter-spacing: 0.02em; }
-  .logo-text span { font-size: 0.72rem; color: var(--gray); letter-spacing: 0.04em; }
-  .navbar.scrolled .logo-text strong { color: var(--forest); }
-  .navbar:not(.scrolled) .logo-text strong { color: var(--white); }
-  .navbar:not(.scrolled) .logo-text span { color: rgba(255,255,255,0.7); }
-  .nav-links { display: flex; align-items: center; gap: 2rem; }
-  .nav-links a { font-size: 0.9rem; font-weight: 400; letter-spacing: 0.02em; transition: color var(--transition); }
-  .navbar.scrolled .nav-links a { color: var(--charcoal); }
-  .navbar:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.85); }
-  .navbar.scrolled .nav-links a:hover { color: var(--leaf); }
-  .navbar:not(.scrolled) .nav-links a:hover { color: var(--white); }
-  .nav-cta {
-    padding: 0.55rem 1.35rem;
-    background: var(--leaf);
-    color: var(--white) !important;
-    border-radius: 6px;
-    font-weight: 500 !important;
-    font-size: 0.88rem !important;
-    transition: background var(--transition), transform var(--transition) !important;
-  }
-  .nav-cta:hover { background: var(--forest) !important; transform: translateY(-1px); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--transition); }
-  .navbar.scrolled .hamburger span { background: var(--charcoal); }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* ── Hero ── */
-  .hero {
-    min-height: 100vh;
-    background:
-      linear-gradient(160deg, rgba(26,74,46,0.90) 0%, rgba(27,79,114,0.82) 100%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23ffffff10'/%3E%3C/svg%3E");
-    background-size: cover, 80px 80px;
-    display: flex; align-items: center;
-    padding-top: 80px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
-    background: var(--cream);
-    clip-path: ellipse(60% 100% at 50% 100%);
-  }
-  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
-    color: var(--mist); border-radius: 100px;
-    font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.35rem 1rem; margin-bottom: 1.5rem;
-  }
-  .hero h1 { color: var(--white); margin-bottom: 1.25rem; }
-  .hero h1 em { font-style: italic; color: var(--mist); }
-  .hero-desc { color: rgba(255,255,255,0.78); font-size: 1.08rem; max-width: 480px; margin-bottom: 2.25rem; }
-  .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--leaf); color: var(--white);
-    padding: 0.85rem 2rem; border-radius: 8px;
-    font-weight: 500; font-size: 0.95rem;
-    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-    box-shadow: 0 4px 20px rgba(46,125,82,0.35);
-  }
-  .btn-primary:hover { background: var(--forest); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(46,125,82,0.4); }
-  .btn-outline {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    border: 1px solid rgba(255,255,255,0.45); color: var(--white);
-    padding: 0.85rem 2rem; border-radius: 8px;
-    font-weight: 400; font-size: 0.95rem;
-    transition: background var(--transition), border-color var(--transition);
-  }
-  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
-  .hero-visual { position: relative; }
-  .hero-cards { display: grid; gap: 1rem; }
-  .hero-card {
-    background: rgba(255,255,255,0.10); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: var(--radius); padding: 1.2rem 1.5rem;
-    display: flex; align-items: center; gap: 1rem;
-    color: var(--white);
-    animation: floatCard 6s ease-in-out infinite;
-  }
-  .hero-card:nth-child(2) { animation-delay: 1.5s; }
-  .hero-card:nth-child(3) { animation-delay: 3s; }
-  @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-  .hero-card-icon {
-    width: 42px; height: 42px; border-radius: 8px;
-    background: rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .hero-card-icon svg { width: 20px; height: 20px; }
-  .hero-card strong { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.15rem; }
-  .hero-card span { font-size: 0.8rem; color: rgba(255,255,255,0.65); }
-
-  /* ── Stats Bar ── */
-  .stats-bar { background: var(--forest); padding: 2.5rem 0; }
-  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
-  .stat-item strong { display: block; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--white); line-height: 1; margin-bottom: 0.4rem; }
-  .stat-item span { font-size: 0.85rem; color: var(--mist); letter-spacing: 0.04em; }
-
-  /* ── About ── */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .about-visual { position: relative; }
-  .about-img-placeholder {
-    border-radius: 16px; overflow: hidden;
-    background: linear-gradient(135deg, var(--forest) 0%, var(--water) 100%);
-    height: 420px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 1rem; color: white;
-  }
-  .about-img-placeholder svg { width: 64px; height: 64px; opacity: 0.6; }
-  .about-img-placeholder p { opacity: 0.5; font-size: 0.85rem; }
-  .about-badge {
-    position: absolute; bottom: -1.5rem; right: -1.5rem;
-    background: var(--white); border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 8px 32px rgba(26,74,46,0.12);
-    text-align: center;
-  }
-  .about-badge strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--forest); }
-  .about-badge span { font-size: 0.78rem; color: var(--gray); }
-  .mission-vision { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-  .mv-card { background: var(--light); border-left: 3px solid var(--leaf); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.25rem 1.5rem; }
-  .mv-card h4 { font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--leaf); margin-bottom: 0.5rem; }
-  .mv-card p { font-size: 0.92rem; color: var(--charcoal); line-height: 1.6; }
-
-  /* ── Services ── */
-  .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1rem; }
-  .services-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .tab-btn {
-    padding: 0.5rem 1.1rem;
-    border: 1px solid var(--mist);
-    border-radius: 100px;
-    font-size: 0.85rem; font-weight: 400;
-    color: var(--gray);
-    transition: all var(--transition);
-  }
-  .tab-btn.active, .tab-btn:hover { background: var(--forest); color: var(--white); border-color: var(--forest); }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card {
-    background: var(--white); border-radius: var(--radius);
-    padding: 2rem;
-    border: 1px solid #e0ebe5;
-    transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
-    position: relative; overflow: hidden;
-  }
-  .service-card::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--leaf), var(--water));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform var(--transition);
-  }
-  .service-card:hover { box-shadow: 0 8px 36px rgba(26,74,46,0.10); transform: translateY(-4px); border-color: var(--mist); }
-  .service-card:hover::after { transform: scaleX(1); }
-  .service-icon {
-    width: 52px; height: 52px; border-radius: 10px;
-    background: var(--light);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.25rem;
-    transition: background var(--transition);
-  }
-  .service-card:hover .service-icon { background: var(--forest); }
-  .service-icon svg { width: 26px; height: 26px; transition: stroke var(--transition); }
-  .service-card:hover .service-icon svg { stroke: white !important; }
-  .service-card h3 { color: var(--forest); margin-bottom: 0.75rem; font-size: 1.05rem; }
-  .service-card p { font-size: 0.9rem; line-height: 1.65; }
-  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
-  .tag {
-    font-size: 0.72rem; padding: 0.25rem 0.65rem;
-    background: var(--light); color: var(--leaf);
-    border-radius: 100px; font-weight: 500;
-  }
-  .services-panel { display: none; }
-  .services-panel.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-
-  /* ── Projects ── */
-  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .project-card {
-    border-radius: var(--radius); overflow: hidden;
-    background: var(--white); border: 1px solid #e0ebe5;
-    transition: box-shadow var(--transition), transform var(--transition);
-  }
-  .project-card:hover { box-shadow: 0 8px 36px rgba(26,74,46,0.12); transform: translateY(-3px); }
-  .project-thumb {
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .project-thumb svg { width: 48px; height: 48px; opacity: 0.5; }
-  .project-thumb-label {
-    position: absolute; top: 1rem; left: 1rem;
-    background: rgba(255,255,255,0.9); border-radius: 6px;
-    padding: 0.25rem 0.65rem;
-    font-size: 0.72rem; font-weight: 500; color: var(--forest);
-  }
-  .project-body { padding: 1.5rem; }
-  .project-body h3 { font-size: 1rem; color: var(--forest); margin-bottom: 0.5rem; }
-  .project-body p { font-size: 0.88rem; }
-
-  /* ── Contact ── */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
-  .contact-info { display: flex; flex-direction: column; gap: 2rem; }
-  .contact-item { display: flex; gap: 1rem; }
-  .contact-item-icon {
-    width: 44px; height: 44px; border-radius: 10px;
-    background: var(--light);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .contact-item-icon svg { width: 20px; height: 20px; }
-  .contact-item strong { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.2rem; }
-  .contact-item span { font-size: 0.95rem; color: var(--charcoal); }
-  .contact-map {
-    margin-top: 1.5rem;
-    background: var(--light); border-radius: var(--radius); height: 160px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
-    border: 1px dashed var(--mist);
-  }
-  .contact-map span { font-size: 0.82rem; color: var(--gray); }
-  .contact-form { background: var(--white); border-radius: 16px; padding: 2.5rem; border: 1px solid #e0ebe5; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
-  .form-group label { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); }
-  .form-group input, .form-group textarea, .form-group select {
-    padding: 0.75rem 1rem;
-    border: 1px solid #dce8e1;
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    color: var(--charcoal);
-    background: var(--cream);
-    outline: none;
-    transition: border-color var(--transition), box-shadow var(--transition);
-    resize: vertical;
-  }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-    border-color: var(--sage);
-    box-shadow: 0 0 0 3px rgba(90,158,122,0.15);
-    background: var(--white);
-  }
-  .form-group textarea { min-height: 120px; }
-  .btn-submit {
-    width: 100%;
-    padding: 0.9rem;
-    background: var(--forest);
-    color: var(--white);
-    border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500; font-size: 0.95rem;
-    transition: background var(--transition), transform var(--transition);
-  }
-  .btn-submit:hover { background: var(--leaf); transform: translateY(-1px); }
-  .form-notice { font-size: 0.78rem; color: var(--gray); text-align: center; margin-top: 0.75rem; }
-  .form-success {
-    display: none; text-align: center; padding: 2rem;
-    color: var(--leaf);
-  }
-  .form-success svg { width: 48px; height: 48px; margin: 0 auto 1rem; }
-  .form-success h3 { color: var(--forest); font-size: 1.2rem; margin-bottom: 0.5rem; }
-  .form-success p { font-size: 0.9rem; }
-
-  /* ── Footer ── */
-  footer { background: var(--charcoal); color: rgba(255,255,255,0.65); padding: 4rem 0 2rem; }
-  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-  .footer-brand .logo { margin-bottom: 1rem; }
-  .footer-brand .logo-text strong { color: var(--white); }
-  .footer-brand .logo-text span { color: rgba(255,255,255,0.45); }
-  .footer-brand p { font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
-  .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 1.25rem; }
-  .footer-col a { display: block; font-size: 0.88rem; margin-bottom: 0.65rem; transition: color var(--transition); }
-  .footer-col a:hover { color: var(--sage); }
-  .social-links { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
-  .social-link {
-    width: 36px; height: 36px; border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.12);
-    display: flex; align-items: center; justify-content: center;
-    transition: background var(--transition), border-color var(--transition);
-  }
-  .social-link:hover { background: var(--leaf); border-color: var(--leaf); }
-  .social-link svg { width: 16px; height: 16px; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-bottom p { font-size: 0.82rem; }
-  .disclaimer { font-size: 0.75rem; color: rgba(255,255,255,0.35); max-width: 500px; text-align: right; }
-
-  /* ── Responsive ── */
-  @media(max-width: 900px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-visual { display: none; }
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .about-grid { grid-template-columns: 1fr; }
-    .about-badge { right: 1rem; }
-    .mission-vision { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media(max-width: 640px) {
-    .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--forest); flex-direction: column; justify-content: center; align-items: center; gap: 2rem; z-index: 999; }
-    .nav-links.open { display: flex; }
-    .nav-links a { font-size: 1.2rem; color: white !important; }
-    .nav-cta { background: rgba(255,255,255,0.15) !important; }
-    .hamburger { display: flex; position: relative; z-index: 1001; }
-    .section { padding: 4rem 0; }
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .projects-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .disclaimer { text-align: left; }
-    .services-header { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- ── Custom Cursors ── -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="cursor-label"></div>
 
 <!-- ── Navbar ── -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="container">
     <a href="#home" class="logo" aria-label="DC Environmental Consultancy Services home">
       <div class="logo-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <img src="logo.png" alt="DC Environmental Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;width:22px;height:22px;">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/>
           <path d="M12 2c2.76 0 5 4.48 5 10"/>
           <path d="M17 8s-2 2-5 2-5-2-5-2"/>
@@ -406,11 +33,11 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      <li><a href="#home" class="nav-item" data-cursor="nav">Home</a></li>
+      <li><a href="#about" class="nav-item" data-cursor="nav">About</a></li>
+      <li><a href="#services" class="nav-item" data-cursor="nav">Services</a></li>
+      <li><a href="#projects" class="nav-item" data-cursor="nav">Projects</a></li>
+      <li><a href="#contact" class="nav-cta" data-cursor="cta">Get in Touch</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -418,59 +45,87 @@
   </div>
 </nav>
 
-<!-- ── Hero ── -->
+<!-- ── Hero with Carousel ── -->
 <section class="hero" id="home" aria-label="Hero section">
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge" aria-hidden="true">
-          <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><circle cx="6" cy="6" r="4"/></svg>
-          Environmental Consultancy · Philippines
-        </div>
-        <h1>Sustainable Solutions for a <em>Better Environment</em></h1>
-        <p class="hero-desc">DC Environmental Consultancy Services provides expert environmental consulting, compliance assistance, and engineering solutions — helping businesses meet regulatory standards while protecting the environment.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">
-            Get in Touch
-            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
-          </a>
-          <a href="#services" class="btn-outline">View Services</a>
-        </div>
+  <!-- Carousel Background -->
+  <div class="carousel-bg" id="carouselBg" aria-hidden="true">
+    <div class="carousel-slide active" style="background-image: url('heresec.webp')"></div>
+    <div class="carousel-slide" style="background-image: url('aboutsec.jpeg')"></div>
+    <div class="carousel-slide" style="background-image: url('constructionsiteenvisec.jpg')"></div>
+    <div class="carousel-slide" style="background-image: url('riverwaterqualitysec.jpg')"></div>
+    <div class="carousel-overlay"></div>
+  </div>
+
+  <div class="carousel-dots" aria-label="Carousel indicators">
+    <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+    <button class="dot" data-index="1" aria-label="Slide 2"></button>
+    <button class="dot" data-index="2" aria-label="Slide 3"></button>
+    <button class="dot" data-index="3" aria-label="Slide 4"></button>
+  </div>
+
+  <!-- Carousel arrows -->
+  <button class="carousel-arrow carousel-arrow--prev" id="carouselPrev" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="carousel-arrow carousel-arrow--next" id="carouselNext" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <!-- Carousel caption -->
+  <div class="carousel-caption" id="carouselCaption" aria-live="polite">
+    <span class="carousel-caption-text" id="carouselCaptionText">Environmental Consulting · Philippines</span>
+  </div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-badge" aria-hidden="true">
+        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><circle cx="6" cy="6" r="4"/></svg>
+        Environmental Consultancy · Philippines
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-cards">
-          <div class="hero-card">
-            <div class="hero-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Environmental Compliance</strong>
-              <span>ECC · CNC · PCO Accreditation</span>
-            </div>
+      <h1>Sustainable Solutions for a <em>Better Environment</em></h1>
+      <p class="hero-desc">DC Environmental Consultancy Services provides expert environmental consulting, compliance assistance, and engineering solutions — helping businesses meet regulatory standards while protecting the environment.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary" data-cursor="cta">
+          Get in Touch
+          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+        </a>
+        <a href="#services" class="btn-outline" data-cursor="link">View Services</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/>
+            </svg>
           </div>
-          <div class="hero-card">
-            <div class="hero-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 12h1m8-9v1m8 8h1M5.636 5.636l.707.707M18.364 5.636l-.707.707M12 17a5 5 0 100-10 5 5 0 000 10z"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Impact Assessment</strong>
-              <span>EIA · IEE · ESIA Reports</span>
-            </div>
+          <div>
+            <strong>Environmental Compliance</strong>
+            <span>ECC · CNC · PCO Accreditation</span>
           </div>
-          <div class="hero-card">
-            <div class="hero-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Engineering Plans</strong>
-              <span>SDP · Floor Plan · Drainage</span>
-            </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M3 12h1m8-9v1m8 8h1M5.636 5.636l.707.707M18.364 5.636l-.707.707M12 17a5 5 0 100-10 5 5 0 000 10z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Impact Assessment</strong>
+            <span>EIA · IEE · ESIA Reports</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Engineering Plans</strong>
+            <span>SDP · Floor Plan · Drainage</span>
           </div>
         </div>
       </div>
@@ -478,42 +133,14 @@
   </div>
 </section>
 
-<!-- ── Stats ── -->
-<div class="stats-bar" aria-label="Company statistics">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item fade-in">
-        <strong>10+</strong>
-        <span>Years of Experience</span>
-      </div>
-      <div class="stat-item fade-in">
-        <strong>200+</strong>
-        <span>Projects Completed</span>
-      </div>
-      <div class="stat-item fade-in">
-        <strong>50+</strong>
-        <span>Permits Processed</span>
-      </div>
-      <div class="stat-item fade-in">
-        <strong>100%</strong>
-        <span>Compliance Rate</span>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ── About ── -->
 <section class="section" id="about" aria-labelledby="about-heading">
   <div class="container">
     <div class="about-grid">
       <div class="about-visual fade-in">
-        <div class="about-img-placeholder" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="32" cy="32" r="28"/>
-            <path d="M32 4c8.28 0 15 12.54 15 28S40.28 60 32 60"/>
-            <path d="M4 32h56M32 4C23.72 4 17 16.54 17 32S23.72 60 32 60"/>
-          </svg>
-          <p>Environmental Excellence</p>
+        <div class="about-img-wrap">
+          <img src="aboutsec.jpeg" alt="DC Environmental team at work" class="about-img" loading="lazy">
+          <div class="about-img-overlay"></div>
         </div>
         <div class="about-badge">
           <strong>DENR</strong>
@@ -527,11 +154,11 @@
         <p style="margin-bottom:1rem;">DC Environmental Consultancy Services is a private, independent professional consulting firm delivering specialized technical documentation, environmental impact assessments, and regulatory compliance assistance across the Philippines.</p>
         <p>All our applications are submitted strictly through official government channels. We maintain the highest standards of integrity, professionalism, and environmental stewardship in every engagement.</p>
         <div class="mission-vision">
-          <div class="mv-card">
+          <div class="mv-card" data-cursor="card">
             <h4>Our Mission</h4>
             <p>To provide accurate, compliant, and sustainable environmental solutions that protect both business interests and the natural environment.</p>
           </div>
-          <div class="mv-card">
+          <div class="mv-card" data-cursor="card">
             <h4>Our Vision</h4>
             <p>To be the most trusted environmental consultancy in the Philippines, recognized for excellence, integrity, and environmental stewardship.</p>
           </div>
@@ -550,16 +177,20 @@
         <h2 id="services-heading" class="section-title" style="margin-bottom:0;">Our Services</h2>
       </div>
       <div class="services-tabs" role="tablist" aria-label="Service categories">
-        <button class="tab-btn active" data-panel="panel-monitoring" role="tab" aria-selected="true" aria-controls="panel-monitoring">Monitoring & Assessment</button>
-        <button class="tab-btn" data-panel="panel-permits" role="tab" aria-selected="false" aria-controls="panel-permits">Permitting</button>
-        <button class="tab-btn" data-panel="panel-arch" role="tab" aria-selected="false" aria-controls="panel-arch">Architectural</button>
-        <button class="tab-btn" data-panel="panel-eng" role="tab" aria-selected="false" aria-controls="panel-eng">Engineering</button>
+        <button class="tab-btn active" data-panel="panel-monitoring" role="tab" aria-selected="true" data-cursor="tab">Monitoring & Assessment</button>
+        <button class="tab-btn" data-panel="panel-permits" role="tab" aria-selected="false" data-cursor="tab">Permitting</button>
+        <button class="tab-btn" data-panel="panel-arch" role="tab" aria-selected="false" data-cursor="tab">Architectural</button>
+        <button class="tab-btn" data-panel="panel-eng" role="tab" aria-selected="false" data-cursor="tab">Engineering</button>
       </div>
     </div>
 
     <!-- Panel 1: Monitoring & Assessment -->
     <div id="panel-monitoring" class="services-panel active" role="tabpanel">
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="soilsampsec.jpg" alt="Soil sampling" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M2 12h3m14 0h3M12 2v3m0 14v3"/>
@@ -569,7 +200,11 @@
         <p>Comprehensive evaluation of the environmental effects of proposed projects, including land, water, air, and social impact modules.</p>
         <div class="service-tags"><span class="tag">EIA</span><span class="tag">EIS</span><span class="tag">ESIA</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="riverwaterqualitysec.jpg" alt="River water quality monitoring" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 3v18h18"/><path d="M7 16l4-6 4 4 4-8"/>
@@ -579,7 +214,11 @@
         <p>Design and implementation of systematic monitoring programs to track environmental parameters and ensure ongoing compliance.</p>
         <div class="service-tags"><span class="tag">EMP</span><span class="tag">IMP</span><span class="tag">PEMAPS</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="watersampsec.jpg" alt="Water sampling" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2c-3.31 0-6 3.58-6 8s2.69 8 6 8 6-3.58 6-8-2.69-8-6-8z"/><path d="M2 12h20M12 2v20"/>
@@ -589,17 +228,25 @@
         <p>Scientific measurement and analysis of air quality, water quality, and noise levels to identify and address environmental concerns.</p>
         <div class="service-tags"><span class="tag">Air Quality</span><span class="tag">Water Quality</span><span class="tag">Noise</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="soilsampsec.jpg" alt="Baseline study fieldwork" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
         <h3>Baseline & Biodiversity Studies</h3>
-        <p>Thorough baseline environmental surveys and biodiversity assessments to establish pre-project conditions for environmental comparison.</p>
+        <p>Thorough baseline environmental surveys and biodiversity assessments to establish pre-project conditions for comparison.</p>
         <div class="service-tags"><span class="tag">Baseline</span><span class="tag">Biodiversity</span><span class="tag">GIS Mapping</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="constructionsiteenvisec.jpg" alt="Community engagement" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
@@ -609,7 +256,11 @@
         <p>Facilitation of information, education, and community engagement activities including focus group discussions and key informant interviews.</p>
         <div class="service-tags"><span class="tag">IEC</span><span class="tag">FGD</span><span class="tag">KII</span><span class="tag">IPS</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="constructionsiteenvisec.jpg" alt="Traffic and geohazard site" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
@@ -623,7 +274,11 @@
 
     <!-- Panel 2: Permitting -->
     <div id="panel-permits" class="services-panel" role="tabpanel">
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="permitsec.webp" alt="Permit documents" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/>
@@ -633,7 +288,11 @@
         <p>Processing of ECC through Environmental Impact Statement (EIS) and Initial Environmental Examination (IEE), including minor and major amendments.</p>
         <div class="service-tags"><span class="tag">ECC</span><span class="tag">EIS</span><span class="tag">IEE</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="permitsec.webp" alt="CNC documentation" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
@@ -643,7 +302,11 @@
         <p>Assistance in obtaining CNC documentation for projects that do not require a full environmental impact assessment under DENR regulations.</p>
         <div class="service-tags"><span class="tag">CNC</span><span class="tag">DENR</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="industrialplantsec.jpg" alt="Industrial plant compliance" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M4.93 4.93l14.14 14.14"/>
@@ -653,7 +316,11 @@
         <p>PCO Accreditation, Permit to Operate for Air Pollution Source Installation (PTO-APSI), and Wastewater Discharge Permit (WWDP) processing.</p>
         <div class="service-tags"><span class="tag">PCO</span><span class="tag">PTO-APSI</span><span class="tag">WWDP</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="industrialplantsec.jpg" alt="Hazardous waste management" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
@@ -663,7 +330,11 @@
         <p>Hazardous Waste Generator ID (HWG-ID), Permit to Transport Hazardous Waste, and Hazardous and Solid Waste Management Plan preparation.</p>
         <div class="service-tags"><span class="tag">HWG-ID</span><span class="tag">Waste Transport</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="riverwaterqualitysec.jpg" alt="Water permit LLDA" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
@@ -677,69 +348,93 @@
 
     <!-- Panel 3: Architectural -->
     <div id="panel-arch" class="services-panel" role="tabpanel">
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="blueprint.jpg" alt="Site development blueprint" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
           </svg>
         </div>
         <h3>Site Development Plan (SDP)</h3>
-        <p>Preparation of comprehensive site development plans showing layout, structures, access roads, utilities, and open spaces for regulatory submission.</p>
-        <div class="service-tags"><span class="tag">SDP</span><span class="tag">Site Layout</span></div>
+        <p>Preparation of Site Development Plans with sanitary and architectural sign and seal by licensed professional engineers.</p>
+        <div class="service-tags"><span class="tag">SDP</span><span class="tag">As-built</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="blueprint.jpg" alt="Floor plan layout" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/>
           </svg>
         </div>
-        <h3>Floor Plan Layout</h3>
-        <p>Detailed floor plan drawings for new construction or renovation projects, professionally drafted to meet building code and permit requirements.</p>
-        <div class="service-tags"><span class="tag">Floor Plans</span><span class="tag">As-built Plans</span></div>
+        <h3>Floor Plan & Drainage Layout</h3>
+        <p>Detailed floor plan layouts, drainage systems, and septic tank designs for commercial, residential, and industrial projects.</p>
+        <div class="service-tags"><span class="tag">Floor Plan</span><span class="tag">Drainage</span><span class="tag">Septic</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="blueprint.jpg" alt="Licensed engineer report" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1119.07 19.07"/>
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
           </svg>
         </div>
-        <h3>Sanitary Design & Sign/Seal</h3>
-        <p>Sanitary and architectural plans signed and sealed by a duly licensed professional engineer or architect, ready for permit submission.</p>
-        <div class="service-tags"><span class="tag">Sanitary</span><span class="tag">Licensed PE</span><span class="tag">Sign & Seal</span></div>
+        <h3>Licensed Engineer's Reports</h3>
+        <p>Engineer's Reports signed and sealed by licensed professionals, covering structural, sanitary, and environmental specifications.</p>
+        <div class="service-tags"><span class="tag">Sign & Seal</span><span class="tag">Licensed PE</span></div>
       </div>
     </div>
 
     <!-- Panel 4: Engineering -->
     <div id="panel-eng" class="services-panel" role="tabpanel">
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="constructionsiteenvisec.jpg" alt="Construction site engineering" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            <path d="M2 20h20M4 20V10l8-6 8 6v10"/>
           </svg>
         </div>
-        <h3>Drainage Layout Design</h3>
-        <p>Engineering design of drainage systems including storm drainage, surface runoff management, and proper channeling to prevent flooding and water logging.</p>
-        <div class="service-tags"><span class="tag">Drainage</span><span class="tag">Stormwater</span></div>
+        <h3>Construction Site Environmental Compliance</h3>
+        <p>On-site environmental compliance monitoring for construction projects, ensuring adherence to DENR and local government standards.</p>
+        <div class="service-tags"><span class="tag">Construction</span><span class="tag">Compliance</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="industrialplantsec.jpg" alt="Industrial plant" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a5 5 0 015 5v3H7V7a5 5 0 015-5z"/><rect x="3" y="10" width="18" height="12" rx="2"/>
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M12 12v4M10 14h4"/>
           </svg>
         </div>
-        <h3>Septic Tank Layout</h3>
-        <p>Design and engineering of septic tank systems compliant with sanitation codes, including sizing calculations and proper placement specifications.</p>
-        <div class="service-tags"><span class="tag">Septic Design</span><span class="tag">Sanitation</span></div>
+        <h3>Industrial Environmental Management</h3>
+        <p>Comprehensive environmental management for industrial facilities including waste management plans, pollution monitoring, and regulatory reporting.</p>
+        <div class="service-tags"><span class="tag">Industrial</span><span class="tag">Waste Mgmt</span><span class="tag">Monitoring</span></div>
       </div>
-      <div class="service-card fade-in">
+      <div class="service-card fade-in" data-cursor="card">
+        <div class="service-card-img">
+          <img src="soilsampsec.jpg" alt="Soil engineering assessment" loading="lazy">
+          <div class="service-card-img-overlay"></div>
+        </div>
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/>
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
-        <h3>Engineer's Report</h3>
-        <p>Professionally prepared and licensed-engineer-signed technical reports required for regulatory submissions, permit applications, and compliance documentation.</p>
-        <div class="service-tags"><span class="tag">Technical Reports</span><span class="tag">Licensed Engineer</span></div>
+        <h3>Geohazard & Geological Engineering</h3>
+        <p>Engineering Geological and Geohazard Assessment Reports including slope stability analysis, soil bearing capacity, and risk mapping.</p>
+        <div class="service-tags"><span class="tag">EGGAR</span><span class="tag">Soil</span><span class="tag">Risk Mapping</span></div>
       </div>
     </div>
   </div>
@@ -748,83 +443,169 @@
 <!-- ── Projects ── -->
 <section class="section" id="projects" aria-labelledby="projects-heading">
   <div class="container">
-    <div class="section-label">Our Experience</div>
-    <h2 id="projects-heading" class="section-title">Selected Projects</h2>
+    <div class="section-label">Case Studies</div>
+    <h2 id="projects-heading" class="section-title">Featured Projects</h2>
     <div class="divider"></div>
-    <p class="section-subtitle" style="margin-bottom:3rem;">We have successfully assisted clients across diverse industries in achieving environmental compliance and regulatory approval.</p>
     <div class="projects-grid">
-      <div class="project-card fade-in">
-        <div class="project-thumb" style="background: linear-gradient(135deg, #1a4a2e 0%, #2e7d52 100%);">
-          <svg viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="8" y="16" width="32" height="24" rx="2"/><path d="M16 16V12a8 8 0 0116 0v4"/>
-          </svg>
+
+      <div class="project-card fade-in" data-cursor="card">
+        <div class="project-thumb">
+          <img src="industrialplantsec.jpg" alt="Industrial plant ECC project" loading="lazy">
           <span class="project-thumb-label">Industrial</span>
         </div>
         <div class="project-body">
-          <h3>Manufacturing Facility ECC</h3>
-          <p>Full ECC processing via EIS for a major manufacturing plant, including baseline studies, air and wastewater assessments.</p>
+          <h3>Industrial Plant ECC Processing</h3>
+          <p>Full ECC processing via EIS for a mid-scale manufacturing facility, covering air, water, land, and socioeconomic impact modules.</p>
         </div>
       </div>
-      <div class="project-card fade-in">
-        <div class="project-thumb" style="background: linear-gradient(135deg, #1b4f72 0%, #2e86ab 100%);">
-          <svg viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4z"/><path d="M4 24h40M24 4c-5.52 0-10 8.95-10 20s4.48 20 10 20"/>
-          </svg>
-          <span class="project-thumb-label">Water Resources</span>
+
+      <div class="project-card fade-in" data-cursor="card">
+        <div class="project-thumb">
+          <img src="constructionsiteenvisec.jpg" alt="Construction site compliance" loading="lazy">
+          <span class="project-thumb-label">Construction</span>
         </div>
         <div class="project-body">
-          <h3>LLDA Discharge Permit Processing</h3>
-          <p>Comprehensive LLDA clearance and discharge permit assistance for a commercial development near Laguna de Bay.</p>
+          <h3>Construction Site IEE & Compliance</h3>
+          <p>Initial Environmental Examination and on-site compliance monitoring for a large-scale construction project in Metro Manila.</p>
         </div>
       </div>
-      <div class="project-card fade-in">
-        <div class="project-thumb" style="background: linear-gradient(135deg, #4a3728 0%, #8b6347 100%);">
-          <svg viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 4l20 36H4L24 4z"/><path d="M24 16v12M24 32v2"/>
-          </svg>
-          <span class="project-thumb-label">Mining</span>
+
+      <div class="project-card fade-in" data-cursor="card">
+        <div class="project-thumb">
+          <img src="riverwaterqualitysec.jpg" alt="River water quality monitoring" loading="lazy">
+          <span class="project-thumb-label">Water</span>
         </div>
         <div class="project-body">
-          <h3>Geohazard Assessment Report</h3>
-          <p>Engineering Geological and Geohazard Assessment for a quarrying operation, including slope stability analysis and risk mapping.</p>
+          <h3>River Water Quality Assessment</h3>
+          <p>Comprehensive water quality monitoring program for a riverside industrial estate, including WWDP and LLDA discharge permit processing.</p>
         </div>
       </div>
-      <div class="project-card fade-in">
-        <div class="project-thumb" style="background: linear-gradient(135deg, #2e7d52 0%, #5a9e7a 100%);">
-          <svg viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6" y="18" width="36" height="26" rx="2"/><path d="M16 18V14a8 8 0 0116 0v4"/><path d="M24 28v6"/>
-          </svg>
-          <span class="project-thumb-label">Commercial</span>
+
+      <div class="project-card fade-in" data-cursor="card">
+        <div class="project-thumb">
+          <img src="soilsampsec.jpg" alt="Soil sampling project" loading="lazy">
+          <span class="project-thumb-label">Assessment</span>
         </div>
         <div class="project-body">
-          <h3>PCO Accreditation & HWG-ID</h3>
-          <p>Pollution Control Officer accreditation and Hazardous Waste Generator ID processing for a commercial complex in Metro Manila.</p>
+          <h3>Baseline Soil & Environmental Survey</h3>
+          <p>Pre-development baseline soil and environmental survey for a proposed agri-industrial park, with full biodiversity and GIS mapping.</p>
         </div>
       </div>
-      <div class="project-card fade-in">
-        <div class="project-thumb" style="background: linear-gradient(135deg, #1b4f72 0%, #1a4a2e 100%);">
-          <svg viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 40V20l16-14 16 14v20"/><path d="M18 40V28h12v12"/>
-          </svg>
-          <span class="project-thumb-label">Real Estate</span>
+
+      <div class="project-card fade-in" data-cursor="card">
+        <div class="project-thumb">
+          <img src="watersampsec.jpg" alt="Water sampling project" loading="lazy">
+          <span class="project-thumb-label">LLDA</span>
+        </div>
+        <div class="project-body">
+          <h3>LLDA Clearance & Water Permits</h3>
+          <p>Complete processing of LLDA Clearance, LLDA Discharge Permit, and NWRB Water Permit for a lakeshore commercial development.</p>
+        </div>
+      </div>
+
+      <div class="project-card fade-in" data-cursor="card">
+        <div class="project-thumb">
+          <img src="blueprint.jpg" alt="Engineering blueprint project" loading="lazy">
+          <span class="project-thumb-label">Engineering</span>
         </div>
         <div class="project-body">
           <h3>Residential Subdivision SDP</h3>
           <p>Site Development Plan, drainage layout, septic design, and ECC processing for a mid-scale residential subdivision project.</p>
         </div>
       </div>
-      <div class="project-card fade-in">
-        <div class="project-thumb" style="background: linear-gradient(135deg, #5a4a1a 0%, #ba8c2e 100%);">
-          <svg viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 6a8 8 0 018 8v4H16v-4a8 8 0 018-8z"/><rect x="6" y="18" width="36" height="26" rx="2"/><path d="M6 30h36"/>
-          </svg>
-          <span class="project-thumb-label">Agriculture</span>
-        </div>
-        <div class="project-body">
-          <h3>Fish Pen Privilege to Operate</h3>
-          <p>Complete processing of Fish Pen PTO and environmental compliance documentation for an aquaculture enterprise in Laguna.</p>
-        </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ── -->
+<section class="section section--alt" id="process" aria-labelledby="process-heading">
+  <div class="container">
+    <div class="section-label">Our Process</div>
+    <h2 id="process-heading" class="section-title">How It Works</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">From your first inquiry to approved permits — here's what working with us looks like.</p>
+    <div class="how-it-works-grid">
+      <div class="how-step fade-in">
+        <div class="how-step-num">01</div>
+        <h4>Inquiry & Scoping</h4>
+        <p>Tell us about your project. We assess the scope, determine which permits apply, and send you a clear proposal — no hidden fees.</p>
       </div>
+      <div class="how-step fade-in">
+        <div class="how-step-num">02</div>
+        <h4>Field Work & Assessment</h4>
+        <p>Our team conducts on-site surveys, sampling, and data gathering — air, water, soil, biodiversity, and social baseline studies.</p>
+      </div>
+      <div class="how-step fade-in">
+        <div class="how-step-num">03</div>
+        <h4>Documentation</h4>
+        <p>We prepare all required technical reports, EIS/IEE documents, engineering plans, and compliance forms for submission.</p>
+      </div>
+      <div class="how-step fade-in">
+        <div class="how-step-num">04</div>
+        <h4>Permit Approval</h4>
+        <p>We handle filing with DENR, LLDA, NWRB and other agencies, follow up on status, and guide you until your permit is released.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-label">Common Questions</div>
+    <h2 id="faq-heading" class="section-title">Frequently Asked</h2>
+    <div class="divider"></div>
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do you work outside Metro Manila?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Yes. DC Environmental operates nationwide. We have completed projects in Luzon, Visayas, and Mindanao — including remote and island locations. Travel and logistics will be outlined in your project proposal.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How long does an ECC application take?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">It depends on the project type and DENR category. A Certificate of Non-Coverage (CNC) may take 2–4 weeks. A full EIS process (for Category A projects) typically takes 6–18 months. We'll give you a realistic timeline upfront.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Are you affiliated with DENR?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">No. DC Environmental Consultancy Services is a private, independent firm. We are not affiliated with, authorized by, or acting as agents of DENR or any government office. All permit applications are filed through official government channels.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What documents do I need to start?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Typically: a project description, location map or lot plan, and any existing permits or prior assessments. Don't worry if you don't have everything — we'll tell you exactly what's needed after your initial inquiry.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do you handle PCO Accreditation renewal?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Yes. We assist with both initial PCO Accreditation and annual renewal requirements, including preparation of the Annual Environmental Monitoring Report (AEMR) and other compliance documents.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How much do your services cost?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Every project is different, so we don't post flat rates. After a brief consultation, we provide a detailed, transparent proposal. Send us a message or WhatsApp us — initial inquiries are free.</div></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -846,7 +627,7 @@
           </div>
           <div>
             <strong>Email</strong>
-            <span><a href="mailto:dcenviconsultancy@gmail.com" style="color:var(--leaf);">dcenviconsultancy@gmail.com</a></span>
+            <span><a href="/cdn-cgi/l/email-protection#620601070c140b010d0c11170e16030c011b22050f030b0e4c010d0f" style="color:var(--leaf);"><span class="__cf_email__" data-cfemail="781c1b1d160e111b17160b0d140c19161b01381f15191114561b1715">[email&#160;protected]</span></a></span>
           </div>
         </div>
         <div class="contact-item">
@@ -857,7 +638,19 @@
           </div>
           <div>
             <strong>Phone / Mobile</strong>
-            <span>0961-730-1048</span>
+            <span><a href="tel:+639617301048" style="color:var(--leaf);">0961-730-1048</a></span>
+          </div>
+        </div>
+        <!-- WhatsApp -->
+        <div class="contact-item">
+          <div class="contact-item-icon contact-item-icon--wa" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="#25D366" stroke="none" width="20" height="20">
+              <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447zM12.045 21.785h-.004c-1.774 0-3.513-.474-5.03-1.37l-.361-.214-3.741.977.999-3.648-.235-.374a9.86 9.86 0 01-1.516-5.26c.001-5.45 4.436-9.884 9.892-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.881-9.885 9.881zm5.43-7.403c-.299-.149-1.768-.872-2.042-.972-.274-.099-.473-.149-.672.15-.199.298-.773.972-.947 1.17-.174.199-.349.224-.647.075-.299-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.019-.458.131-.606.134-.133.298-.347.448-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.672-1.62-.921-2.217-.242-.579-.487-.501-.672-.51l-.573-.01c-.198 0-.521.075-.795.373-.273.297-1.045 1.021-1.045 2.492s1.07 2.891 1.22 3.09c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.571-.347z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>WhatsApp</strong>
+            <span><a href="https://wa.me/639617301048" target="_blank" rel="noopener" style="color:var(--leaf);">Message us on WhatsApp</a></span>
           </div>
         </div>
         <div class="contact-item">
@@ -871,13 +664,8 @@
             <span>Philippines (Nationwide)</span>
           </div>
         </div>
-        <div class="contact-map" aria-label="Map placeholder">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#5a9e7a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span>Map embed available upon request</span>
-        </div>
       </div>
+
       <div class="contact-form fade-in">
         <form id="contactForm" novalidate>
           <div class="form-row">
@@ -905,7 +693,11 @@
               <option>Environmental Impact Assessment (EIA/EIS)</option>
               <option>Certificate of Non-Coverage (CNC)</option>
               <option>Environmental Compliance Certificate (ECC)</option>
+              <option>ECC Amendment (Minor/Major)</option>
               <option>PCO Accreditation</option>
+              <option>Hazardous Waste Generator ID (HWG-ID)</option>
+              <option>Permit to Operate - Air (PTO-APSI)</option>
+              <option>Wastewater Discharge Permit (WWDP)</option>
               <option>Hazardous Waste Permits</option>
               <option>LLDA Permits</option>
               <option>Water Permits (NWRB)</option>
@@ -920,7 +712,7 @@
             <label for="message">Message *</label>
             <textarea id="message" name="message" placeholder="Briefly describe your project or inquiry..." required></textarea>
           </div>
-          <button type="submit" class="btn-submit">Send Message</button>
+          <button type="submit" class="btn-submit" data-cursor="cta">Send Message</button>
           <p class="form-notice">Legal Disclaimer: DC Environmental Consultancy Services is a private, independent firm. We are not affiliated with, authorized by, or an agent of DENR or any government offices.</p>
         </form>
         <div class="form-success" id="formSuccess" aria-live="polite">
@@ -942,8 +734,11 @@
       <div class="footer-brand">
         <a href="#home" class="logo" aria-label="DC Environmental home">
           <div class="logo-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 0 5 4.48 5 10"/><path d="M17 8s-2 2-5 2-5-2-5-2"/><path d="M19 4l-7 8"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/>
+              <path d="M12 2c2.76 0 5 4.48 5 10"/>
+              <path d="M17 8s-2 2-5 2-5-2-5-2"/>
+              <path d="M19 4l-7 8"/>
             </svg>
           </div>
           <div class="logo-text">
@@ -954,18 +749,18 @@
         <p>Private, independent environmental consultancy providing expert compliance assistance and technical documentation across the Philippines.</p>
         <div class="social-links" aria-label="Social media links">
           <a href="#" class="social-link" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
               <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
             </svg>
           </a>
           <a href="#" class="social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
               <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
             </svg>
           </a>
-          <a href="mailto:dcenviconsultancy@gmail.com" class="social-link" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
+          <a href="https://wa.me/639617301048" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="white" stroke="none" width="18" height="18">
+              <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447zM12.045 21.785h-.004c-1.774 0-3.513-.474-5.03-1.37l-.361-.214-3.741.977.999-3.648-.235-.374a9.86 9.86 0 01-1.516-5.26c.001-5.45 4.436-9.884 9.892-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.881-9.885 9.881zm5.43-7.403c-.299-.149-1.768-.872-2.042-.972-.274-.099-.473-.149-.672.15-.199.298-.773.972-.947 1.17-.174.199-.349.224-.647.075-.299-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.019-.458.131-.606.134-.133.298-.347.448-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.672-1.62-.921-2.217-.242-.579-.487-.501-.672-.51l-.573-.01c-.198 0-.521.075-.795.373-.273.297-1.045 1.021-1.045 2.492s1.07 2.891 1.22 3.09c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.571-.347z"/>
             </svg>
           </a>
         </div>
@@ -988,8 +783,9 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="mailto:dcenviconsultancy@gmail.com">dcenviconsultancy@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#6f0b0c0a0119060c00011c1a031b0e010c162f08020e0603410c0002"><span class="__cf_email__" data-cfemail="3e5a5d5b5048575d51504d4b524a5f505d477e59535f5752105d5153">[email&#160;protected]</span></a>
         <a href="tel:+639617301048">0961-730-1048</a>
+        <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
         <a href="#contact">Send a Message</a>
       </div>
     </div>
@@ -1000,93 +796,14 @@
   </div>
 </footer>
 
-<script>
-  // ── Navbar scroll ──
-  const navbar = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/639617301048" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-cursor="cta">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
+    <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447zM12.045 21.785h-.004c-1.774 0-3.513-.474-5.03-1.37l-.361-.214-3.741.977.999-3.648-.235-.374a9.86 9.86 0 01-1.516-5.26c.001-5.45 4.436-9.884 9.892-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.881-9.885 9.881zm5.43-7.403c-.299-.149-1.768-.872-2.042-.972-.274-.099-.473-.149-.672.15-.199.298-.773.972-.947 1.17-.174.199-.349.224-.647.075-.299-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.019-.458.131-.606.134-.133.298-.347.448-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.672-1.62-.921-2.217-.242-.579-.487-.501-.672-.51l-.573-.01c-.198 0-.521.075-.795.373-.273.297-1.045 1.021-1.045 2.492s1.07 2.891 1.22 3.09c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.571-.347z"/>
+  </svg>
+  <span>Chat with us</span>
+</a>
 
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  });
-
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', false);
-      document.body.style.overflow = '';
-    });
-  });
-
-  // ── Fade-in observer ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.fade-in').forEach((el, i) => {
-    el.style.transitionDelay = (i % 4) * 0.1 + 's';
-    observer.observe(el);
-  });
-
-  // ── Services tabs ──
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      document.querySelectorAll('.services-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      const panel = document.getElementById(btn.dataset.panel);
-      panel.classList.add('active');
-      panel.querySelectorAll('.fade-in').forEach(el => {
-        el.classList.remove('visible');
-        void el.offsetWidth;
-        observer.observe(el);
-      });
-    });
-  });
-
-  // ── Contact form ──
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const fname = document.getElementById('fname').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    if (!fname || !email || !message) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-    this.style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  });
-
-  // ── Smooth active nav link ──
-  const sections = document.querySelectorAll('section[id], .stats-bar');
-  const navLinksAll = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) current = sec.id || '';
-    });
-    navLinksAll.forEach(a => {
-      a.style.fontWeight = a.getAttribute('href') === '#' + current ? '500' : '';
-    });
-  });
-</script>
+<script src="main.js"></script>
 </body>
 </html>

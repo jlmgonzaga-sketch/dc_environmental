@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About DC Environmental Consultancy Services — our mission, vision, and commitment to environmental responsibility across the Philippines.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>About Us | DC Environmental Consultancy Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<style>
+  /* ── Inner page hero (no carousel, solid bg) ── */
+  .page-hero {
+    background: linear-gradient(160deg, rgba(14,38,24,0.95) 0%, rgba(22,62,92,0.88) 100%),
+                url('aboutsec.jpeg') center/cover no-repeat;
+    min-height: 38vh;
+    display: flex; align-items: flex-end;
+    padding-top: 90px; padding-bottom: 3.5rem;
+    position: relative;
+  }
+  .page-hero::after {
+    content: '';
+    position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+    background: var(--cream);
+    clip-path: ellipse(60% 100% at 50% 100%);
+    z-index: 2;
+  }
+  .page-hero-inner { position: relative; z-index: 3; }
+  .page-breadcrumb {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
+  .page-breadcrumb a { color: rgba(255,255,255,0.5); }
+  .page-breadcrumb a:hover { color: var(--mist); }
+  .page-hero h1 { color: var(--white); font-size: clamp(2rem, 5vw, 3.2rem); max-width: 600px; }
+  .page-hero p  { color: rgba(255,255,255,0.72); margin-top: 0.85rem; max-width: 520px; font-size: 1rem; }
+  @media (max-width: 768px) {
+    .page-hero { min-height: 32vh; padding-bottom: 3rem; padding-top: 72px; }
+    .page-hero h1 { font-size: 1.8rem; }
+    .page-hero p  { font-size: 0.9rem; margin-top: 0.65rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<!-- ── Navbar ── -->
+<nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="DC Environmental home">
+      <div class="logo-mark" aria-hidden="true">
+        <img src="logo.png" alt="DC Environmental Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;width:22px;height:22px;">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/>
+          <path d="M12 2c2.76 0 5 4.48 5 10"/>
+          <path d="M17 8s-2 2-5 2-5-2-5-2"/>
+          <path d="M19 4l-7 8"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <strong>DC Environmental</strong>
+        <span>Consultancy Services</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks" role="list">
+      <li><a href="index.html" class="nav-item">Home</a></li>
+      <li><a href="about.html" class="nav-item active-link">About</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="projects.html" class="nav-item">Projects</a></li>
+      <li><a href="experience.html" class="nav-item">Experience</a></li>
+      <li><button class="nav-cta" onclick="openContactModal()">Get in Touch</button></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Page Hero ── -->
+<div class="page-hero" id="main-content">
+  <div class="container page-hero-inner">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <span>About</span>
+    </nav>
+    <h1>Who We Are</h1>
+    <p>Committed to environmental responsibility, integrity, and excellence across the Philippines.</p>
+  </div>
+</div>
+
+<!-- ── About Content ── -->
+<section class="section" id="about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-in">
+        <div class="about-img-wrap">
+          <img src="aboutsec.jpeg" alt="DC Environmental team at work" class="about-img" loading="lazy">
+          <div class="about-img-overlay"></div>
+        </div>
+        <div class="about-badge">
+          <strong>DENR</strong>
+          <span>Compliant Processes</span>
+        </div>
+      </div>
+      <div class="about-content fade-in">
+        <div class="section-label">Who We Are</div>
+        <h2 id="about-heading" class="section-title">Committed to Environmental Responsibility</h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:1rem;">DC Environmental Consultancy Services is a private, independent professional consulting firm delivering specialized technical documentation, environmental impact assessments, and regulatory compliance assistance across the Philippines.</p>
+        <p>All our applications are submitted strictly through official government channels. We maintain the highest standards of integrity, professionalism, and environmental stewardship in every engagement.</p>
+        <div class="mission-vision">
+          <div class="mv-card">
+            <h4>Our Mission</h4>
+            <p>To provide accurate, compliant, and sustainable environmental solutions that protect both business interests and the natural environment.</p>
+          </div>
+          <div class="mv-card">
+            <h4>Our Vision</h4>
+            <p>To be the most trusted environmental consultancy in the Philippines, recognized for excellence, integrity, and environmental stewardship.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section section--alt" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-label">Common Questions</div>
+    <h2 id="faq-heading" class="section-title">Frequently Asked</h2>
+    <div class="divider"></div>
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do you work outside Metro Manila?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Yes. DC Environmental operates nationwide. We have completed projects in Luzon, Visayas, and Mindanao — including remote and island locations. Travel and logistics will be outlined in your project proposal.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How long does an ECC application take?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">It depends on the project type and DENR category. A Certificate of Non-Coverage (CNC) may take 2–4 weeks. A full EIS process (for Category A projects) typically takes 6–18 months. We'll give you a realistic timeline upfront.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Are you affiliated with DENR?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">No. DC Environmental Consultancy Services is a private, independent firm. We are not affiliated with, authorized by, or acting as agents of DENR or any government office. All permit applications are filed through official government channels.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What documents do I need to start?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Typically: a project description, location map or lot plan, and any existing permits or prior assessments. Don't worry if you don't have everything — we'll tell you exactly what's needed after your initial inquiry.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do you handle PCO Accreditation renewal?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Yes. We assist with both initial PCO Accreditation and annual renewal requirements, including preparation of the Annual Environmental Monitoring Report (AEMR) and other compliance documents.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How much do your services cost?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-a" role="region"><div class="faq-a-inner">Every project is different, so we don't post flat rates. After a brief consultation, we provide a detailed, transparent proposal. Send us a message or WhatsApp us — initial inquiries are free.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="DC Environmental home">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/>
+              <path d="M12 2c2.76 0 5 4.48 5 10"/>
+              <path d="M17 8s-2 2-5 2-5-2-5-2"/>
+              <path d="M19 4l-7 8"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <strong>DC Environmental</strong>
+            <span>Consultancy Services</span>
+          </div>
+        </a>
+        <p>Private, independent environmental consultancy providing expert compliance assistance across the Philippines.</p>
+        <div class="social-links" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://wa.me/639617301048" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="white" stroke="none" width="18" height="18"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@dcenvironmental.com">info@dcenvironmental.com</a>
+        <a href="tel:+639617301048">0961-730-1048</a>
+        <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="#" onclick="openContactModal();return false;">Send a Message</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025–2026 DC Environmental Consultancy Services. All rights reserved.</p>
+      <p class="disclaimer">Private, independent consulting firm. Not affiliated with DENR or any government office.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/639617301048" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447zM12.045 21.785h-.004c-1.774 0-3.513-.474-5.03-1.37l-.361-.214-3.741.977.999-3.648-.235-.374a9.86 9.86 0 01-1.516-5.26c.001-5.45 4.436-9.884 9.892-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.881-9.885 9.881zm5.43-7.403c-.299-.149-1.768-.872-2.042-.972-.274-.099-.473-.149-.672.15-.199.298-.773.972-.947 1.17-.174.199-.349.224-.647.075-.299-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.019-.458.131-.606.134-.133.298-.347.448-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.672-1.62-.921-2.217-.242-.579-.487-.501-.672-.51l-.573-.01c-.198 0-.521.075-.795.373-.273.297-1.045 1.021-1.045 2.492s1.07 2.891 1.22 3.09c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.571-.347z"/></svg>
+  <span>Chat with us</span>
+</a>
+
+<!-- ── Contact Modal ── -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeContactModal()" aria-hidden="true"></div>
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-header">
+    <div class="modal-header-inner">
+      <div class="modal-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 0 5 4.48 5 10"/><path d="M17 8s-2 2-5 2-5-2-5-2"/><path d="M19 4l-7 8"/></svg>
+      </div>
+      <div>
+        <h2 id="modalTitle">Get in Touch</h2>
+        <p>We'll respond via WhatsApp or email.</p>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Close contact form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-quick-links">
+      <a href="https://wa.me/639617301048" target="_blank" rel="noopener" class="modal-quick-btn modal-quick-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="mailto:info@dcenvironmental.com" class="modal-quick-btn modal-quick-email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Email Us
+      </a>
+    </div>
+    <div class="modal-divider"><span>or fill out the form</span></div>
+    <form id="contactForm" novalidate>
+      <div class="modal-form-row">
+        <div class="form-group"><label for="fname">First Name *</label><input type="text" id="fname" name="fname" placeholder="Juan" required autocomplete="given-name"></div>
+        <div class="form-group"><label for="lname">Last Name *</label><input type="text" id="lname" name="lname" placeholder="dela Cruz" required autocomplete="family-name"></div>
+      </div>
+      <div class="form-group"><label for="memail">Email Address</label><input type="email" id="memail" name="email" placeholder="juan@example.com" autocomplete="email"></div>
+      <div class="form-group"><label for="mphone">Phone / WhatsApp</label><input type="tel" id="mphone" name="phone" placeholder="09XX-XXX-XXXX" autocomplete="tel"></div>
+      <div class="form-group">
+        <label for="mservice">Service Needed</label>
+        <select id="mservice" name="service">
+          <option value="">Select a service...</option>
+          <option>Environmental Impact Assessment (EIA/EIS)</option>
+          <option>Certificate of Non-Coverage (CNC)</option>
+          <option>Environmental Compliance Certificate (ECC)</option>
+          <option>PCO Accreditation</option>
+          <option>LLDA Permits</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="mmessage">Message *</label><textarea id="mmessage" name="message" placeholder="Briefly describe your project or inquiry..." required></textarea></div>
+      <button type="submit" class="btn-submit">Send Message <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg></button>
+      <p class="form-notice">Private, independent firm. Not affiliated with DENR or any government office.</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none;" aria-live="polite">
+      <div class="form-success-icon"><svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg></div>
+      <h3>Message Sent!</h3>
+      <p>We'll get back to you via WhatsApp or email.</p>
+      <button class="btn-primary" onclick="closeContactModal()" style="margin-top:1.5rem;width:100%;justify-content:center;">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

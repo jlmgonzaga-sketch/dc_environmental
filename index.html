@@ -3,16 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DC Environmental Consultancy Services</title>
+<meta name="description" content="DC Environmental Consultancy Services - Expert environmental consulting, ECC/EIA processing, and compliance assistance across the Philippines.">
+<meta name="keywords" content="environmental consultancy, ECC, EIA, environmental compliance, Philippines">
+<meta property="og:title" content="DC Environmental Consultancy Services">
+<meta property="og:description" content="Expert environmental consulting and compliance solutions for businesses across the Philippines.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dc-environmental.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DC Environmental Consultancy Services">
+<meta name="twitter:description" content="Expert environmental consulting and compliance solutions.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>DC Environmental Consultancy Services | Environmental Consulting Philippines</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ── Custom Cursors ── -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<div id="cursor-label"></div>
+<!-- Custom Cursors Hidden -->
+
+<!-- Skip to main content link for accessibility -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
 
 <!-- ── Navbar ── -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
@@ -33,11 +44,12 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="#home" class="nav-item" data-cursor="nav">Home</a></li>
-      <li><a href="#about" class="nav-item" data-cursor="nav">About</a></li>
-      <li><a href="#services" class="nav-item" data-cursor="nav">Services</a></li>
-      <li><a href="#projects" class="nav-item" data-cursor="nav">Projects</a></li>
-      <li><a href="#contact" class="nav-cta" data-cursor="cta">Get in Touch</a></li>
+      <li><a href="#home" class="nav-item">Home</a></li>
+      <li><a href="#about" class="nav-item">About</a></li>
+      <li><a href="#services" class="nav-item">Services</a></li>
+      <li><a href="#projects" class="nav-item">Projects</a></li>
+      <li><a href="experience.html" class="nav-item">Experience</a></li>
+      <li><button class="nav-cta" id="navContactBtn" onclick="openContactModal()">Get in Touch</button></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -46,7 +58,7 @@
 </nav>
 
 <!-- ── Hero with Carousel ── -->
-<section class="hero" id="home" aria-label="Hero section">
+<section class="hero" id="home" id="main-content" aria-label="Hero section">
   <!-- Carousel Background -->
   <div class="carousel-bg" id="carouselBg" aria-hidden="true">
     <div class="carousel-slide active" style="background-image: url('heresec.webp')"></div>
@@ -71,64 +83,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
   </button>
 
-  <!-- Carousel caption -->
-  <div class="carousel-caption" id="carouselCaption" aria-live="polite">
-    <span class="carousel-caption-text" id="carouselCaptionText">Environmental Consulting · Philippines</span>
-  </div>
-
   <div class="container hero-container">
     <div class="hero-content">
-      <div class="hero-badge" aria-hidden="true">
-        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><circle cx="6" cy="6" r="4"/></svg>
-        Environmental Consultancy · Philippines
-      </div>
       <h1>Sustainable Solutions for a <em>Better Environment</em></h1>
       <p class="hero-desc">DC Environmental Consultancy Services provides expert environmental consulting, compliance assistance, and engineering solutions — helping businesses meet regulatory standards while protecting the environment.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary" data-cursor="cta">
-          Get in Touch
-          <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
-        </a>
-        <a href="#services" class="btn-outline" data-cursor="link">View Services</a>
-      </div>
-    </div>
-
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-cards">
-        <div class="hero-card">
-          <div class="hero-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-              <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/>
-            </svg>
-          </div>
-          <div>
-            <strong>Environmental Compliance</strong>
-            <span>ECC · CNC · PCO Accreditation</span>
-          </div>
-        </div>
-        <div class="hero-card">
-          <div class="hero-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-              <path d="M3 12h1m8-9v1m8 8h1M5.636 5.636l.707.707M18.364 5.636l-.707.707M12 17a5 5 0 100-10 5 5 0 000 10z"/>
-            </svg>
-          </div>
-          <div>
-            <strong>Impact Assessment</strong>
-            <span>EIA · IEE · ESIA Reports</span>
-          </div>
-        </div>
-        <div class="hero-card">
-          <div class="hero-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-            </svg>
-          </div>
-          <div>
-            <strong>Engineering Plans</strong>
-            <span>SDP · Floor Plan · Drainage</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -154,11 +112,11 @@
         <p style="margin-bottom:1rem;">DC Environmental Consultancy Services is a private, independent professional consulting firm delivering specialized technical documentation, environmental impact assessments, and regulatory compliance assistance across the Philippines.</p>
         <p>All our applications are submitted strictly through official government channels. We maintain the highest standards of integrity, professionalism, and environmental stewardship in every engagement.</p>
         <div class="mission-vision">
-          <div class="mv-card" data-cursor="card">
+          <div class="mv-card">
             <h4>Our Mission</h4>
             <p>To provide accurate, compliant, and sustainable environmental solutions that protect both business interests and the natural environment.</p>
           </div>
-          <div class="mv-card" data-cursor="card">
+          <div class="mv-card">
             <h4>Our Vision</h4>
             <p>To be the most trusted environmental consultancy in the Philippines, recognized for excellence, integrity, and environmental stewardship.</p>
           </div>
@@ -177,20 +135,16 @@
         <h2 id="services-heading" class="section-title" style="margin-bottom:0;">Our Services</h2>
       </div>
       <div class="services-tabs" role="tablist" aria-label="Service categories">
-        <button class="tab-btn active" data-panel="panel-monitoring" role="tab" aria-selected="true" data-cursor="tab">Monitoring & Assessment</button>
-        <button class="tab-btn" data-panel="panel-permits" role="tab" aria-selected="false" data-cursor="tab">Permitting</button>
-        <button class="tab-btn" data-panel="panel-arch" role="tab" aria-selected="false" data-cursor="tab">Architectural</button>
-        <button class="tab-btn" data-panel="panel-eng" role="tab" aria-selected="false" data-cursor="tab">Engineering</button>
+        <button class="tab-btn active" data-panel="panel-monitoring" role="tab" aria-selected="true">Monitoring & Assessment</button>
+        <button class="tab-btn" data-panel="panel-permits" role="tab" aria-selected="false">Permitting</button>
+        <button class="tab-btn" data-panel="panel-arch" role="tab" aria-selected="false">Architectural</button>
+        <button class="tab-btn" data-panel="panel-eng" role="tab" aria-selected="false">Engineering</button>
       </div>
     </div>
 
     <!-- Panel 1: Monitoring & Assessment -->
     <div id="panel-monitoring" class="services-panel active" role="tabpanel">
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="soilsampsec.jpg" alt="Soil sampling" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M2 12h3m14 0h3M12 2v3m0 14v3"/>
@@ -200,11 +154,7 @@
         <p>Comprehensive evaluation of the environmental effects of proposed projects, including land, water, air, and social impact modules.</p>
         <div class="service-tags"><span class="tag">EIA</span><span class="tag">EIS</span><span class="tag">ESIA</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="riverwaterqualitysec.jpg" alt="River water quality monitoring" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 3v18h18"/><path d="M7 16l4-6 4 4 4-8"/>
@@ -214,11 +164,7 @@
         <p>Design and implementation of systematic monitoring programs to track environmental parameters and ensure ongoing compliance.</p>
         <div class="service-tags"><span class="tag">EMP</span><span class="tag">IMP</span><span class="tag">PEMAPS</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="watersampsec.jpg" alt="Water sampling" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2c-3.31 0-6 3.58-6 8s2.69 8 6 8 6-3.58 6-8-2.69-8-6-8z"/><path d="M2 12h20M12 2v20"/>
@@ -228,11 +174,7 @@
         <p>Scientific measurement and analysis of air quality, water quality, and noise levels to identify and address environmental concerns.</p>
         <div class="service-tags"><span class="tag">Air Quality</span><span class="tag">Water Quality</span><span class="tag">Noise</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="soilsampsec.jpg" alt="Baseline study fieldwork" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -242,11 +184,7 @@
         <p>Thorough baseline environmental surveys and biodiversity assessments to establish pre-project conditions for comparison.</p>
         <div class="service-tags"><span class="tag">Baseline</span><span class="tag">Biodiversity</span><span class="tag">GIS Mapping</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="constructionsiteenvisec.jpg" alt="Community engagement" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
@@ -256,11 +194,7 @@
         <p>Facilitation of information, education, and community engagement activities including focus group discussions and key informant interviews.</p>
         <div class="service-tags"><span class="tag">IEC</span><span class="tag">FGD</span><span class="tag">KII</span><span class="tag">IPS</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="constructionsiteenvisec.jpg" alt="Traffic and geohazard site" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
@@ -274,11 +208,7 @@
 
     <!-- Panel 2: Permitting -->
     <div id="panel-permits" class="services-panel" role="tabpanel">
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="permitsec.webp" alt="Permit documents" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/>
@@ -288,11 +218,7 @@
         <p>Processing of ECC through Environmental Impact Statement (EIS) and Initial Environmental Examination (IEE), including minor and major amendments.</p>
         <div class="service-tags"><span class="tag">ECC</span><span class="tag">EIS</span><span class="tag">IEE</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="permitsec.webp" alt="CNC documentation" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
@@ -302,11 +228,7 @@
         <p>Assistance in obtaining CNC documentation for projects that do not require a full environmental impact assessment under DENR regulations.</p>
         <div class="service-tags"><span class="tag">CNC</span><span class="tag">DENR</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="industrialplantsec.jpg" alt="Industrial plant compliance" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M4.93 4.93l14.14 14.14"/>
@@ -316,11 +238,7 @@
         <p>PCO Accreditation, Permit to Operate for Air Pollution Source Installation (PTO-APSI), and Wastewater Discharge Permit (WWDP) processing.</p>
         <div class="service-tags"><span class="tag">PCO</span><span class="tag">PTO-APSI</span><span class="tag">WWDP</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="industrialplantsec.jpg" alt="Hazardous waste management" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
@@ -330,11 +248,7 @@
         <p>Hazardous Waste Generator ID (HWG-ID), Permit to Transport Hazardous Waste, and Hazardous and Solid Waste Management Plan preparation.</p>
         <div class="service-tags"><span class="tag">HWG-ID</span><span class="tag">Waste Transport</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="riverwaterqualitysec.jpg" alt="Water permit LLDA" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
@@ -348,11 +262,7 @@
 
     <!-- Panel 3: Architectural -->
     <div id="panel-arch" class="services-panel" role="tabpanel">
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="blueprint.jpg" alt="Site development blueprint" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
@@ -362,11 +272,7 @@
         <p>Preparation of Site Development Plans with sanitary and architectural sign and seal by licensed professional engineers.</p>
         <div class="service-tags"><span class="tag">SDP</span><span class="tag">As-built</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="blueprint.jpg" alt="Floor plan layout" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/>
@@ -376,11 +282,7 @@
         <p>Detailed floor plan layouts, drainage systems, and septic tank designs for commercial, residential, and industrial projects.</p>
         <div class="service-tags"><span class="tag">Floor Plan</span><span class="tag">Drainage</span><span class="tag">Septic</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="blueprint.jpg" alt="Licensed engineer report" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
@@ -394,11 +296,7 @@
 
     <!-- Panel 4: Engineering -->
     <div id="panel-eng" class="services-panel" role="tabpanel">
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="constructionsiteenvisec.jpg" alt="Construction site engineering" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2 20h20M4 20V10l8-6 8 6v10"/>
@@ -408,11 +306,7 @@
         <p>On-site environmental compliance monitoring for construction projects, ensuring adherence to DENR and local government standards.</p>
         <div class="service-tags"><span class="tag">Construction</span><span class="tag">Compliance</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="industrialplantsec.jpg" alt="Industrial plant" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2M12 12v4M10 14h4"/>
@@ -422,11 +316,7 @@
         <p>Comprehensive environmental management for industrial facilities including waste management plans, pollution monitoring, and regulatory reporting.</p>
         <div class="service-tags"><span class="tag">Industrial</span><span class="tag">Waste Mgmt</span><span class="tag">Monitoring</span></div>
       </div>
-      <div class="service-card fade-in" data-cursor="card">
-        <div class="service-card-img">
-          <img src="soilsampsec.jpg" alt="Soil engineering assessment" loading="lazy">
-          <div class="service-card-img-overlay"></div>
-        </div>
+      <div class="service-card fade-in">
         <div class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -448,7 +338,7 @@
     <div class="divider"></div>
     <div class="projects-grid">
 
-      <div class="project-card fade-in" data-cursor="card">
+      <div class="project-card fade-in">
         <div class="project-thumb">
           <img src="industrialplantsec.jpg" alt="Industrial plant ECC project" loading="lazy">
           <span class="project-thumb-label">Industrial</span>
@@ -459,7 +349,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cursor="card">
+      <div class="project-card fade-in">
         <div class="project-thumb">
           <img src="constructionsiteenvisec.jpg" alt="Construction site compliance" loading="lazy">
           <span class="project-thumb-label">Construction</span>
@@ -470,7 +360,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cursor="card">
+      <div class="project-card fade-in">
         <div class="project-thumb">
           <img src="riverwaterqualitysec.jpg" alt="River water quality monitoring" loading="lazy">
           <span class="project-thumb-label">Water</span>
@@ -481,7 +371,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cursor="card">
+      <div class="project-card fade-in">
         <div class="project-thumb">
           <img src="soilsampsec.jpg" alt="Soil sampling project" loading="lazy">
           <span class="project-thumb-label">Assessment</span>
@@ -492,7 +382,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cursor="card">
+      <div class="project-card fade-in">
         <div class="project-thumb">
           <img src="watersampsec.jpg" alt="Water sampling project" loading="lazy">
           <span class="project-thumb-label">LLDA</span>
@@ -503,7 +393,7 @@
         </div>
       </div>
 
-      <div class="project-card fade-in" data-cursor="card">
+      <div class="project-card fade-in">
         <div class="project-thumb">
           <img src="blueprint.jpg" alt="Engineering blueprint project" loading="lazy">
           <span class="project-thumb-label">Engineering</span>
@@ -517,6 +407,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ── How It Works ── -->
 <section class="section section--alt" id="process" aria-labelledby="process-heading">
@@ -610,122 +501,8 @@
   </div>
 </section>
 
-<!-- ── Contact ── -->
-<section class="section section--alt" id="contact" aria-labelledby="contact-heading">
-  <div class="container">
-    <div class="section-label">Reach Out</div>
-    <h2 id="contact-heading" class="section-title">Get in Touch</h2>
-    <div class="divider"></div>
-    <p class="section-subtitle" style="margin-bottom:3.5rem;">Have a project in mind or need guidance on environmental compliance? Send us a message and our team will respond promptly.</p>
-    <div class="contact-grid">
-      <div class="contact-info fade-in">
-        <div class="contact-item">
-          <div class="contact-item-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
-            </svg>
-          </div>
-          <div>
-            <strong>Email</strong>
-            <span><a href="/cdn-cgi/l/email-protection#620601070c140b010d0c11170e16030c011b22050f030b0e4c010d0f" style="color:var(--leaf);"><span class="__cf_email__" data-cfemail="781c1b1d160e111b17160b0d140c19161b01381f15191114561b1715">[email&#160;protected]</span></a></span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.14 6.14l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
-            </svg>
-          </div>
-          <div>
-            <strong>Phone / Mobile</strong>
-            <span><a href="tel:+639617301048" style="color:var(--leaf);">0961-730-1048</a></span>
-          </div>
-        </div>
-        <!-- WhatsApp -->
-        <div class="contact-item">
-          <div class="contact-item-icon contact-item-icon--wa" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="#25D366" stroke="none" width="20" height="20">
-              <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447zM12.045 21.785h-.004c-1.774 0-3.513-.474-5.03-1.37l-.361-.214-3.741.977.999-3.648-.235-.374a9.86 9.86 0 01-1.516-5.26c.001-5.45 4.436-9.884 9.892-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.881-9.885 9.881zm5.43-7.403c-.299-.149-1.768-.872-2.042-.972-.274-.099-.473-.149-.672.15-.199.298-.773.972-.947 1.17-.174.199-.349.224-.647.075-.299-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.019-.458.131-.606.134-.133.298-.347.448-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.672-1.62-.921-2.217-.242-.579-.487-.501-.672-.51l-.573-.01c-.198 0-.521.075-.795.373-.273.297-1.045 1.021-1.045 2.492s1.07 2.891 1.22 3.09c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.571-.347z"/>
-            </svg>
-          </div>
-          <div>
-            <strong>WhatsApp</strong>
-            <span><a href="https://wa.me/639617301048" target="_blank" rel="noopener" style="color:var(--leaf);">Message us on WhatsApp</a></span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1a4a2e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          <div>
-            <strong>Service Area</strong>
-            <span>Philippines (Nationwide)</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-form fade-in">
-        <form id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name *</label>
-              <input type="text" id="fname" name="fname" placeholder="Juan" required>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name *</label>
-              <input type="text" id="lname" name="lname" placeholder="dela Cruz" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="juan@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="09XX-XXX-XXXX">
-          </div>
-          <div class="form-group">
-            <label for="service">Service Needed</label>
-            <select id="service" name="service">
-              <option value="">Select a service...</option>
-              <option>Environmental Impact Assessment (EIA/EIS)</option>
-              <option>Certificate of Non-Coverage (CNC)</option>
-              <option>Environmental Compliance Certificate (ECC)</option>
-              <option>ECC Amendment (Minor/Major)</option>
-              <option>PCO Accreditation</option>
-              <option>Hazardous Waste Generator ID (HWG-ID)</option>
-              <option>Permit to Operate - Air (PTO-APSI)</option>
-              <option>Wastewater Discharge Permit (WWDP)</option>
-              <option>Hazardous Waste Permits</option>
-              <option>LLDA Permits</option>
-              <option>Water Permits (NWRB)</option>
-              <option>Site Development Plan (SDP)</option>
-              <option>Drainage / Septic Layout</option>
-              <option>Environmental Monitoring Program</option>
-              <option>GIS Mapping</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message *</label>
-            <textarea id="message" name="message" placeholder="Briefly describe your project or inquiry..." required></textarea>
-          </div>
-          <button type="submit" class="btn-submit" data-cursor="cta">Send Message</button>
-          <p class="form-notice">Legal Disclaimer: DC Environmental Consultancy Services is a private, independent firm. We are not affiliated with, authorized by, or an agent of DENR or any government offices.</p>
-        </form>
-        <div class="form-success" id="formSuccess" aria-live="polite">
-          <svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/>
-          </svg>
-          <h3>Message Sent!</h3>
-          <p>Thank you for reaching out. We'll get back to you as soon as possible.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Contact anchor for footer links -->
+<div id="contact"></div>
 
 <!-- ── Footer ── -->
 <footer>
@@ -790,19 +567,127 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 DC Environmental Consultancy Services. All rights reserved.</p>
+      <p>&copy; 2025–2026 DC Environmental Consultancy Services. All rights reserved.</p>
       <p class="disclaimer">Legal Disclaimer: We are a private, independent consulting firm. Not affiliated with, authorized by, or an agent of DENR or any government office. All applications are submitted through official channels.</p>
     </div>
   </div>
 </footer>
 
 <!-- WhatsApp Float Button -->
-<a href="https://wa.me/639617301048" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-cursor="cta">
+<a href="https://wa.me/639617301048" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
     <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447zM12.045 21.785h-.004c-1.774 0-3.513-.474-5.03-1.37l-.361-.214-3.741.977.999-3.648-.235-.374a9.86 9.86 0 01-1.516-5.26c.001-5.45 4.436-9.884 9.892-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.881-9.885 9.881zm5.43-7.403c-.299-.149-1.768-.872-2.042-.972-.274-.099-.473-.149-.672.15-.199.298-.773.972-.947 1.17-.174.199-.349.224-.647.075-.299-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.654-2.059-.173-.297-.019-.458.131-.606.134-.133.298-.347.448-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.672-1.62-.921-2.217-.242-.579-.487-.501-.672-.51l-.573-.01c-.198 0-.521.075-.795.373-.273.297-1.045 1.021-1.045 2.492s1.07 2.891 1.22 3.09c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.571-.347z"/>
   </svg>
   <span>Chat with us</span>
 </a>
+
+
+<!-- ── Contact Modal Drawer ── -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeContactModal()" aria-hidden="true"></div>
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-header">
+    <div class="modal-header-inner">
+      <div class="modal-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/>
+          <path d="M12 2c2.76 0 5 4.48 5 10"/>
+          <path d="M17 8s-2 2-5 2-5-2-5-2"/>
+          <path d="M19 4l-7 8"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="modalTitle">Get in Touch</h2>
+        <p>We'll respond via WhatsApp or email.</p>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Close contact form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <!-- Quick contact options -->
+    <div class="modal-quick-links">
+      <a href="https://wa.me/639617301048" target="_blank" rel="noopener" class="modal-quick-btn modal-quick-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/>
+        </svg>
+        WhatsApp Us
+      </a>
+      <a href="/cdn-cgi/l/email-protection#056166606b736c666a6b76706971646b667c456268646c692b666a68" class="modal-quick-btn modal-quick-email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>
+        </svg>
+        Email Us
+      </a>
+    </div>
+
+    <div class="modal-divider"><span>or fill out the form</span></div>
+
+    <form id="contactForm" novalidate>
+      <div class="modal-form-row">
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" name="fname" placeholder="Juan" required autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" name="lname" placeholder="dela Cruz" required autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="memail">Email Address</label>
+        <input type="email" id="memail" name="email" placeholder="juan@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="mphone">Phone / WhatsApp</label>
+        <input type="tel" id="mphone" name="phone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label for="mservice">Service Needed</label>
+        <select id="mservice" name="service">
+          <option value="">Select a service...</option>
+          <option>Environmental Impact Assessment (EIA/EIS)</option>
+          <option>Certificate of Non-Coverage (CNC)</option>
+          <option>Environmental Compliance Certificate (ECC)</option>
+          <option>ECC Amendment (Minor/Major)</option>
+          <option>PCO Accreditation</option>
+          <option>Hazardous Waste Generator ID (HWG-ID)</option>
+          <option>Permit to Operate - Air (PTO-APSI)</option>
+          <option>Wastewater Discharge Permit (WWDP)</option>
+          <option>LLDA Permits</option>
+          <option>Water Permits (NWRB)</option>
+          <option>Site Development Plan (SDP)</option>
+          <option>Drainage / Septic Layout</option>
+          <option>GIS Mapping</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mmessage">Message *</label>
+        <textarea id="mmessage" name="message" placeholder="Briefly describe your project or inquiry..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">
+        Send Message
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+      </button>
+      <p class="form-notice">DC Environmental Consultancy Services is a private, independent firm. Not affiliated with DENR or any government office.</p>
+    </form>
+
+    <div class="form-success" id="formSuccess" style="display:none;" aria-live="polite">
+      <div class="form-success-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/>
+        </svg>
+      </div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for reaching out. We'll get back to you as soon as possible via WhatsApp or email.</p>
+      <button class="btn-primary" onclick="closeContactModal()" style="margin-top:1.5rem;width:100%;justify-content:center;">Close</button>
+    </div>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>

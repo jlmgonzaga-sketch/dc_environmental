@@ -855,8 +855,8 @@ body.modal-open { overflow: hidden; }
   .footer-grid { grid-template-columns: 1fr; }
   .services-header { flex-direction: column; align-items: flex-start; }
   .about-badge { bottom: -1rem; right: 0; }
-  .whatsapp-float span { display: none; }
-  .whatsapp-float { border-radius: 50%; padding: 1rem; }
+ .messenger-float span { display: none; }
+.messenger-float { border-radius: 50%; padding: 1rem; }
   .how-it-works-grid { grid-template-columns: 1fr; gap: 2rem; }
   .carousel-arrow { width: 36px; height: 36px; }
   .carousel-arrow--prev { left: 0.75rem; }

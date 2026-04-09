@@ -14,7 +14,6 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); min-height: 100vh; }
 
-  /* ── Login Screen ── */
   #login-screen {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(160deg, var(--forest) 0%, #1b3a5c 100%);
@@ -46,11 +45,8 @@
     background: #fff5f4; border: 1px solid #f5c6c2; border-radius: 8px;
     padding: 0.6rem 1rem; display: none; text-align: left;
   }
-  .login-notice {
-    font-size: 0.75rem; color: var(--gray); margin-top: 1.25rem; line-height: 1.5;
-  }
+  .login-notice { font-size: 0.75rem; color: var(--gray); margin-top: 1.25rem; line-height: 1.5; }
 
-  /* ── Admin Panel ── */
   #admin-panel { display: none; }
   .admin-header {
     background: var(--forest); color: white; padding: 1rem 2rem;
@@ -67,13 +63,11 @@
   .btn-logout {
     padding: 0.4rem 1rem; background: rgba(255,255,255,0.12); color: white;
     border: 1px solid rgba(255,255,255,0.25); border-radius: 6px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; cursor: pointer;
-    transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; cursor: pointer; transition: background 0.2s;
   }
-  .btn-logout:hover { background: rgba(192,57,43,0.5); border-color: rgba(192,57,43,0.6); }
+  .btn-logout:hover { background: rgba(192,57,43,0.5); }
 
   .admin-body { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-
   .form-card {
     background: var(--white); border: 1.5px solid var(--border);
     border-radius: 14px; padding: 2rem; margin-bottom: 2.5rem;
@@ -85,8 +79,7 @@
   .form-group input, .form-group textarea, .form-group select {
     width: 100%; padding: 0.65rem 0.9rem; border: 1.5px solid var(--border);
     border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    color: var(--charcoal); background: var(--cream); outline: none; resize: vertical;
-    transition: border-color 0.2s;
+    color: var(--charcoal); background: var(--cream); outline: none; resize: vertical; transition: border-color 0.2s;
   }
   .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
     border-color: var(--leaf); box-shadow: 0 0 0 3px rgba(46,125,82,0.12); background: white;
@@ -138,7 +131,6 @@
   .btn-delete:hover { background: #fff5f4; border-color: var(--red); }
   .empty-state { text-align: center; padding: 3rem; color: var(--gray); font-size: 0.9rem; }
 
-  /* ── Edit Modal ── */
   .modal-bg {
     position: fixed; inset: 0; background: rgba(0,0,0,0.45);
     backdrop-filter: blur(4px); z-index: 1000;
@@ -152,7 +144,6 @@
   .btn-save { padding: 0.65rem 1.5rem; background: var(--leaf); color: white; border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; }
   .btn-save:hover { background: var(--forest); }
 
-  /* ── Toast ── */
   .toast {
     position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
     background: var(--forest); color: white; padding: 0.75rem 1.5rem;
@@ -162,15 +153,12 @@
   }
   .toast.show { transform: translateY(0); opacity: 1; }
 
-  /* ── Loading overlay ── */
   #loading-screen {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    background: var(--cream);
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--cream);
   }
   .loading-spinner {
     width: 40px; height: 40px; border: 3px solid var(--border);
-    border-top-color: var(--leaf); border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+    border-top-color: var(--leaf); border-radius: 50%; animation: spin 0.8s linear infinite;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -184,35 +172,26 @@
 </head>
 <body>
 
-<!-- Loading state while Supabase checks session -->
-<div id="loading-screen">
-  <div class="loading-spinner"></div>
-</div>
+<div id="loading-screen"><div class="loading-spinner"></div></div>
 
-<!-- Login Screen -->
 <div id="login-screen" style="display:none;">
   <div class="login-box">
     <div class="login-logo">DC Environmental</div>
     <div class="login-sub">Updates Admin Panel</div>
     <div class="form-group">
       <label for="login-email">Email</label>
-      <input type="email" id="login-email" placeholder="dcenviadmin@gmail.com"
-             onkeydown="if(event.key==='Enter')login()">
+      <input type="email" id="login-email" placeholder="dcenviadmin@gmail.com" onkeydown="if(event.key==='Enter')login()">
     </div>
     <div class="form-group">
       <label for="login-password">Password</label>
-      <input type="password" id="login-password" placeholder="Your password"
-             onkeydown="if(event.key==='Enter')login()">
+      <input type="password" id="login-password" placeholder="Your password" onkeydown="if(event.key==='Enter')login()">
     </div>
-    <button class="btn-login" id="btn-login" onclick="login()">
-      Sign In
-    </button>
+    <button class="btn-login" id="btn-login" onclick="login()">Sign In</button>
     <div class="login-error" id="login-error"></div>
     <p class="login-notice">Access restricted to authorized administrators only.</p>
   </div>
 </div>
 
-<!-- Admin Panel -->
 <div id="admin-panel">
   <div class="admin-header">
     <div class="admin-header-left">
@@ -224,9 +203,7 @@
       <button class="btn-logout" onclick="logout()">Sign Out</button>
     </div>
   </div>
-
   <div class="admin-body">
-    <!-- Add New Update Form -->
     <div class="form-card">
       <h2>➕ Add New Update</h2>
       <div class="form-row">
@@ -269,8 +246,6 @@
         Add Update
       </button>
     </div>
-
-    <!-- Posts List -->
     <div class="posts-header">
       <h2>Published Updates</h2>
       <span class="posts-count" id="posts-count">Loading...</span>
@@ -279,7 +254,6 @@
   </div>
 </div>
 
-<!-- Edit Modal -->
 <div class="modal-bg" id="edit-modal">
   <div class="modal-box">
     <h3>Edit Update</h3>
@@ -310,13 +284,11 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- Supabase JS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // ── Supabase config ──────────────────────────────
   const SUPABASE_URL = 'https://tjmgeqmilnhqcuenadtp.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_6pq_ZDhAZyxO1HxR5ndWxA_Gt7UvtmH';
-  const TABLE = 'updates';
+  const TABLE = 'updates - DENR Laws & Mandates';
 
   const { createClient } = supabase;
   const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -324,15 +296,10 @@
   let posts = [];
   let editId = null;
 
-  // ── On page load: check existing session ─────────
   async function init() {
     const { data: { session } } = await sb.auth.getSession();
-    if (session) {
-      showAdminPanel(session.user.email);
-      loadPosts();
-    } else {
-      showLoginScreen();
-    }
+    if (session) { showAdminPanel(session.user.email); loadPosts(); }
+    else { showLoginScreen(); }
   }
 
   function showLoginScreen() {
@@ -348,68 +315,34 @@
     document.getElementById('admin-user-email').textContent = email;
   }
 
-  // ── Login ────────────────────────────────────────
   async function login() {
     const email    = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-password').value;
     const errEl    = document.getElementById('login-error');
     const btn      = document.getElementById('btn-login');
-
-    if (!email || !password) {
-      errEl.textContent = 'Please enter your email and password.';
-      errEl.style.display = 'block';
-      return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = 'Signing in...';
-    errEl.style.display = 'none';
-
+    if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; errEl.style.display = 'block'; return; }
+    btn.disabled = true; btn.textContent = 'Signing in...'; errEl.style.display = 'none';
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
-
     if (error) {
       errEl.textContent = 'Incorrect email or password. Please try again.';
-      errEl.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Sign In';
-    } else {
-      showAdminPanel(data.user.email);
-      loadPosts();
-    }
+      errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Sign In';
+    } else { showAdminPanel(data.user.email); loadPosts(); }
   }
 
-  // ── Logout ───────────────────────────────────────
   async function logout() {
-    await sb.auth.signOut();
-    showLoginScreen();
-    document.getElementById('login-email').value = '';
-    document.getElementById('login-password').value = '';
-    showToast('Signed out successfully.');
+    await sb.auth.signOut(); showLoginScreen(); showToast('Signed out successfully.');
   }
 
-  // ── Load posts ───────────────────────────────────
   async function loadPosts() {
-    const { data, error } = await sb
-      .from(TABLE)
-      .select('*')
-      .order('id', { ascending: false });
-
-    if (error) { showToast('❌ Error loading posts.'); return; }
-    posts = data;
-    renderPosts();
+    const { data, error } = await sb.from(TABLE).select('*').order('id', { ascending: false });
+    if (error) { showToast('❌ Error: ' + error.message); return; }
+    posts = data; renderPosts();
   }
 
-  // ── Render posts ─────────────────────────────────
   function renderPosts() {
     const list = document.getElementById('posts-list');
-    document.getElementById('posts-count').textContent =
-      posts.length + ' update' + (posts.length !== 1 ? 's' : '');
-
-    if (!posts.length) {
-      list.innerHTML = '<div class="empty-state">No updates yet. Add your first one above!</div>';
-      return;
-    }
-
+    document.getElementById('posts-count').textContent = posts.length + ' update' + (posts.length !== 1 ? 's' : '');
+    if (!posts.length) { list.innerHTML = '<div class="empty-state">No updates yet. Add your first one above!</div>'; return; }
     list.innerHTML = posts.map(p => `
       <div class="post-item">
         <div class="post-dot ${p.active ? '' : 'inactive'}"></div>
@@ -420,71 +353,50 @@
           <span class="post-category">${p.category}</span>
         </div>
         <div class="post-actions">
-          <button class="btn-toggle" onclick="togglePost(${p.id}, ${p.active})">
-            ${p.active ? 'Hide' : 'Show'}
-          </button>
+          <button class="btn-toggle" onclick="togglePost(${p.id}, ${p.active})">${p.active ? 'Hide' : 'Show'}</button>
           <button class="btn-edit" onclick="openEdit(${p.id})">Edit</button>
           <button class="btn-delete" onclick="deletePost(${p.id})">Delete</button>
         </div>
-      </div>
-    `).join('');
+      </div>`).join('');
   }
 
-  // ── Add post ─────────────────────────────────────
   async function addPost() {
     const title = document.getElementById('new-title').value.trim();
     const url   = document.getElementById('new-url').value.trim();
     if (!title || !url) { showToast('⚠️ Title and URL are required!'); return; }
-
     const btn = document.getElementById('btn-add');
     btn.disabled = true;
     btn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 0.8s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Saving...`;
-
     const { error } = await sb.from(TABLE).insert([{
-      title,
-      category: document.getElementById('new-category').value,
-      description: document.getElementById('new-desc').value.trim(),
-      url,
+      title, category: document.getElementById('new-category').value,
+      description: document.getElementById('new-desc').value.trim(), url,
       date: document.getElementById('new-date').value.trim(),
-      agency: document.getElementById('new-agency').value.trim(),
-      active: true
+      agency: document.getElementById('new-agency').value.trim(), active: true
     }]);
-
     btn.disabled = false;
     btn.innerHTML = `<svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 4v12M4 10h12"/></svg> Add Update`;
-
-    if (error) {
-      showToast('❌ Error saving. Please try again.');
-    } else {
-      ['new-title','new-desc','new-url','new-date','new-agency'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
-      showToast('✅ Update added! Live on site now.');
-      loadPosts();
+    if (error) { showToast('❌ Error: ' + error.message); }
+    else {
+      ['new-title','new-desc','new-url','new-date','new-agency'].forEach(id => document.getElementById(id).value = '');
+      showToast('✅ Update added! Live on site now.'); loadPosts();
     }
   }
 
-  // ── Delete post ──────────────────────────────────
   async function deletePost(id) {
     if (!confirm('Delete this update? This cannot be undone.')) return;
     const { error } = await sb.from(TABLE).delete().eq('id', id);
     if (error) { showToast('❌ Error deleting.'); return; }
-    showToast('🗑 Deleted.');
-    loadPosts();
+    showToast('🗑 Deleted.'); loadPosts();
   }
 
-  // ── Toggle visibility ────────────────────────────
   async function togglePost(id, current) {
     const { error } = await sb.from(TABLE).update({ active: !current }).eq('id', id);
     if (error) { showToast('❌ Error updating.'); return; }
-    showToast(!current ? '✅ Now visible on site.' : '👁 Hidden from site.');
-    loadPosts();
+    showToast(!current ? '✅ Now visible on site.' : '👁 Hidden from site.'); loadPosts();
   }
 
-  // ── Edit modal ───────────────────────────────────
   function openEdit(id) {
-    const p = posts.find(x => x.id === id);
-    editId = id;
+    const p = posts.find(x => x.id === id); editId = id;
     document.getElementById('edit-title').value    = p.title;
     document.getElementById('edit-category').value = p.category;
     document.getElementById('edit-desc').value     = p.description || '';
@@ -494,50 +406,30 @@
     document.getElementById('edit-modal').classList.add('open');
   }
 
-  function closeEdit() {
-    document.getElementById('edit-modal').classList.remove('open');
-    editId = null;
-  }
+  function closeEdit() { document.getElementById('edit-modal').classList.remove('open'); editId = null; }
 
   async function saveEdit() {
     const title = document.getElementById('edit-title').value.trim();
     const url   = document.getElementById('edit-url').value.trim();
     if (!title || !url) { showToast('⚠️ Title and URL are required!'); return; }
-
     const { error } = await sb.from(TABLE).update({
-      title,
-      category:    document.getElementById('edit-category').value,
-      description: document.getElementById('edit-desc').value.trim(),
-      url,
-      date:        document.getElementById('edit-date').value.trim(),
-      agency:      document.getElementById('edit-agency').value.trim()
+      title, category: document.getElementById('edit-category').value,
+      description: document.getElementById('edit-desc').value.trim(), url,
+      date: document.getElementById('edit-date').value.trim(),
+      agency: document.getElementById('edit-agency').value.trim()
     }).eq('id', editId);
-
     if (error) { showToast('❌ Error saving changes.'); return; }
-    showToast('✅ Changes saved!');
-    closeEdit();
-    loadPosts();
+    showToast('✅ Changes saved!'); closeEdit(); loadPosts();
   }
 
-  // ── Close edit modal on backdrop click ───────────
-  document.getElementById('edit-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeEdit();
-  });
+  document.getElementById('edit-modal').addEventListener('click', function(e) { if (e.target === this) closeEdit(); });
 
-  // ── Toast helper ─────────────────────────────────
   function showToast(msg) {
     const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
+    t.textContent = msg; t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3500);
   }
 
-  // ── Spinner keyframe ─────────────────────────────
-  const s = document.createElement('style');
-  s.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
-  document.head.appendChild(s);
-
-  // ── Boot ─────────────────────────────────────────
   init();
 </script>
 </body>

@@ -52,7 +52,6 @@ p  { font-size: 1rem; color: var(--gray); }
 /* ── Layout Helpers ── */
 .skip-to-content {
   position: absolute; top: -40px; left: 0;
-  background: var(--forest); color: var(--white);
   padding: 0.5rem 1rem; text-decoration: none; z-index: 10000;
 }
 .skip-to-content:focus { top: 0; }

@@ -168,8 +168,7 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
 .logo-text strong {
   display: block; font-family: 'Playfair Display', serif;
   font-weight: 600; font-size: 21px; letter-spacing: 0.005em;
-  line-height: 1.15;
-  transition: color var(--transition);
+  line-height: 1.15; transition: color var(--transition);
 }
 .logo-text strong::after {
   content: '';
@@ -186,8 +185,7 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
   font-family: 'DM Sans', sans-serif;
   font-size: 10px; letter-spacing: 0.18em;
   text-transform: uppercase; font-weight: 400;
-  opacity: 0.55;
-  transition: color var(--transition);
+  opacity: 0.55; transition: color var(--transition);
 }
 
 .navbar:not(.scrolled) .logo-text strong { color: var(--white); }

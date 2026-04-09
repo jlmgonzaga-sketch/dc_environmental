@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="icon" type="image/png" href="logonobg.png">
+<link rel="icon" type="image/png" href="logonobg.png">
 <meta name="description" content="DC Environmental Consultancy Services — Our experience, track record, and client portfolio across the Philippines.">
 <title>Our Experience | DC Environmental Consultancy Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="style.css">
 </head>
-<body class="exp-page">
+<body>
 
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
@@ -33,13 +32,13 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks" role="list">
-  <li><a href="index.html" class="nav-item">Home</a></li>
-  <li><a href="about.html" class="nav-item">About</a></li>
-  <li><a href="services.html" class="nav-item">Services</a></li>
-  <li><a href="projects.html" class="nav-item">Projects</a></li>
-  <li><a href="experience.html" class="nav-item active-link">Experience</a></li>
-  <li><button class="nav-cta" onclick="openContactModal()">Get in Touch</button></li>
-</ul>
+      <li><a href="index.html" class="nav-item">Home</a></li>
+      <li><a href="about.html" class="nav-item">About</a></li>
+      <li><a href="services.html" class="nav-item">Services</a></li>
+      <li><a href="projects.html" class="nav-item">Projects</a></li>
+      <li><a href="experience.html" class="nav-item active-link">Experience</a></li>
+      <li><button class="nav-cta" onclick="openContactModal()">Get in Touch</button></li>
+    </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -47,281 +46,252 @@
 </nav>
 
 <!-- ── Page Hero ── -->
-<header class="exp-hero" id="main-content">
-  <div class="exp-hero-bg">
-    <div class="exp-hero-slide" style="background-image:url('constructionsiteenvisec.jpg')"></div>
-    <div class="exp-hero-overlay"></div>
-    <!-- Diagonal decorative lines -->
-    <svg class="exp-hero-deco" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+<header class="hero hero--short" id="main-content">
+  <div class="carousel-bg">
+    <div class="carousel-slide active" style="background-image:url('constructionsiteenvisec.jpg')"></div>
+    <div class="carousel-overlay"></div>
+    <svg class="hero-deco" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;">
       <line x1="0" y1="600" x2="400" y2="0" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
       <line x1="200" y1="600" x2="600" y2="0" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
       <line x1="500" y1="600" x2="900" y2="0" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
       <line x1="800" y1="600" x2="1200" y2="0" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
     </svg>
   </div>
-  <div class="container exp-hero-inner">
-    <div class="exp-breadcrumb">
-      <a href="dc-environmental.html">Home</a>
-      <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
-      <span>Our Experience</span>
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+        <span>Our Experience</span>
+      </div>
+      <h1>Trusted by Leading<br><em>Organizations</em></h1>
+      <p class="hero-desc">Over 3 years of delivering comprehensive environmental solutions across multiple industries and provinces throughout the Philippines.</p>
     </div>
-    <h1 class="exp-hero-title">Trusted by Leading<br><em>Organizations</em></h1>
-    <p class="exp-hero-sub">Over 3 years of delivering comprehensive environmental solutions across multiple industries and provinces throughout the Philippines.</p>
-    <div class="exp-hero-cta">
-    </div>
-  </div>
-  <!-- Scroll indicator -->
-  <div class="exp-scroll-indicator" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="exp-scroll-line"></div>
   </div>
 </header>
 
 <!-- ── Track Record Numbers ── -->
-<section class="exp-stats-section" id="stats">
+<section class="section" id="stats" style="padding-top:5rem;padding-bottom:4.5rem;">
   <div class="container">
-    <div class="exp-stats-grid">
-      <div class="exp-stat-card fade-in">
-        <div class="exp-stat-icon">
+    <div class="track-record-grid">
+
+      <div class="stat-card fade-in">
+        <div class="contact-item-icon" style="margin:0 auto 1.25rem;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
             <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/>
           </svg>
         </div>
-        <div class="exp-stat-num">40<span>+</span></div>
-        <div class="exp-stat-label">Projects Completed</div>
+        <div class="stat-number">40<span style="font-size:2rem;color:var(--leaf);vertical-align:super;">+</span></div>
+        <div class="stat-label">Projects Completed</div>
         <p>ECC processing, permits, assessments, and engineering solutions</p>
       </div>
-      <div class="exp-stat-card fade-in">
-        <div class="exp-stat-icon">
+
+      <div class="stat-card fade-in">
+        <div class="contact-item-icon" style="margin:0 auto 1.25rem;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
             <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
           </svg>
         </div>
-        <div class="exp-stat-num">15<span>+</span></div>
-        <div class="exp-stat-label">Provinces Served</div>
+        <div class="stat-number">15<span style="font-size:2rem;color:var(--leaf);vertical-align:super;">+</span></div>
+        <div class="stat-label">Provinces Served</div>
         <p>Coverage across Luzon, Visayas, and Mindanao</p>
       </div>
-      <div class="exp-stat-card fade-in">
-        <div class="exp-stat-icon">
+
+      <div class="stat-card fade-in">
+        <div class="contact-item-icon" style="margin:0 auto 1.25rem;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
             <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M12 12v4M10 14h4"/>
           </svg>
         </div>
-        <div class="exp-stat-num">8<span>+</span></div>
-        <div class="exp-stat-label">Industries Served</div>
-        <p>Manufacturing, Agriculture, Real Estate, Hospitality, Energy & more</p>
+        <div class="stat-number">8<span style="font-size:2rem;color:var(--leaf);vertical-align:super;">+</span></div>
+        <div class="stat-label">Industries Served</div>
+        <p>Manufacturing, Agriculture, Real Estate, Hospitality, Energy &amp; more</p>
       </div>
-      <div class="exp-stat-card fade-in">
-        <div class="exp-stat-icon">
+
+      <div class="stat-card fade-in">
+        <div class="contact-item-icon" style="margin:0 auto 1.25rem;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
             <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
           </svg>
         </div>
-        <div class="exp-stat-num">3<span>+</span></div>
-        <div class="exp-stat-label">Years of Excellence</div>
+        <div class="stat-number">3<span style="font-size:2rem;color:var(--leaf);vertical-align:super;">+</span></div>
+        <div class="stat-label">Years of Excellence</div>
         <p>Consistent, reliable environmental compliance support</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ── Client Portfolio ── -->
-<section class="exp-clients-section section">
+<section class="section" id="clients">
   <div class="container">
-    <div class="exp-section-header fade-in">
+    <div class="fade-in" style="margin-bottom:4rem;">
       <div class="section-label">Who We've Worked With</div>
       <h2 class="section-title">Recent Client Projects</h2>
       <div class="divider"></div>
       <p class="section-subtitle">A selection of clients and projects we've served across key industries in the Philippines.</p>
     </div>
 
-    <div class="exp-industry-grid">
+    <div class="projects-grid" style="grid-template-columns:repeat(2,1fr);">
 
       <!-- Manufacturing & Industrial -->
-      <div class="exp-industry-card fade-in">
-        <div class="exp-industry-img">
+      <div class="project-card fade-in">
+        <div class="project-thumb">
           <img src="industrialplantsec.jpg" alt="Manufacturing and industrial projects" loading="lazy">
-          <div class="exp-industry-img-overlay"></div>
-          <div class="exp-industry-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="18" height="18">
+          <div class="project-thumb-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:4px;">
               <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M8 7V5a2 2 0 00-4 0v2M2 13h20"/>
             </svg>
-            Manufacturing & Industrial
+            Manufacturing &amp; Industrial
           </div>
         </div>
-        <div class="exp-industry-body">
-          <ul class="exp-client-list">
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Stefano Footwear (3 plants)
+        <div class="project-body">
+          <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1rem;margin-bottom:1.25rem;">
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Stefano Footwear (3 plants)
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Givano Footwear (2 plants)
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Givano Footwear (2 plants)
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              LM Coat Solution
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>LM Coat Solution
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Intergalactic Chemicals
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Intergalactic Chemicals
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              ADCE Ice Plant
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>ADCE Ice Plant
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Fenghuang Engineering
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Fenghuang Engineering
             </li>
           </ul>
-          <div class="exp-industry-tag-row">
-            <span class="exp-tag">ECC</span>
-            <span class="exp-tag">PCO</span>
-            <span class="exp-tag">HWG-ID</span>
-            <span class="exp-tag">WWDP</span>
+          <div class="service-tags">
+            <span class="tag">ECC</span>
+            <span class="tag">PCO</span>
+            <span class="tag">HWG-ID</span>
+            <span class="tag">WWDP</span>
           </div>
         </div>
       </div>
 
       <!-- Agriculture & Livestock -->
-      <div class="exp-industry-card fade-in">
-        <div class="exp-industry-img">
+      <div class="project-card fade-in">
+        <div class="project-thumb">
           <img src="soilsampsec.jpg" alt="Agriculture and livestock projects" loading="lazy">
-          <div class="exp-industry-img-overlay"></div>
-          <div class="exp-industry-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="18" height="18">
+          <div class="project-thumb-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:4px;">
               <path d="M12 2a10 10 0 00-6.88 17.28M12 2c2.21 0 4 3.58 4 8s-1.79 8-4 8M2 12h4M18 12h4"/>
             </svg>
-            Agriculture & Livestock
+            Agriculture &amp; Livestock
           </div>
         </div>
-        <div class="exp-industry-body">
-          <ul class="exp-client-list">
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Sunjin Farm
+        <div class="project-body">
+          <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1rem;margin-bottom:1.25rem;">
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Sunjin Farm
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Porkyfine Livestock
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Porkyfine Livestock
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Villa Socorro Farm
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Villa Socorro Farm
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Goldenbarn Livestock
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Goldenbarn Livestock
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Agarwood Forest
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Agarwood Forest
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Agarwood PH Farm
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Agarwood PH Farm
             </li>
           </ul>
-          <div class="exp-industry-tag-row">
-            <span class="exp-tag">EIA</span>
-            <span class="exp-tag">CNC</span>
-            <span class="exp-tag">EMP</span>
+          <div class="service-tags">
+            <span class="tag">EIA</span>
+            <span class="tag">CNC</span>
+            <span class="tag">EMP</span>
           </div>
         </div>
       </div>
 
       <!-- Real Estate & Hospitality -->
-      <div class="exp-industry-card fade-in">
-        <div class="exp-industry-img">
+      <div class="project-card fade-in">
+        <div class="project-thumb">
           <img src="constructionsiteenvisec.jpg" alt="Real estate and hospitality projects" loading="lazy">
-          <div class="exp-industry-img-overlay"></div>
-          <div class="exp-industry-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="18" height="18">
+          <div class="project-thumb-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:4px;">
               <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/>
             </svg>
-            Real Estate & Hospitality
+            Real Estate &amp; Hospitality
           </div>
         </div>
-        <div class="exp-industry-body">
-          <ul class="exp-client-list">
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Bygga Realty (Baguio Condo)
+        <div class="project-body">
+          <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1rem;margin-bottom:1.25rem;">
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Bygga Realty (Baguio Condo)
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Union Square Condo
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Union Square Condo
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Villa Marca Resort (2 locations)
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Villa Marca Resort (2 locations)
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Tito Antolin Resort
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Tito Antolin Resort
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Casa Constancia Resort
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Casa Constancia Resort
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Puntabelle Nature's Resort
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Puntabelle Nature's Resort
             </li>
           </ul>
-          <div class="exp-industry-tag-row">
-            <span class="exp-tag">ECC</span>
-            <span class="exp-tag">SDP</span>
-            <span class="exp-tag">LLDA</span>
+          <div class="service-tags">
+            <span class="tag">ECC</span>
+            <span class="tag">SDP</span>
+            <span class="tag">LLDA</span>
           </div>
         </div>
       </div>
 
       <!-- Energy & Services -->
-      <div class="exp-industry-card fade-in">
-        <div class="exp-industry-img">
+      <div class="project-card fade-in">
+        <div class="project-thumb">
           <img src="industrialplantsec.jpg" alt="Energy and services projects" loading="lazy">
-          <div class="exp-industry-img-overlay"></div>
-          <div class="exp-industry-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="18" height="18">
+          <div class="project-thumb-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" width="14" height="14" style="display:inline;vertical-align:middle;margin-right:4px;">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
             </svg>
-            Energy & Services
+            Energy &amp; Services
           </div>
         </div>
-        <div class="exp-industry-body">
-          <ul class="exp-client-list">
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Bonifacio Gas Corporation
+        <div class="project-body">
+          <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1rem;margin-bottom:1.25rem;">
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Bonifacio Gas Corporation
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Petron Gasoline (3 stations)
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Petron Gasoline (3 stations)
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Dags Gasoline (3 stations)
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Dags Gasoline (3 stations)
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              A-Fuels Gasoline
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>A-Fuels Gasoline
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Petro Gazz Gasoline
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Petro Gazz Gasoline
             </li>
-            <li>
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>
-              Converge ICT Solutions
+            <li style="display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--charcoal);">
+              <svg viewBox="0 0 16 16" fill="none" stroke="var(--leaf)" stroke-width="2" width="12" height="12"><path d="M3 8l3 3 7-7"/></svg>Converge ICT Solutions
             </li>
           </ul>
-          <div class="exp-industry-tag-row">
-            <span class="exp-tag">ECC</span>
-            <span class="exp-tag">PTO-APSI</span>
-            <span class="exp-tag">CNC</span>
+          <div class="service-tags">
+            <span class="tag">ECC</span>
+            <span class="tag">PTO-APSI</span>
+            <span class="tag">CNC</span>
           </div>
         </div>
       </div>
@@ -331,73 +301,78 @@
 </section>
 
 <!-- ── Why Choose Us ── -->
-<section class="exp-why-section section--alt section">
+<section class="section section--alt">
   <div class="container">
-    <div class="exp-section-header fade-in" style="text-align:center; max-width:600px; margin:0 auto 4rem;">
+    <div class="fade-in" style="text-align:center;max-width:600px;margin:0 auto 4rem;">
       <div class="section-label">Why DC Environmental</div>
       <h2 class="section-title">What Sets Us Apart</h2>
       <div class="divider" style="margin:1.5rem auto;"></div>
     </div>
-    <div class="exp-why-grid">
-      <div class="exp-why-card fade-in">
-        <div class="exp-why-num">01</div>
-        <div class="exp-why-icon">
+    <div class="how-it-works-grid" style="grid-template-columns:repeat(4,1fr);">
+
+      <div class="how-step fade-in" style="align-items:flex-start;text-align:left;padding:2.25rem 1.75rem;background:var(--white);border:2px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-0.5rem;right:1rem;font-family:'Playfair Display',serif;font-size:5rem;font-weight:600;color:var(--light);line-height:1;pointer-events:none;user-select:none;">01</div>
+        <div class="contact-item-icon" style="margin-bottom:1.25rem;color:var(--leaf);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="30" height="30">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
-        <h3>Full Regulatory Expertise</h3>
-        <p>Deep knowledge of DENR, LLDA, NWRB, and all relevant Philippine environmental regulatory frameworks.</p>
+        <h3 style="font-size:1rem;color:var(--forest);margin-bottom:0.6rem;">Full Regulatory Expertise</h3>
+        <p style="font-size:0.88rem;line-height:1.65;">Deep knowledge of DENR, LLDA, NWRB, and all relevant Philippine environmental regulatory frameworks.</p>
       </div>
-      <div class="exp-why-card fade-in">
-        <div class="exp-why-num">02</div>
-        <div class="exp-why-icon">
+
+      <div class="how-step fade-in" style="align-items:flex-start;text-align:left;padding:2.25rem 1.75rem;background:var(--white);border:2px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-0.5rem;right:1rem;font-family:'Playfair Display',serif;font-size:5rem;font-weight:600;color:var(--light);line-height:1;pointer-events:none;user-select:none;">02</div>
+        <div class="contact-item-icon" style="margin-bottom:1.25rem;color:var(--leaf);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="30" height="30">
             <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
           </svg>
         </div>
-        <h3>Fast Turnaround</h3>
-        <p>We prioritize efficiency — from initial consultation to document submission, we move as fast as your business needs.</p>
+        <h3 style="font-size:1rem;color:var(--forest);margin-bottom:0.6rem;">Fast Turnaround</h3>
+        <p style="font-size:0.88rem;line-height:1.65;">We prioritize efficiency — from initial consultation to document submission, we move as fast as your business needs.</p>
       </div>
-      <div class="exp-why-card fade-in">
-        <div class="exp-why-num">03</div>
-        <div class="exp-why-icon">
+
+      <div class="how-step fade-in" style="align-items:flex-start;text-align:left;padding:2.25rem 1.75rem;background:var(--white);border:2px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-0.5rem;right:1rem;font-family:'Playfair Display',serif;font-size:5rem;font-weight:600;color:var(--light);line-height:1;pointer-events:none;user-select:none;">03</div>
+        <div class="contact-item-icon" style="margin-bottom:1.25rem;color:var(--leaf);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="30" height="30">
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
           </svg>
         </div>
-        <h3>Dedicated Team</h3>
-        <p>Licensed engineers and environmental specialists who stay with your project from start to approval.</p>
+        <h3 style="font-size:1rem;color:var(--forest);margin-bottom:0.6rem;">Dedicated Team</h3>
+        <p style="font-size:0.88rem;line-height:1.65;">Licensed engineers and environmental specialists who stay with your project from start to approval.</p>
       </div>
-      <div class="exp-why-card fade-in">
-        <div class="exp-why-num">04</div>
-        <div class="exp-why-icon">
+
+      <div class="how-step fade-in" style="align-items:flex-start;text-align:left;padding:2.25rem 1.75rem;background:var(--white);border:2px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-0.5rem;right:1rem;font-family:'Playfair Display',serif;font-size:5rem;font-weight:600;color:var(--light);line-height:1;pointer-events:none;user-select:none;">04</div>
+        <div class="contact-item-icon" style="margin-bottom:1.25rem;color:var(--leaf);">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="30" height="30">
             <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/>
           </svg>
         </div>
-        <h3>Transparent Process</h3>
-        <p>No hidden steps. We guide you through every requirement and keep you informed at each milestone.</p>
+        <h3 style="font-size:1rem;color:var(--forest);margin-bottom:0.6rem;">Transparent Process</h3>
+        <p style="font-size:0.88rem;line-height:1.65;">No hidden steps. We guide you through every requirement and keep you informed at each milestone.</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ── CTA Strip ── -->
-<section class="exp-cta-section">
-  <div class="exp-cta-bg">
-    <img src="riverwaterqualitysec.jpg" alt="" aria-hidden="true">
-    <div class="exp-cta-overlay"></div>
+<section style="position:relative;padding:7rem 0;overflow:hidden;">
+  <div style="position:absolute;inset:0;">
+    <img src="riverwaterqualitysec.jpg" alt="" aria-hidden="true" style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,38,24,0.93) 0%,rgba(22,62,92,0.88) 100%);"></div>
   </div>
-  <div class="container exp-cta-inner fade-in">
-    <h2>Ready to Work With Us?</h2>
-    <p>Let's discuss your project requirements and find the right compliance pathway for your business.</p>
-    <div class="exp-cta-actions">
-      <a href="about.html" class="btn-primary" onclick="openContactModal(); return false;">
-  Get in Touch
-  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
-</a>
-<a href="services.html" class="btn-outline">View Our Services</a>
+  <div class="container fade-in" style="position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;">
+    <h2 style="font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:1rem;">Ready to Work With Us?</h2>
+    <p style="color:rgba(255,255,255,0.72);font-size:1.05rem;margin-bottom:2.5rem;">Let's discuss your project requirements and find the right compliance pathway for your business.</p>
+    <div style="display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;">
+      <a href="#" class="btn-primary" onclick="openContactModal(); return false;">
+        Get in Touch
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+      </a>
+      <a href="services.html" class="btn-outline">View Our Services</a>
     </div>
   </div>
 </section>
@@ -406,55 +381,55 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
-  <div class="footer-brand">
-    <a href="index.html" class="logo" aria-label="DC Environmental home">
-      <div class="logo-mark">
-        <img src="logonobg.png" alt="DC Environmental Logo"
-             onerror="this.style.display='none'">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="DC Environmental home">
+          <div class="logo-mark">
+            <img src="logonobg.png" alt="DC Environmental Logo" onerror="this.style.display='none'">
+          </div>
+          <div class="logo-text">
+            <strong>DC Environmental</strong>
+            <span>Consultancy Services</span>
+          </div>
+        </a>
+        <p style="margin-top:1rem;">Private, independent environmental consultancy providing expert compliance assistance across the Philippines.</p>
+        <div class="social-links" aria-label="Social media links">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://wa.me/639617301048" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="white" stroke="none" width="18" height="18"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="logo-text">
-        <strong>DC Environmental</strong>
-        <span>Consultancy Services</span>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
       </div>
-    </a>
-    <p style="margin-top:1rem;">Private, independent environmental consultancy providing expert compliance assistance across the Philippines.</p>
-    <div class="social-links" aria-label="Social media links">
-      <a href="#" class="social-link" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-      </a>
-      <a href="#" class="social-link" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-      <a href="https://wa.me/639617301048" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="white" stroke="none" width="18" height="18"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg>
-      </a>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services.html">EIA / ECC Processing</a>
+        <a href="services.html">PCO Accreditation</a>
+        <a href="services.html">LLDA Permits</a>
+        <a href="services.html">Water Permits</a>
+        <a href="services.html">Engineering Plans</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:dcenviconsultancy@gmail.com">dcenviconsultancy@gmail.com</a>
+        <a href="https://maps.google.com/?q=SMDC+Sun+Residences+España+Boulevard+Quezon+City" target="_blank" rel="noopener" style="line-height:1.5;">Tower 1, SMDC Sun Residences,<br>España Blvd cor Mayon St,<br>Quezon City 1114</a>
+        <a href="tel:+639617301048">0961-730-1048</a>
+        <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="#" onclick="openContactModal();return false;">Send a Message</a>
+      </div>
     </div>
   </div>
-  <div class="footer-col">
-    <h4>Pages</h4>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="experience.html">Experience</a>
-  </div>
-  <div class="footer-col">
-    <h4>Services</h4>
-    <a href="services.html">EIA / ECC Processing</a>
-    <a href="services.html">PCO Accreditation</a>
-    <a href="services.html">LLDA Permits</a>
-    <a href="services.html">Water Permits</a>
-    <a href="services.html">Engineering Plans</a>
-  </div>
-  <div class="footer-col">
-    <h4>Contact</h4>
-    <a href="mailto:dcenviconsultancy@gmail.com">dcenviconsultancy@gmail.com</a>
-    <a href="https://maps.google.com/?q=SMDC+Sun+Residences+España+Boulevard+Quezon+City" target="_blank" rel="noopener" style="line-height:1.5;">Tower 1, SMDC Sun Residences,<br>España Blvd cor Mayon St,<br>Quezon City 1114</a>
-    <a href="tel:+639617301048">0961-730-1048</a>
-    <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
-    <a href="#" onclick="openContactModal();return false;">Send a Message</a>
-  </div>
-</div>
 </footer>
 
 <!-- WhatsApp Float -->
@@ -469,8 +444,7 @@
   <div class="modal-header">
     <div class="modal-header-inner">
       <div class="modal-logo-mark" aria-hidden="true">
-        <img src="logonobg.png" alt="DC Environmental Logo"
-             style="width:24px;height:24px;object-fit:contain;">
+        <img src="logonobg.png" alt="DC Environmental Logo" style="width:24px;height:24px;object-fit:contain;">
       </div>
       <div>
         <h2 id="modalTitle">Get in Touch</h2>
@@ -557,3 +531,4 @@
 
 </body>
 </html>
+

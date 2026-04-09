@@ -20,16 +20,12 @@
     position: relative;
   }
   .page-hero::after {
-  content: '';
-  position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
-  background: var(--cream);
-  clip-path: ellipse(60% 100% at 50% 100%);
-  z-index: 1; /* lower than page-hero-inner */
-}
-.page-hero-inner {
-  position: relative;
-  z-index: 3;
-}
+    content: '';
+    position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+    background: var(--cream);
+    clip-path: ellipse(60% 100% at 50% 100%);
+    z-index: 1;
+  }
   .page-hero-inner { position: relative; z-index: 3; }
   .page-breadcrumb {
     display: flex; align-items: center; gap: 0.4rem;
@@ -51,12 +47,11 @@
 
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
-<!-- ── Navbar ── -->
 <nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="container">
     <a href="index.html" class="logo" aria-label="DC Environmental home">
       <div class="logo-mark" aria-hidden="true">
-       <img src="logonobg.png" alt="DC Environmental Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="logonobg.png" alt="DC Environmental Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;width:22px;height:22px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 0 5 4.48 5 10"/><path d="M17 8s-2 2-5 2-5-2-5-2"/><path d="M19 4l-7 8"/></svg>
       </div>
       <div class="logo-text">
@@ -78,7 +73,6 @@
   </div>
 </nav>
 
-<!-- ── Page Hero ── -->
 <div class="page-hero" id="main-content">
   <div class="container page-hero-inner">
     <nav class="page-breadcrumb" aria-label="Breadcrumb">
@@ -91,7 +85,6 @@
   </div>
 </div>
 
-<!-- ── Projects Grid ── -->
 <section class="section" id="projects" aria-labelledby="projects-heading">
   <div class="container">
     <div class="section-label">Case Studies</div>
@@ -168,14 +161,14 @@
     </div>
   </div>
 </section>
-  <!-- ── DENR Updates & Mandates ── -->
+
+<!-- DENR Updates & Mandates -->
 <section class="section section--alt" id="updates" aria-labelledby="updates-heading">
   <div class="container">
     <div class="section-label">Regulatory Updates</div>
     <h2 id="updates-heading" class="section-title">DENR Laws & Mandates</h2>
     <div class="divider"></div>
     <p class="section-subtitle">Stay informed on the latest environmental regulations, memorandum circulars, and administrative orders affecting your business.</p>
- 
     <div id="updates-grid" style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;">
       <div style="text-align:center;padding:3rem;color:var(--gray);grid-column:1/-1;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" style="margin:0 auto 1rem;display:block;opacity:0.4;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
@@ -184,12 +177,11 @@
     </div>
   </div>
 </section>
- 
+
 <script>
 (function() {
   const SUPABASE_URL = 'https://tjmgeqmilnhqcuenadtp.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_6pq_ZDhAZyxO1HxR5ndWxA_Gt7UvtmH';
- 
   const CATEGORY_COLORS = {
     'EIA':     { bg: 'rgba(46,125,82,0.08)',  border: 'rgba(46,125,82,0.25)',  text: '#1a4a2e' },
     'Air':     { bg: 'rgba(27,79,114,0.08)',  border: 'rgba(27,79,114,0.25)',  text: '#1b3a5c' },
@@ -198,7 +190,6 @@
     'PCO':     { bg: 'rgba(155,89,182,0.08)', border: 'rgba(155,89,182,0.25)', text: '#6c3483' },
     'General': { bg: 'rgba(90,90,90,0.08)',   border: 'rgba(90,90,90,0.25)',   text: '#3a3a3a' },
   };
- 
   function renderUpdates(posts) {
     const grid = document.getElementById('updates-grid');
     if (!posts || posts.length === 0) {
@@ -207,60 +198,40 @@
     }
     grid.innerHTML = posts.map(p => {
       const c = CATEGORY_COLORS[p.category] || CATEGORY_COLORS['General'];
-      return `
-        <a href="${p.url}" target="_blank" rel="noopener"
-           style="display:block;text-decoration:none;background:var(--white);border:1.5px solid var(--border);
-                  border-radius:12px;padding:1.5rem;
-                  transition:box-shadow 0.25s,border-color 0.25s,transform 0.25s;
-                  box-shadow:0 2px 12px rgba(26,74,46,0.07);"
-           onmouseover="this.style.boxShadow='0 8px 28px rgba(26,74,46,0.14)';this.style.borderColor='var(--sage)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.boxShadow='0 2px 12px rgba(26,74,46,0.07)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;margin-bottom:0.85rem;">
-            <span style="display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;
-                         text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:100px;
-                         background:${c.bg};border:1px solid ${c.border};color:${c.text};">${p.category}</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8" width="16" height="16" style="flex-shrink:0;margin-top:2px;">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-              <path d="M15 3h6v6M10 14L21 3"/>
-            </svg>
-          </div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:600;
-                     color:var(--forest);line-height:1.4;margin-bottom:0.6rem;">${p.title}</h3>
-          ${p.description ? `<p style="font-size:0.83rem;color:var(--gray);line-height:1.6;margin-bottom:0.85rem;">${p.description}</p>` : ''}
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--gray);
-                      border-top:1px solid var(--border);padding-top:0.75rem;">
-            ${p.agency ? `<span style="font-weight:600;color:var(--leaf);">${p.agency}</span>` : ''}
-            ${p.agency && p.date ? '<span>·</span>' : ''}
-            ${p.date ? `<span>${p.date}</span>` : ''}
-            <span style="margin-left:auto;color:var(--leaf);font-weight:500;">View PDF →</span>
-          </div>
-        </a>
-      `;
+      return `<a href="${p.url}" target="_blank" rel="noopener"
+         style="display:block;text-decoration:none;background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:1.5rem;transition:box-shadow 0.25s,border-color 0.25s,transform 0.25s;box-shadow:0 2px 12px rgba(26,74,46,0.07);"
+         onmouseover="this.style.boxShadow='0 8px 28px rgba(26,74,46,0.14)';this.style.borderColor='var(--sage)';this.style.transform='translateY(-3px)'"
+         onmouseout="this.style.boxShadow='0 2px 12px rgba(26,74,46,0.07)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;margin-bottom:0.85rem;">
+          <span style="display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:100px;background:${c.bg};border:1px solid ${c.border};color:${c.text};">${p.category}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8" width="16" height="16" style="flex-shrink:0;margin-top:2px;"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:600;color:var(--forest);line-height:1.4;margin-bottom:0.6rem;">${p.title}</h3>
+        ${p.description ? `<p style="font-size:0.83rem;color:var(--gray);line-height:1.6;margin-bottom:0.85rem;">${p.description}</p>` : ''}
+        <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--gray);border-top:1px solid var(--border);padding-top:0.75rem;">
+          ${p.agency ? `<span style="font-weight:600;color:var(--leaf);">${p.agency}</span>` : ''}
+          ${p.agency && p.date ? '<span>·</span>' : ''}
+          ${p.date ? `<span>${p.date}</span>` : ''}
+          <span style="margin-left:auto;color:var(--leaf);font-weight:500;">View PDF →</span>
+        </div>
+      </a>`;
     }).join('');
   }
- 
-
-fetch(`${SUPABASE_URL}/rest/v1/denr_updates?active=eq.true&order=id.desc`, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY
-    }
+  fetch(`${SUPABASE_URL}/rest/v1/denr_updates?active=eq.true&order=id.desc`, {
+    headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
   })
   .then(r => r.json())
   .then(data => renderUpdates(data))
   .catch(() => renderUpdates([]));
 })();
 </script>
-<!-- ── Footer ── -->
+
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="logo" aria-label="DC Environmental home">
-          <div class="logo-mark">
-  <img src="logonobg.png" alt="DC Environmental Logo"
-       onerror="this.style.display='none'">
-</div>
+          <div class="logo-mark"><img src="logonobg.png" alt="DC Environmental Logo" onerror="this.style.display='none'"></div>
           <div class="logo-text"><strong>DC Environmental</strong><span>Consultancy Services</span></div>
         </a>
         <p>Private, independent environmental consultancy providing expert compliance assistance across the Philippines.</p>
@@ -279,34 +250,26 @@ fetch(`${SUPABASE_URL}/rest/v1/denr_updates?active=eq.true&order=id.desc`, {
         <a href="experience.html">Experience</a>
       </div>
       <div class="footer-col">
-  <h4>Contact</h4>
-  <a href="mailto:dcenviconsultancy@gmail.com">dcenviconsultancy@gmail.com</a>
-  <a href="https://maps.google.com/?q=SMDC+Sun+Residences+España+Boulevard+Quezon+City" 
-     target="_blank" rel="noopener" 
-     style="line-height:1.5;">
-     Tower 1, SMDC Sun Residences,<br>
-     España Blvd cor Mayon St,<br>
-     Quezon City 1114
-  </a>
-  <a href="tel:+639617301048">0961-730-1048</a>
-  <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
-  <a href="#" onclick="openContactModal();return false;">Send a Message</a>
-</div>
+        <h4>Contact</h4>
+        <a href="mailto:dcenviconsultancy@gmail.com">dcenviconsultancy@gmail.com</a>
+        <a href="https://maps.google.com/?q=SMDC+Sun+Residences+España+Boulevard+Quezon+City" target="_blank" rel="noopener" style="line-height:1.5;">Tower 1, SMDC Sun Residences,<br>España Blvd cor Mayon St,<br>Quezon City 1114</a>
+        <a href="tel:+639617301048">0961-730-1048</a>
+        <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
+        <a href="#" onclick="openContactModal();return false;">Send a Message</a>
+      </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025–2026 DC Environmental Consultancy Services. All rights reserved.</p>
       <p class="disclaimer">Private, independent consulting firm. Not affiliated with DENR or any government office.</p>
     </div>
   </div>
-
+</footer>
 
 <!-- Messenger Chat Widget -->
 <div id="messengerWidget">
   <div class="msgr-popup" id="messengerPopup">
     <div class="msgr-header">
-      <div class="msgr-avatar">
-        <img src="logonobg.png" alt="DC Environmental">
-      </div>
+      <div class="msgr-avatar"><img src="logonobg.png" alt="DC Environmental"></div>
       <div class="msgr-info">
         <strong>DC Environmental</strong>
         <span>Typically replies instantly</span>
@@ -332,423 +295,95 @@ fetch(`${SUPABASE_URL}/rest/v1/denr_updates?active=eq.true&order=id.desc`, {
     <span>Message us</span>
   </button>
 </div>
-  
-<!-- ── Contact Modal ── -->
+
+<!-- Contact Modal -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="closeContactModal()" aria-hidden="true"></div>
 <div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-header">
     <div class="modal-header-inner">
-      <div class="modal-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 0 5 4.48 5 10"/><path d="M17 8s-2 2-5 2-5-2-5-2"/><path d="M19 4l-7 8"/></svg></div>
-      <div><h2 id="modalTitle">Get in Touch</h2><p>We'll respond via WhatsApp or email.</p></div>
+      <div class="modal-logo-mark" aria-hidden="true">
+        <img src="logonobg.png" alt="DC Environmental Logo" style="width:24px;height:24px;object-fit:contain;">
+      </div>
+      <div>
+        <h2 id="modalTitle">Get in Touch</h2>
+        <p>We'll respond via Facebook or email.</p>
+      </div>
     </div>
-    <button class="modal-close" onclick="closeContactModal()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-  </div>
-  <div class="modal-body">
-    <div class="modal-quick-links">
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DC Environmental featured projects — ECC processing, construction compliance, water quality, baseline surveys, and more.">
-<link rel="icon" type="image/png" href="logonobg.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Projects | DC Environmental Consultancy Services</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="mobile.css">
-<style>
-  .page-hero {
-    background: linear-gradient(160deg, rgba(14,38,24,0.95) 0%, rgba(22,62,92,0.88) 100%),
-                url('riverwaterqualitysec.jpg') center/cover no-repeat;
-    min-height: 38vh;
-    display: flex; align-items: flex-end;
-    padding-top: 90px; padding-bottom: 6rem;
-    position: relative;
-  }
-  .page-hero::after {
-  content: '';
-  position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
-  background: var(--cream);
-  clip-path: ellipse(60% 100% at 50% 100%);
-  z-index: 1; /* lower than page-hero-inner */
-}
-.page-hero-inner {
-  position: relative;
-  z-index: 3;
-}
-  .page-hero-inner { position: relative; z-index: 3; }
-  .page-breadcrumb {
-    display: flex; align-items: center; gap: 0.4rem;
-    font-size: 0.78rem; color: rgba(255,255,255,0.5);
-    margin-bottom: 1rem;
-  }
-  .page-breadcrumb a { color: rgba(255,255,255,0.5); }
-  .page-breadcrumb a:hover { color: var(--mist); }
-  .page-hero h1 { color: var(--white); font-size: clamp(2rem, 5vw, 3.2rem); max-width: 600px; }
-  .page-hero p  { color: rgba(255,255,255,0.72); margin-top: 0.85rem; max-width: 520px; font-size: 1rem; }
-  @media (max-width: 768px) {
-    .page-hero { min-height: 32vh; padding-bottom: 3rem; padding-top: 72px; }
-    .page-hero h1 { font-size: 1.8rem; }
-    .page-hero p  { font-size: 0.9rem; }
-  }
-</style>
-</head>
-<body>
-
-<a href="#main-content" class="skip-to-content">Skip to main content</a>
-
-<!-- ── Navbar ── -->
-<nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <a href="index.html" class="logo" aria-label="DC Environmental home">
-      <div class="logo-mark" aria-hidden="true">
-       <img src="logonobg.png" alt="DC Environmental Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;width:22px;height:22px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 0 5 4.48 5 10"/><path d="M17 8s-2 2-5 2-5-2-5-2"/><path d="M19 4l-7 8"/></svg>
-      </div>
-      <div class="logo-text">
-        <strong>DC Environmental</strong>
-        <span>Consultancy Services</span>
-      </div>
-    </a>
-    <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="index.html" class="nav-item">Home</a></li>
-      <li><a href="about.html" class="nav-item">About</a></li>
-      <li><a href="services.html" class="nav-item">Services</a></li>
-      <li><a href="projects.html" class="nav-item active-link">Projects</a></li>
-      <li><a href="experience.html" class="nav-item">Experience</a></li>
-      <li><button class="nav-cta" onclick="openContactModal()">Get in Touch</button></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Close contact form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
   </div>
-</nav>
-
-<!-- ── Page Hero ── -->
-<div class="page-hero" id="main-content">
-  <div class="container page-hero-inner">
-    <nav class="page-breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">Home</a>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-      <span>Projects</span>
-    </nav>
-    <h1>Featured Projects</h1>
-    <p>Case studies across industrial, construction, water quality, and environmental assessment work.</p>
-  </div>
-</div>
-
-<!-- ── Projects Grid ── -->
-<section class="section" id="projects" aria-labelledby="projects-heading">
-  <div class="container">
-    <div class="section-label">Case Studies</div>
-    <h2 id="projects-heading" class="section-title">Our Work</h2>
-    <div class="divider"></div>
-    <div class="projects-grid">
-
-      <div class="project-card fade-in">
-        <div class="project-thumb">
-          <img src="industrialplantsec.jpg" alt="Industrial plant ECC project" loading="lazy">
-          <span class="project-thumb-label">Industrial</span>
-        </div>
-        <div class="project-body">
-          <h3>Industrial Plant ECC Processing</h3>
-          <p>Full ECC processing via EIS for a mid-scale manufacturing facility, covering air, water, land, and socioeconomic impact modules.</p>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-thumb">
-          <img src="constructionsiteenvisec.jpg" alt="Construction site compliance" loading="lazy">
-          <span class="project-thumb-label">Construction</span>
-        </div>
-        <div class="project-body">
-          <h3>Construction Site IEE & Compliance</h3>
-          <p>Initial Environmental Examination and on-site compliance monitoring for a large-scale construction project in Metro Manila.</p>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-thumb">
-          <img src="riverwaterqualitysec.jpg" alt="River water quality monitoring" loading="lazy">
-          <span class="project-thumb-label">Water</span>
-        </div>
-        <div class="project-body">
-          <h3>River Water Quality Assessment</h3>
-          <p>Comprehensive water quality monitoring program for a riverside industrial estate, including WWDP and LLDA discharge permit processing.</p>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-thumb">
-          <img src="soilsampsec.jpg" alt="Soil sampling project" loading="lazy">
-          <span class="project-thumb-label">Assessment</span>
-        </div>
-        <div class="project-body">
-          <h3>Baseline Soil & Environmental Survey</h3>
-          <p>Pre-development baseline soil and environmental survey for a proposed agri-industrial park, with full biodiversity and GIS mapping.</p>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-thumb">
-          <img src="watersampsec.jpg" alt="Water sampling project" loading="lazy">
-          <span class="project-thumb-label">LLDA</span>
-        </div>
-        <div class="project-body">
-          <h3>LLDA Clearance & Water Permits</h3>
-          <p>Complete processing of LLDA Clearance, LLDA Discharge Permit, and NWRB Water Permit for a lakeshore commercial development.</p>
-        </div>
-      </div>
-
-      <div class="project-card fade-in">
-        <div class="project-thumb">
-          <img src="blueprint.jpg" alt="Engineering blueprint project" loading="lazy">
-          <span class="project-thumb-label">Engineering</span>
-        </div>
-        <div class="project-body">
-          <h3>Residential Subdivision SDP</h3>
-          <p>Site Development Plan, drainage layout, septic design, and ECC processing for a mid-scale residential subdivision project.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-  <!-- ── DENR Updates & Mandates ── -->
-<section class="section section--alt" id="updates" aria-labelledby="updates-heading">
-  <div class="container">
-    <div class="section-label">Regulatory Updates</div>
-    <h2 id="updates-heading" class="section-title">DENR Laws & Mandates</h2>
-    <div class="divider"></div>
-    <p class="section-subtitle">Stay informed on the latest environmental regulations, memorandum circulars, and administrative orders affecting your business.</p>
- 
-    <div id="updates-grid" style="margin-top:2.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;">
-      <div style="text-align:center;padding:3rem;color:var(--gray);grid-column:1/-1;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32" style="margin:0 auto 1rem;display:block;opacity:0.4;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Loading updates...
-      </div>
-    </div>
-  </div>
-</section>
- 
-<script>
-(function() {
-  const SUPABASE_URL = 'https://tjmgeqmilnhqcuenadtp.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_6pq_ZDhAZyxO1HxR5ndWxA_Gt7UvtmH';
- 
-  const CATEGORY_COLORS = {
-    'EIA':     { bg: 'rgba(46,125,82,0.08)',  border: 'rgba(46,125,82,0.25)',  text: '#1a4a2e' },
-    'Air':     { bg: 'rgba(27,79,114,0.08)',  border: 'rgba(27,79,114,0.25)',  text: '#1b3a5c' },
-    'Water':   { bg: 'rgba(46,134,193,0.08)', border: 'rgba(46,134,193,0.25)', text: '#1a5276' },
-    'Waste':   { bg: 'rgba(120,100,50,0.08)', border: 'rgba(120,100,50,0.25)', text: '#5c4a1a' },
-    'PCO':     { bg: 'rgba(155,89,182,0.08)', border: 'rgba(155,89,182,0.25)', text: '#6c3483' },
-    'General': { bg: 'rgba(90,90,90,0.08)',   border: 'rgba(90,90,90,0.25)',   text: '#3a3a3a' },
-  };
- 
-  function renderUpdates(posts) {
-    const grid = document.getElementById('updates-grid');
-    if (!posts || posts.length === 0) {
-      grid.innerHTML = '<p style="text-align:center;color:var(--gray);grid-column:1/-1;">No updates available at this time.</p>';
-      return;
-    }
-    grid.innerHTML = posts.map(p => {
-      const c = CATEGORY_COLORS[p.category] || CATEGORY_COLORS['General'];
-      return `
-        <a href="${p.url}" target="_blank" rel="noopener"
-           style="display:block;text-decoration:none;background:var(--white);border:1.5px solid var(--border);
-                  border-radius:12px;padding:1.5rem;
-                  transition:box-shadow 0.25s,border-color 0.25s,transform 0.25s;
-                  box-shadow:0 2px 12px rgba(26,74,46,0.07);"
-           onmouseover="this.style.boxShadow='0 8px 28px rgba(26,74,46,0.14)';this.style.borderColor='var(--sage)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.boxShadow='0 2px 12px rgba(26,74,46,0.07)';this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;margin-bottom:0.85rem;">
-            <span style="display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;
-                         text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:100px;
-                         background:${c.bg};border:1px solid ${c.border};color:${c.text};">${p.category}</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8" width="16" height="16" style="flex-shrink:0;margin-top:2px;">
-              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
-              <path d="M15 3h6v6M10 14L21 3"/>
-            </svg>
-          </div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:600;
-                     color:var(--forest);line-height:1.4;margin-bottom:0.6rem;">${p.title}</h3>
-          ${p.description ? `<p style="font-size:0.83rem;color:var(--gray);line-height:1.6;margin-bottom:0.85rem;">${p.description}</p>` : ''}
-          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--gray);
-                      border-top:1px solid var(--border);padding-top:0.75rem;">
-            ${p.agency ? `<span style="font-weight:600;color:var(--leaf);">${p.agency}</span>` : ''}
-            ${p.agency && p.date ? '<span>·</span>' : ''}
-            ${p.date ? `<span>${p.date}</span>` : ''}
-            <span style="margin-left:auto;color:var(--leaf);font-weight:500;">View PDF →</span>
-          </div>
-        </a>
-      `;
-    }).join('');
-  }
- 
-
-fetch(`${SUPABASE_URL}/rest/v1/denr_updates?active=eq.true&order=id.desc`, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': 'Bearer ' + SUPABASE_KEY
-    }
-  })
-  .then(r => r.json())
-  .then(data => renderUpdates(data))
-  .catch(() => renderUpdates([]));
-})();
-</script>
-<!-- ── Footer ── -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo" aria-label="DC Environmental home">
-          <div class="logo-mark">
-  <img src="logonobg.png" alt="DC Environmental Logo"
-       onerror="this.style.display='none'">
-</div>
-          <div class="logo-text"><strong>DC Environmental</strong><span>Consultancy Services</span></div>
-        </a>
-        <p>Private, independent environmental consultancy providing expert compliance assistance across the Philippines.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-          <a href="https://wa.me/639617301048" class="social-link" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="white" stroke="none" width="18" height="18"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Pages</h4>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="experience.html">Experience</a>
-      </div>
-      <div class="footer-col">
-  <h4>Contact</h4>
-  <a href="mailto:dcenviconsultancy@gmail.com">dcenviconsultancy@gmail.com</a>
-  <a href="https://maps.google.com/?q=SMDC+Sun+Residences+España+Boulevard+Quezon+City" 
-     target="_blank" rel="noopener" 
-     style="line-height:1.5;">
-     Tower 1, SMDC Sun Residences,<br>
-     España Blvd cor Mayon St,<br>
-     Quezon City 1114
-  </a>
-  <a href="tel:+639617301048">0961-730-1048</a>
-  <a href="https://wa.me/639617301048" target="_blank" rel="noopener">WhatsApp Us</a>
-  <a href="#" onclick="openContactModal();return false;">Send a Message</a>
-</div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025–2026 DC Environmental Consultancy Services. All rights reserved.</p>
-      <p class="disclaimer">Private, independent consulting firm. Not affiliated with DENR or any government office.</p>
-    </div>
-  </div>
-
-
-<!-- Messenger Chat Widget -->
-<div id="messengerWidget">
-  <div class="msgr-popup" id="messengerPopup">
-    <div class="msgr-header">
-      <div class="msgr-avatar">
-        <img src="logonobg.png" alt="DC Environmental">
-      </div>
-      <div class="msgr-info">
-        <strong>DC Environmental</strong>
-        <span>Typically replies instantly</span>
-      </div>
-      <button class="msgr-close" id="messengerClose" aria-label="Close chat">✕</button>
-    </div>
-    <div class="msgr-body">
-      <div class="msgr-bubble-wrap">
-        <div class="msgr-bubble">Hi there! 👋 Welcome to DC Environmental Consultancy. How can we help you today?</div>
-        <div class="msgr-bubble-time">DC Environmental · just now</div>
-      </div>
-    </div>
-    <div class="msgr-footer">
-      <input class="msgr-input" id="messengerInput" placeholder="Aa" type="text" />
-      <button class="msgr-send" id="messengerSend" aria-label="Send message">
-        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
-      </button>
-    </div>
-    <a class="msgr-open-link" href="https://m.me/61554171736979" target="_blank" rel="noopener">Open in Messenger →</a>
-  </div>
-  <button class="messenger-float" id="messengerBtn" aria-label="Chat on Messenger">
-    <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.26L19.752 8l-6.561 6.963z"/></svg>
-    <span>Message us</span>
-  </button>
-</div>
-  
-<!-- ── Contact Modal ── -->
-<div class="modal-backdrop" id="modalBackdrop" onclick="closeContactModal()" aria-hidden="true"></div>
-<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-header">
-    <div class="modal-header-inner">
-      <div class="modal-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2c2.76 0 5 4.48 5 10"/><path d="M17 8s-2 2-5 2-5-2-5-2"/><path d="M19 4l-7 8"/></svg></div>
-      <div><h2 id="modalTitle">Get in Touch</h2><p>We'll respond via WhatsApp or email.</p></div>
-    </div>
-    <button class="modal-close" onclick="closeContactModal()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-  </div>
   <div class="modal-body">
     <div class="modal-quick-links">
-      <a href="https://wa.me/639617301048" target="_blank" rel="noopener" class="modal-quick-btn modal-quick-wa">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-          <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg>WhatsApp Us</a>
-     <a href="mailto:dcenviconsultancy@gmail.com" class="modal-quick-btn modal-quick-email">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-  Email Us
-</a>
+      <a href="https://www.facebook.com/61554171736979" target="_blank" rel="noopener" class="modal-quick-btn modal-quick-wa" style="background:#1877F2;">
+        <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        Facebook Page
+      </a>
+      <a href="mailto:dcenviconsultancy@gmail.com" class="modal-quick-btn modal-quick-email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Email Us
+      </a>
     </div>
     <div class="modal-divider"><span>or fill out the form</span></div>
     <form id="contactForm" novalidate>
       <div class="modal-form-row">
-        <div class="form-group"><label for="fname">First Name *</label><input type="text" id="fname" name="fname" placeholder="Juan" required autocomplete="given-name"></div>
-        <div class="form-group"><label for="lname">Last Name *</label><input type="text" id="lname" name="lname" placeholder="dela Cruz" required autocomplete="family-name"></div>
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" name="fname" placeholder="Juan" required autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" name="lname" placeholder="dela Cruz" required autocomplete="family-name">
+        </div>
       </div>
-      <div class="form-group"><label for="memail">Email</label><input type="email" id="memail" name="email" placeholder="juan@example.com" autocomplete="email"></div>
-      <div class="form-group"><label for="mphone">Phone / WhatsApp</label><input type="tel" id="mphone" name="phone" placeholder="09XX-XXX-XXXX" autocomplete="tel"></div>
-      <div class="form-group"><label for="mmessage">Message *</label><textarea id="mmessage" name="message" placeholder="Describe your project or inquiry..." required></textarea></div>
-      <button type="submit" class="btn-submit">Send Message <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg></button>
-      <p class="form-notice">Private, independent firm. Not affiliated with DENR or any government office.</p>
+      <div class="form-group">
+        <label for="memail">Email Address</label>
+        <input type="email" id="memail" name="email" placeholder="juan@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="mphone">Phone / WhatsApp</label>
+        <input type="tel" id="mphone" name="phone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label for="mservice">Service Needed</label>
+        <select id="mservice" name="service">
+          <option value="">Select a service...</option>
+          <option>Environmental Impact Assessment (EIA/EIS)</option>
+          <option>Certificate of Non-Coverage (CNC)</option>
+          <option>Environmental Compliance Certificate (ECC)</option>
+          <option>ECC Amendment (Minor/Major)</option>
+          <option>PCO Accreditation</option>
+          <option>Hazardous Waste Generator ID (HWG-ID)</option>
+          <option>Permit to Operate - Air (PTO-APSI)</option>
+          <option>Wastewater Discharge Permit (WWDP)</option>
+          <option>LLDA Permits</option>
+          <option>Water Permits (NWRB)</option>
+          <option>Site Development Plan (SDP)</option>
+          <option>Drainage / Septic Layout</option>
+          <option>GIS Mapping</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mmessage">Message *</label>
+        <textarea id="mmessage" name="message" placeholder="Briefly describe your project or inquiry..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">
+        Send Message
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+      </button>
+      <p class="form-notice">DC Environmental is a private, independent firm. Not affiliated with DENR or any government office.</p>
     </form>
     <div class="form-success" id="formSuccess" style="display:none;" aria-live="polite">
-      <div class="form-success-icon"><svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg></div>
-      <h3>Message Sent!</h3><p>We'll get back to you via WhatsApp or email.</p>
+      <div class="form-success-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg>
+      </div>
+      <h3>Message Sent!</h3>
+      <p>Thank you for reaching out. We'll get back to you as soon as possible via Facebook or email.</p>
       <button class="btn-primary" onclick="closeContactModal()" style="margin-top:1.5rem;width:100%;justify-content:center;">Close</button>
     </div>
   </div>
 </div>
-</footer>
-
-<script src="main.js"></script>
-</body>
-</html>
-     <a href="mailto:dcenviconsultancy@gmail.com" class="modal-quick-btn modal-quick-email">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-  Email Us
-</a>
-    </div>
-    <div class="modal-divider"><span>or fill out the form</span></div>
-    <form id="contactForm" novalidate>
-      <div class="modal-form-row">
-        <div class="form-group"><label for="fname">First Name *</label><input type="text" id="fname" name="fname" placeholder="Juan" required autocomplete="given-name"></div>
-        <div class="form-group"><label for="lname">Last Name *</label><input type="text" id="lname" name="lname" placeholder="dela Cruz" required autocomplete="family-name"></div>
-      </div>
-      <div class="form-group"><label for="memail">Email</label><input type="email" id="memail" name="email" placeholder="juan@example.com" autocomplete="email"></div>
-      <div class="form-group"><label for="mphone">Phone / WhatsApp</label><input type="tel" id="mphone" name="phone" placeholder="09XX-XXX-XXXX" autocomplete="tel"></div>
-      <div class="form-group"><label for="mmessage">Message *</label><textarea id="mmessage" name="message" placeholder="Describe your project or inquiry..." required></textarea></div>
-      <button type="submit" class="btn-submit">Send Message <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg></button>
-      <p class="form-notice">Private, independent firm. Not affiliated with DENR or any government office.</p>
-    </form>
-    <div class="form-success" id="formSuccess" style="display:none;" aria-live="polite">
-      <div class="form-success-icon"><svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg></div>
-      <h3>Message Sent!</h3><p>We'll get back to you via WhatsApp or email.</p>
-      <button class="btn-primary" onclick="closeContactModal()" style="margin-top:1.5rem;width:100%;justify-content:center;">Close</button>
-    </div>
-  </div>
-</div>
-</footer>
 
 <script src="main.js"></script>
 </body>

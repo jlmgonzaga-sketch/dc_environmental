@@ -141,7 +141,7 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
 /* ── Logo ── */
 .logo { display: flex; align-items: center; gap: 0.75rem; }
 .logo-mark {
-  width: 70px; height: 70px; border-radius: 10px;
+  width: 70px; height: 70px;  /* Match the SVG size from index.html */
   background: var(--forest);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;

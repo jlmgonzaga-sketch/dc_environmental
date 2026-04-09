@@ -16,16 +16,20 @@
                 url('riverwaterqualitysec.jpg') center/cover no-repeat;
     min-height: 38vh;
     display: flex; align-items: flex-end;
-    padding-top: 90px; padding-bottom: 3.5rem;
+    padding-top: 90px; padding-bottom: 6rem;
     position: relative;
   }
   .page-hero::after {
-    content: '';
-    position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
-    background: var(--cream);
-    clip-path: ellipse(60% 100% at 50% 100%);
-    z-index: 2;
-  }
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+  background: var(--cream);
+  clip-path: ellipse(60% 100% at 50% 100%);
+  z-index: 1; /* lower than page-hero-inner */
+}
+.page-hero-inner {
+  position: relative;
+  z-index: 3;
+}
   .page-hero-inner { position: relative; z-index: 3; }
   .page-breadcrumb {
     display: flex; align-items: center; gap: 0.4rem;

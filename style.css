@@ -914,3 +914,20 @@ button.btn-primary { border: none; cursor: pointer; font-family: 'DM Sans', sans
   .modal-header { padding: 1.25rem; }
   .modal-body { padding: 1.25rem; }
 }
+
+/* ── Footer responsive fix ── */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.footer-brand .logo-mark {
+  background: rgba(255,255,255,0.1);
+}
+.footer-brand .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}

@@ -307,3 +307,38 @@ document.addEventListener('DOMContentLoaded', () => {
 const spinStyle = document.createElement('style');
 spinStyle.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
 document.head.appendChild(spinStyle);
+
+// ── Messenger Chat Widget ──────────────────────────────
+const messengerBtn   = document.getElementById('messengerBtn');
+const messengerPopup = document.getElementById('messengerPopup');
+const messengerClose = document.getElementById('messengerClose');
+const messengerSend  = document.getElementById('messengerSend');
+const messengerInput = document.getElementById('messengerInput');
+
+if (messengerBtn) {
+  messengerBtn.addEventListener('click', () => {
+    messengerPopup.classList.toggle('hidden');
+  });
+}
+if (messengerClose) {
+  messengerClose.addEventListener('click', () => {
+    messengerPopup.classList.add('hidden');
+  });
+}
+if (messengerSend) {
+  messengerSend.addEventListener('click', () => {
+    const msg = messengerInput.value.trim();
+    if (msg) {
+      window.open('https://m.me/61554171736979', '_blank');
+      messengerInput.value = '';
+    }
+  });
+}
+if (messengerInput) {
+  messengerInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') messengerSend.click();
+  });
+}
+
+// Start popup hidden
+if (messengerPopup) messengerPopup.classList.add('hidden');

@@ -816,185 +816,6 @@ footer { background: #111a14; color: rgba(255,255,255,0.60); padding: 4.5rem 0 2
 .contact-modal .form-success p { font-size: 0.9rem; color: var(--gray); }
 body.modal-open { overflow: hidden; }
 
-/* ════════════════════════════════
-   EXPERIENCE PAGE STYLES
-   ════════════════════════════════ */
-body.exp-page { background: var(--cream); }
-
-.exp-hero {
-  min-height: 62vh; position: relative;
-  display: flex; align-items: flex-end;
-  padding-bottom: 5rem; padding-top: 90px; overflow: hidden;
-}
-.exp-hero-bg { position: absolute; inset: 0; z-index: 0; }
-.exp-hero-slide {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center 40%;
-}
-.exp-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(160deg, rgba(14,38,24,0.92) 0%, rgba(22,62,92,0.82) 55%, rgba(14,38,24,0.75) 100%);
-}
-.exp-hero-deco { position: absolute; inset: 0; width: 100%; height: 100%; }
-.exp-hero::after {
-  content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
-  background: var(--cream); clip-path: ellipse(60% 100% at 50% 100%); z-index: 2;
-}
-.exp-hero-inner { position: relative; z-index: 3; }
-
-.exp-breadcrumb {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.78rem; color: rgba(255,255,255,0.55);
-  margin-bottom: 1.5rem; letter-spacing: 0.03em;
-}
-.exp-breadcrumb a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
-.exp-breadcrumb a:hover { color: var(--mist); }
-.exp-breadcrumb svg { opacity: 0.4; }
-.exp-breadcrumb span { color: var(--mist); }
-
-.exp-hero-title {
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem); color: var(--white);
-  font-weight: 600; line-height: 1.15; margin-bottom: 1.25rem; max-width: 680px;
-}
-.exp-hero-title em { font-style: italic; color: var(--mist); display: block; }
-.exp-hero-sub {
-  font-size: 1.05rem; color: rgba(255,255,255,0.72);
-  max-width: 520px; margin-bottom: 2.25rem; line-height: 1.7;
-}
-.exp-hero-cta { display: flex; gap: 1rem; }
-
-.exp-scroll-indicator {
-  position: absolute; bottom: 5.5rem; right: 3rem; z-index: 3;
-  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-  color: rgba(255,255,255,0.45); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-}
-.exp-scroll-line {
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%,100% { opacity: 0.4; transform: scaleY(1); }
-  50%      { opacity: 1;   transform: scaleY(1.15); }
-}
-
-/* ── Exp Stats ── */
-.exp-stats-section { padding: 5rem 0 4.5rem; background: var(--cream); }
-.exp-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-.exp-stat-card {
-  background: var(--white); border: 2px solid var(--border); border-radius: 16px;
-  padding: 2.25rem 1.75rem; text-align: center; position: relative; overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  box-shadow: var(--shadow-sm);
-}
-.exp-stat-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--leaf), var(--water));
-  transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
-}
-.exp-stat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--sage); }
-.exp-stat-card:hover::before { transform: scaleX(1); }
-.exp-stat-icon {
-  width: 52px; height: 52px; border-radius: 12px;
-  background: var(--light); border: 1.5px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1.25rem; color: var(--leaf);
-  transition: background 0.3s, border-color 0.3s, color 0.3s;
-}
-.exp-stat-card:hover .exp-stat-icon { background: var(--forest); border-color: var(--forest); color: white; }
-.exp-stat-num {
-  font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 600;
-  color: var(--forest); line-height: 1; margin-bottom: 0.4rem;
-}
-.exp-stat-num span { font-size: 2rem; color: var(--leaf); vertical-align: super; }
-.exp-stat-label {
-  font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest); margin-bottom: 0.75rem;
-}
-.exp-stat-card p { font-size: 0.84rem; color: var(--gray); line-height: 1.55; }
-
-/* ── Exp Industry Grid ── */
-.exp-section-header { margin-bottom: 4rem; }
-.exp-industry-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-.exp-industry-card {
-  background: var(--white); border: 2px solid var(--border); border-radius: 16px;
-  overflow: hidden; box-shadow: var(--shadow-sm);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-}
-.exp-industry-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--sage); }
-.exp-industry-img { height: 200px; position: relative; overflow: hidden; }
-.exp-industry-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
-.exp-industry-card:hover .exp-industry-img img { transform: scale(1.06); }
-.exp-industry-img-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(14,38,24,0.75) 100%);
-}
-.exp-industry-badge {
-  position: absolute; bottom: 1rem; left: 1.25rem;
-  display: flex; align-items: center; gap: 0.5rem;
-  background: rgba(26,74,46,0.85); backdrop-filter: blur(8px);
-  color: white; font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
-  padding: 0.4rem 0.85rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
-}
-.exp-industry-body { padding: 1.75rem 2rem 2rem; }
-.exp-client-list {
-  list-style: none; display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0.5rem 1rem; margin-bottom: 1.5rem;
-}
-.exp-client-list li {
-  display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.88rem; color: var(--charcoal); line-height: 1.4;
-}
-.exp-client-list li svg { flex-shrink: 0; stroke: var(--leaf); color: var(--leaf); }
-.exp-industry-tag-row {
-  display: flex; flex-wrap: wrap; gap: 0.4rem;
-  padding-top: 1.25rem; border-top: 1px solid var(--border);
-}
-.exp-tag {
-  font-size: 0.72rem; padding: 0.25rem 0.7rem;
-  background: var(--light); border: 1px solid var(--border);
-  color: var(--leaf); border-radius: 100px; font-weight: 600; letter-spacing: 0.04em;
-}
-
-/* ── Exp Why Grid ── */
-.exp-why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-.exp-why-card {
-  background: var(--white); border: 2px solid var(--border); border-radius: 16px;
-  padding: 2.25rem 1.75rem; position: relative; overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  box-shadow: var(--shadow-sm);
-}
-.exp-why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--leaf); }
-.exp-why-num {
-  position: absolute; top: -0.5rem; right: 1rem;
-  font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 600;
-  color: var(--light); line-height: 1; pointer-events: none; user-select: none; transition: color 0.3s;
-}
-.exp-why-card:hover .exp-why-num { color: rgba(46,125,82,0.12); }
-.exp-why-icon {
-  width: 54px; height: 54px; border-radius: 12px;
-  background: var(--light); border: 1.5px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--leaf); margin-bottom: 1.25rem;
-  transition: background 0.3s, border-color 0.3s, color 0.3s;
-}
-.exp-why-card:hover .exp-why-icon { background: var(--forest); border-color: var(--forest); color: white; }
-.exp-why-card h3 { font-size: 1rem; color: var(--forest); margin-bottom: 0.6rem; }
-.exp-why-card p { font-size: 0.88rem; line-height: 1.65; }
-
-/* ── Exp CTA Strip ── */
-.exp-cta-section { position: relative; padding: 7rem 0; overflow: hidden; }
-.exp-cta-bg { position: absolute; inset: 0; }
-.exp-cta-bg img { width: 100%; height: 100%; object-fit: cover; }
-.exp-cta-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(14,38,24,0.93) 0%, rgba(22,62,92,0.88) 100%);
-}
-.exp-cta-inner { position: relative; z-index: 1; text-align: center; max-width: 600px; margin: 0 auto; }
-.exp-cta-inner h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--white); margin-bottom: 1rem; }
-.exp-cta-inner p { color: rgba(255,255,255,0.72); font-size: 1.05rem; margin-bottom: 2.5rem; }
-.exp-cta-actions { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
 
 /* ════════════════════════════════
    RESPONSIVE — shared
@@ -1012,10 +833,6 @@ body.exp-page { background: var(--cream); }
   .faq-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 1024px) {
-  .exp-stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .exp-why-grid   { grid-template-columns: repeat(2, 1fr); }
-}
 
 @media (max-width: 768px) {
   .nav-links {
@@ -1044,21 +861,7 @@ body.exp-page { background: var(--cream); }
   .carousel-arrow { width: 36px; height: 36px; }
   .carousel-arrow--prev { left: 0.75rem; }
   .carousel-arrow--next { right: 0.75rem; }
-  /* Experience */
-  .exp-hero { min-height: 48vh; padding-bottom: 3rem; padding-top: 70px; }
-  .exp-hero-title { font-size: 1.9rem; }
-  .exp-hero-sub { font-size: 0.95rem; margin-bottom: 1.5rem; }
-  .exp-hero-cta { flex-direction: column; gap: 0.75rem; }
-  .exp-hero-cta .btn-primary,
-  .exp-hero-cta .btn-outline { width: 100%; justify-content: center; }
-  .exp-industry-grid { grid-template-columns: 1fr; }
-  .exp-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .exp-why-grid { grid-template-columns: 1fr 1fr; }
-  .exp-scroll-indicator { display: none; }
-  .exp-client-list { grid-template-columns: 1fr; }
-  .exp-stats-section { padding: 3rem 0 2.5rem; }
-  .exp-section-header { margin-bottom: 2rem; }
-  .exp-cta-section { padding: 4rem 0; }
+ 
 }
 
 @media (max-width: 480px) {
@@ -1067,14 +870,7 @@ body.exp-page { background: var(--cream); }
   .about-img-wrap { height: 300px; }
   .services-tabs { gap: 0.35rem; }
   .tab-btn { font-size: 0.78rem; padding: 0.4rem 0.8rem; }
-  /* Experience */
-  .exp-stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .exp-stat-num { font-size: 2.2rem; }
-  .exp-stat-card { padding: 1.5rem 1.25rem; }
-  .exp-why-grid { grid-template-columns: 1fr; }
-  .exp-cta-section { padding: 3rem 0; }
-  .exp-industry-body { padding: 1.25rem 1.25rem 1.5rem; }
-  .exp-hero-title { font-size: 1.65rem; }
+ 
 }
 
 @media (max-width: 600px) {
@@ -1083,5 +879,26 @@ body.exp-page { background: var(--cream); }
   .modal-quick-links { grid-template-columns: 1fr; }
   .modal-header { padding: 1.25rem; }
   .modal-body { padding: 1.25rem; }
+}
+
+.hero--short {
+  min-height: 62vh;
+  padding-bottom: 5rem;
+}
+
+/* ── Breadcrumb (used inside .hero--short) ── */
+.hero-breadcrumb {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.78rem; color: rgba(255,255,255,0.55);
+  margin-bottom: 1.5rem; letter-spacing: 0.03em;
+}
+.hero-breadcrumb a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+.hero-breadcrumb a:hover { color: var(--mist); }
+.hero-breadcrumb svg { opacity: 0.4; }
+.hero-breadcrumb span { color: var(--mist); }
+
+/* ── Responsive tweaks for .hero--short ── */
+@media (max-width: 768px) {
+  .hero--short { min-height: 48vh; padding-bottom: 3rem; padding-top: 70px; }
 }
 

@@ -472,6 +472,101 @@
   <span>Chat with us</span>
 </a>
 
+<!-- ── Contact Modal ── -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeContactModal()" aria-hidden="true"></div>
+<div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-header">
+    <div class="modal-header-inner">
+      <div class="modal-logo-mark" aria-hidden="true">
+        <img src="logonobg.png" alt="DC Environmental Logo"
+             style="width:24px;height:24px;object-fit:contain;">
+      </div>
+      <div>
+        <h2 id="modalTitle">Get in Touch</h2>
+        <p>We'll respond via WhatsApp or email.</p>
+      </div>
+    </div>
+    <button class="modal-close" onclick="closeContactModal()" aria-label="Close contact form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="modal-quick-links">
+      <a href="https://wa.me/639617301048" target="_blank" rel="noopener" class="modal-quick-btn modal-quick-wa">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.444h.005c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.479-8.447z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="mailto:dcenviconsultancy@gmail.com" class="modal-quick-btn modal-quick-email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Email Us
+      </a>
+    </div>
+    <div class="modal-divider"><span>or fill out the form</span></div>
+    <form id="contactForm" novalidate>
+      <div class="modal-form-row">
+        <div class="form-group">
+          <label for="fname">First Name *</label>
+          <input type="text" id="fname" name="fname" placeholder="Juan" required autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name *</label>
+          <input type="text" id="lname" name="lname" placeholder="dela Cruz" required autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="memail">Email Address</label>
+        <input type="email" id="memail" name="email" placeholder="juan@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="mphone">Phone / WhatsApp</label>
+        <input type="tel" id="mphone" name="phone" placeholder="09XX-XXX-XXXX" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label for="mservice">Service Needed</label>
+        <select id="mservice" name="service">
+          <option value="">Select a service...</option>
+          <option>Environmental Impact Assessment (EIA/EIS)</option>
+          <option>Certificate of Non-Coverage (CNC)</option>
+          <option>Environmental Compliance Certificate (ECC)</option>
+          <option>ECC Amendment (Minor/Major)</option>
+          <option>PCO Accreditation</option>
+          <option>Hazardous Waste Generator ID (HWG-ID)</option>
+          <option>Permit to Operate - Air (PTO-APSI)</option>
+          <option>Wastewater Discharge Permit (WWDP)</option>
+          <option>LLDA Permits</option>
+          <option>Water Permits (NWRB)</option>
+          <option>Site Development Plan (SDP)</option>
+          <option>Drainage / Septic Layout</option>
+          <option>GIS Mapping</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mmessage">Message *</label>
+        <textarea id="mmessage" name="message" placeholder="Briefly describe your project or inquiry..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">
+        Send Message
+        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+      </button>
+      <p class="form-notice">DC Environmental is a private, independent firm. Not affiliated with DENR or any government office.</p>
+    </form>
+    <div class="form-success" id="formSuccess" style="display:none;" aria-live="polite">
+      <div class="form-success-icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#2e7d52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="20"/><path d="M16 24l6 6 10-12"/></svg>
+      </div>
+      <h3>Message Sent!</h3>
+      <p>We'll get back to you via WhatsApp or email.</p>
+      <button class="btn-primary" onclick="closeContactModal()" style="margin-top:1.5rem;width:100%;justify-content:center;">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+  document.getElementById('navbar').classList.add('scrolled');
+</script>
+
 <script src="main.js"></script>
 <script>
   // Experience page: navbar is always scrolled (no transparent mode)

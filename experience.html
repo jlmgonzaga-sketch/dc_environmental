@@ -438,7 +438,38 @@
   <svg viewBox="0 0 24 24" fill="white" width="28" height="28">
     <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.26L19.752 8l-6.561 6.963z"/>
   </svg>
-  <span>Message us</span>
+  <spa<!-- Messenger Chat Widget -->
+<div id="messengerWidget">
+  <div class="msgr-popup" id="messengerPopup">
+    <div class="msgr-header">
+      <div class="msgr-avatar">
+        <img src="logonobg.png" alt="DC Environmental">
+      </div>
+      <div class="msgr-info">
+        <strong>DC Environmental</strong>
+        <span>Typically replies instantly</span>
+      </div>
+      <button class="msgr-close" id="messengerClose" aria-label="Close chat">✕</button>
+    </div>
+    <div class="msgr-body">
+      <div class="msgr-bubble-wrap">
+        <div class="msgr-bubble">Hi there! 👋 Welcome to DC Environmental Consultancy. How can we help you today?</div>
+        <div class="msgr-bubble-time">DC Environmental · just now</div>
+      </div>
+    </div>
+    <div class="msgr-footer">
+      <input class="msgr-input" id="messengerInput" placeholder="Aa" type="text" />
+      <button class="msgr-send" id="messengerSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <a class="msgr-open-link" href="https://m.me/61554171736979" target="_blank" rel="noopener">Open in Messenger →</a>
+  </div>
+  <button class="messenger-float" id="messengerBtn" aria-label="Chat on Messenger">
+    <svg viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.974 12-11.111S18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.26L19.752 8l-6.561 6.963z"/></svg>
+    <span>Message us</span>
+  </button>
+</div>n>Message us</span>
 </a>
 
 <!-- ── Contact Modal ── -->

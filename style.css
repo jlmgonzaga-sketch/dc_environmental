@@ -163,16 +163,33 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
 .navbar.scrolled .logo-mark img {
   filter: none;
 }
+/* REPLACE with: */
 .logo-text { line-height: 1.2; }
 .logo-text strong {
   display: block; font-family: 'Playfair Display', serif;
-  font-weight: 600; font-size: 1rem; letter-spacing: 0.03em;
+  font-weight: 600; font-size: 21px; letter-spacing: 0.005em;
+  line-height: 1.15;
   transition: color var(--transition);
 }
-.logo-text span { 
-  font-size: 0.76rem; letter-spacing: 0.08em; 
-  transition: color var(--transition); 
+.logo-text strong::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 4px 0;
 }
+.navbar.scrolled .logo-text strong::after {
+  background: rgba(26, 74, 46, 0.2);
+}
+.logo-text span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 400;
+  opacity: 0.55;
+  transition: color var(--transition);
+}
+
 .navbar:not(.scrolled) .logo-text strong { color: var(--white); }
 .navbar:not(.scrolled) .logo-text span  { color: rgba(255,255,255,0.65); }
 .navbar.scrolled .logo-text strong { color: var(--forest); }

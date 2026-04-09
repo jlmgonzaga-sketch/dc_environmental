@@ -32,8 +32,6 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Custom Cursor Disabled — Using normal system cursor ──
-
   // ── Navbar Scroll ──────────────────────────────────
   const navbar    = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
@@ -78,10 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach(s => sectionObserver.observe(s));
 
   // ── Hero Image Carousel ────────────────────────────
-  const slides   = document.querySelectorAll('.carousel-slide');
-  const dots     = document.querySelectorAll('.dot');
+  const slides    = document.querySelectorAll('.carousel-slide');
+  const dots      = document.querySelectorAll('.dot');
   const captionEl = document.getElementById('carouselCaptionText');
-  let current    = 0;
+  let current     = 0;
   let autoplayTimer;
 
   const captions = [
@@ -118,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Prev / Next arrows
   const prevBtn = document.getElementById('carouselPrev');
   const nextBtn = document.getElementById('carouselNext');
   if (prevBtn) prevBtn.addEventListener('click', () => { clearInterval(autoplayTimer); goToSlide(current - 1); startAutoplay(); });
@@ -141,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     carouselBg.addEventListener('mouseleave', startAutoplay);
   }
 
-  startAutoplay();
+  if (slides.length > 0) startAutoplay();
 
   // ── Fade-in Observer ──────────────────────────────
   const fadeObserver = new IntersectionObserver((entries) => {
@@ -183,13 +180,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── 3D Tilt Hover on Cards ────────────────────────
   function applyTilt(el) {
     el.addEventListener('mousemove', (e) => {
-      const rect   = el.getBoundingClientRect();
-      const cx     = rect.left + rect.width  / 2;
-      const cy     = rect.top  + rect.height / 2;
-      const dx     = (e.clientX - cx) / (rect.width  / 2);
-      const dy     = (e.clientY - cy) / (rect.height / 2);
-      const tiltX  = dy * -5;   // max 5deg
-      const tiltY  = dx *  5;
+      const rect  = el.getBoundingClientRect();
+      const cx    = rect.left + rect.width  / 2;
+      const cy    = rect.top  + rect.height / 2;
+      const dx    = (e.clientX - cx) / (rect.width  / 2);
+      const dy    = (e.clientY - cy) / (rect.height / 2);
+      const tiltX = dy * -5;
+      const tiltY = dx *  5;
       el.style.transform = `perspective(600px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-4px)`;
       el.style.boxShadow = `${-dx * 8}px ${-dy * 8}px 30px rgba(26,74,46,0.18)`;
     });
@@ -206,14 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── FAQ Accordion ─────────────────────────────────
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
-      const item     = btn.closest('.faq-item');
-      const isOpen   = item.classList.contains('open');
-      // Close all
+      const item   = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item').forEach(i => {
         i.classList.remove('open');
         i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
       });
-      // Toggle clicked
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
@@ -221,22 +216,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Contact Modal Form ────────────────────────────
+  // ══════════════════════════════════════════
+  // CONTACT FORM — Web3Forms Integration
+  // ══════════════════════════════════════════
+  const WEB3FORMS_KEY = '21d43280-583b-4503-b4f6-670901f26e56';
+
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const fname   = document.getElementById('fname').value.trim();
-      const lname   = document.getElementById('lname').value.trim();
-      const message = document.getElementById('mmessage').value.trim();
+
+      const fname   = document.getElementById('fname')?.value.trim();
+      const lname   = document.getElementById('lname')?.value.trim();
+      const email   = document.getElementById('memail')?.value.trim();
+      const phone   = document.getElementById('mphone')?.value.trim();
+      const service = document.getElementById('mservice')?.value.trim();
+      const message = document.getElementById('mmessage')?.value.trim();
+
+      // Basic validation
       if (!fname || !lname || !message) {
         alert('Please fill in First Name, Last Name, and Message.');
         return;
       }
-      this.style.display = 'none';
-      const success = document.getElementById('formSuccess');
-      if (success) success.style.display = 'block';
+
+      // Disable submit button & show loading state
+      const submitBtn = contactForm.querySelector('.btn-submit');
+      const originalBtnHTML = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite;">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4
+                   M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+        Sending...
+      `;
+
+      // Build form data for Web3Forms
+      const formData = {
+        access_key: WEB3FORMS_KEY,
+        // Notification email — goes to dcenviconsultancy@gmail.com
+        to: 'dcenviconsultancy@gmail.com',
+        subject: `New Inquiry from ${fname} ${lname}${service ? ' — ' + service : ''}`,
+        from_name: 'DC Environmental Website',
+        // Auto-reply to the sender if they provided an email
+        replyto: email || '',
+        // Fields
+        'Full Name': `${fname} ${lname}`,
+        'Email': email || 'Not provided',
+        'Phone / WhatsApp': phone || 'Not provided',
+        'Service Needed': service || 'Not specified',
+        'Message': message,
+        // Auto-reply settings
+        autoresponse: email ? 'true' : 'false',
+        autoresponse_message: `Hi ${fname},\n\nThank you for reaching out to DC Environmental Consultancy Services!\n\nWe have received your inquiry and will get back to you as soon as possible via WhatsApp or email.\n\nFor urgent matters, you may also reach us at:\n📱 WhatsApp: +63 961 730 1048\n📧 Email: dcenviconsultancy@gmail.com\n\nBest regards,\nDC Environmental Consultancy Services\nTower 1, SMDC Sun Residences, España Blvd, Quezon City`,
+        // Botcheck honeypot
+        botcheck: '',
+      };
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Show success state
+          contactForm.style.display = 'none';
+          const success = document.getElementById('formSuccess');
+          if (success) success.style.display = 'block';
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+
+      } catch (err) {
+        console.error('Form error:', err);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        alert('Something went wrong. Please try WhatsApp or email us directly at dcenviconsultancy@gmail.com');
+      }
     });
   }
 
 });
+
+// Spinner keyframe (injected once)
+const spinStyle = document.createElement('style');
+spinStyle.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+document.head.appendChild(spinStyle);

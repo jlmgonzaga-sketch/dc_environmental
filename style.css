@@ -932,31 +932,3 @@ button.btn-primary { border: none; cursor: pointer; font-family: 'DM Sans', sans
   margin-bottom: 1rem;
 }
 
-/* ════════════════════════════════
-   INNER PAGE HERO — shared fix
-   ════════════════════════════════ */
-.page-hero {
-  padding-bottom: 5rem;
-}
-
-.page-hero::after {
-  height: 80px;
-  clip-path: ellipse(55% 100% at 50% 100%);
-}
-
-.page-hero-inner {
-  position: relative;
-  z-index: 3;
-}
-
-/* Experience page hero uses different class */
-.exp-hero::after {
-  height: 80px;
-  clip-path: ellipse(55% 100% at 50% 100%);
-}
-
-.exp-hero-inner {
-  position: relative;
-  z-index: 3;
-  padding-bottom: 2rem;
-}

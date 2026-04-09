@@ -1084,3 +1084,7 @@ body.exp-page { background: var(--cream); }
   .modal-header { padding: 1.25rem; }
   .modal-body { padding: 1.25rem; }
 }
+
+body.exp-page .navbar.scrolled .logo-mark {
+  background: var(--forest);
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "Revised Guidelines on EIA Thresholds (MC 2014-005)",
+    "category": "EIA",
+    "description": "Memorandum Circular revising the thresholds for projects requiring Environmental Impact Assessment under the Philippine EIS System.",
+    "url": "https://eia.emb.gov.ph/wp-content/uploads/2019/01/Revised-Guidelines_Threshold_MC-2014-005.pdf",
+    "date": "2014",
+    "agency": "DENR-EMB",
+    "active": true,
+    "added": "January 1, 2014"
+  },
+  {
+    "id": 2,
+    "title": "Water Quality Guidelines and General Effluent Standards (DAO 2016-08)",
+    "category": "Water",
+    "description": "DENR Administrative Order setting water quality guidelines and general effluent standards for Philippine water bodies.",
+    "url": "https://pab.emb.gov.ph/wp-content/uploads/2017/07/DAO-2016-08-WQG-and-GES.pdf",
+    "date": "2016",
+    "agency": "DENR-EMB",
+    "active": true,
+    "added": "January 1, 2016"
+  },
+  {
+    "id": 3,
+    "title": "Air Quality Monitoring Guidelines (DMC 2005-013)",
+    "category": "Air",
+    "description": "Department Memorandum Circular on air quality monitoring guidelines for stationary sources under the Clean Air Act.",
+    "url": "https://air.emb.gov.ph/wp-content/uploads/2019/08/DMC-2005-013.pdf",
+    "date": "2005",
+    "agency": "DENR-EMB",
+    "active": true,
+    "added": "January 1, 2005"
+  }
+]

@@ -16,7 +16,7 @@
 <!-- ── Navbar (shared) ── -->
 <nav class="navbar scrolled" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="container">
-    <a href="dc-environmental.html" class="logo" aria-label="DC Environmental home">
+    <a href="index.html" class="logo" aria-label="DC Environmental home">
       <div class="logo-mark" aria-hidden="true">
         <img src="logonobg.png" alt="DC Environmental Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none;width:22px;height:22px;">
@@ -32,13 +32,13 @@
       </div>
     </a>
     <ul class="nav-links" id="navLinks" role="list">
-      <li><a href="dc-environmental.html#home" class="nav-item">Home</a></li>
-      <li><a href="dc-environmental.html#about" class="nav-item">About</a></li>
-      <li><a href="dc-environmental.html#services" class="nav-item">Services</a></li>
-      <li><a href="dc-environmental.html#projects" class="nav-item">Projects</a></li>
-      <li><a href="experience.html" class="nav-item active-link">Experience</a></li>
-      <li><a href="dc-environmental.html#contact" class="nav-cta">Get in Touch</a></li>
-    </ul>
+  <li><a href="index.html" class="nav-item">Home</a></li>
+  <li><a href="about.html" class="nav-item">About</a></li>
+  <li><a href="services.html" class="nav-item">Services</a></li>
+  <li><a href="projects.html" class="nav-item">Projects</a></li>
+  <li><a href="experience.html" class="nav-item active-link">Experience</a></li>
+  <li><button class="nav-cta" onclick="openContactModal()">Get in Touch</button></li>
+</ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -392,11 +392,11 @@
     <h2>Ready to Work With Us?</h2>
     <p>Let's discuss your project requirements and find the right compliance pathway for your business.</p>
     <div class="exp-cta-actions">
-      <a href="dc-environmental.html#contact" class="btn-primary">
-        Get in Touch
-        <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
-      </a>
-      <a href="dc-environmental.html#services" class="btn-outline">View Our Services</a>
+      <a href="about.html" class="btn-primary" onclick="openContactModal(); return false;">
+  Get in Touch
+  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M10 4l6 6-6 6"/></svg>
+</a>
+<a href="services.html" class="btn-outline">View Our Services</a>
     </div>
   </div>
 </section>
@@ -406,7 +406,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="dc-environmental.html" class="logo" aria-label="DC Environmental home">
+        <a href="index.html" class="logo" aria-label="DC Environmental home">
           <div class="logo-mark">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/>
@@ -434,14 +434,14 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Quick Links</h4>
-        <a href="dc-environmental.html#home">Home</a>
-        <a href="dc-environmental.html#about">About Us</a>
-        <a href="dc-environmental.html#services">Services</a>
-        <a href="dc-environmental.html#projects">Projects</a>
-        <a href="experience.html">Experience</a>
-        <a href="dc-environmental.html#contact">Contact</a>
-      </div>
+  <h4>Quick Links</h4>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="services.html">Services</a>
+  <a href="projects.html">Projects</a>
+  <a href="experience.html">Experience</a>
+  <a href="about.html#faq">Contact</a>
+</div>
       <div class="footer-col">
         <h4>Services</h4>
         <a href="dc-environmental.html#services">EIA / ECC Processing</a>

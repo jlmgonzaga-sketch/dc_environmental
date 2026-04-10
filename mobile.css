@@ -149,3 +149,7 @@
   .footer-bottom p { font-size: 0.75rem; }
   .disclaimer { font-size: 0.7rem !important; }
 }
+
+@media (max-width: 768px) {
+  .footer-brand { display: none; }
+}

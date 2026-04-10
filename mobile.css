@@ -126,3 +126,15 @@
   background: rgba(0, 0, 0, 0.45);
   z-index: -1;
 }
+
+/* Dark backdrop behind drawer */
+@media (max-width: 768px) {
+  .modal-backdrop--nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 999;
+  }
+  .modal-backdrop--nav.open { display: block; }
+}

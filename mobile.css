@@ -144,3 +144,120 @@
   h2       { font-size: clamp(1.25rem, 5.5vw, 1.6rem); }
   .hero h1 { font-size: clamp(1.4rem, 7vw, 1.75rem); }
 }
+
+/* ── Hero: Mobile Option C redesign ── */
+@media (max-width: 768px) {
+
+  /* Shorten the hero so the stats bar sits naturally */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+
+  .hero-container {
+    padding-bottom: 1rem;
+  }
+
+  /* Slim the hero copy — remove the long paragraph */
+  .hero-desc {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    opacity: 0.78;
+    max-width: 100%;
+    /* only show 1 short line on mobile */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  /* Eyebrow — reuse section-label style above the h1 */
+  .hero-content::before {
+    content: "Environmental Consulting · Philippines";
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a8d5b0;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Service pills */
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-pill {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.12);
+    border: 0.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 0.25rem 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Stats bar — pinned to bottom of hero */
+  .hero-stats {
+    display: flex;
+    width: 100%;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .hero-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.65rem 0.5rem;
+    border-right: 0.5px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-stat:last-child {
+    border-right: none;
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .hero-stat-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 0.2rem;
+    letter-spacing: 0.03em;
+    text-align: center;
+  }
+
+  /* Hide stats bar on desktop — it's mobile only */
+}
+
+/* Ensure stats bar is hidden on desktop */
+.hero-stats {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero-stats {
+    display: flex;
+  }
+}

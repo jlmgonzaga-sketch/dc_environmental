@@ -127,26 +127,25 @@
 
 /* ── Footer ── */
 @media (max-width: 768px) {
-  footer { padding: 2.5rem 0 1.5rem; }
+  footer { padding: 2rem 0 1.25rem; }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0;
+    margin-bottom: 1rem;
   }
 
+  /* Hide the PAGES and CONTACT columns on mobile */
+  .footer-col { display: none; }
+
+  /* Keep only the brand block */
+  .footer-brand { display: block; }
   .footer-brand > p { font-size: 0.82rem; }
 
-  .footer-col h4 { font-size: 0.75rem; margin-bottom: 0.6rem; }
+  /* Hide social links to keep it minimal */
+  .social-links { display: none; }
 
-  .footer-col a {
-    font-size: 0.82rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .social-links { margin-top: 1rem; }
-
-  .footer-bottom { padding-top: 1.25rem; }
+  .footer-bottom { padding-top: 1rem; }
   .footer-bottom p { font-size: 0.75rem; }
   .disclaimer { font-size: 0.7rem !important; }
 }

@@ -882,31 +882,10 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 768px) {
   .nav-links {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(26,74,46,0.97); flex-direction: column;
-    align-items: center; justify-content: center; gap: 1.5rem;
-    z-index: 999; backdrop-filter: blur(8px);
+ 
   }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1.2rem; color: rgba(255,255,255,0.88) !important; padding: 0.5rem 1.5rem; }
-  .nav-cta { background: var(--leaf) !important; border-radius: 8px !important; }
+
   .hamburger { display: flex; z-index: 1001; }
-  #cursor-dot, #cursor-ring, #cursor-label { display: none; }
-  body { cursor: auto; }
-  button { cursor: pointer; }
-  .section { padding: 4rem 0; }
-  .mission-vision { grid-template-columns: 1fr; }
-  .projects-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .services-header { flex-direction: column; align-items: flex-start; }
-  .about-badge { bottom: -1rem; right: 0; }
- .messenger-float span { display: none; }
-.messenger-float { border-radius: 50%; padding: 1rem; }
-  .how-it-works-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .carousel-arrow { width: 36px; height: 36px; }
-  .carousel-arrow--prev { left: 0.75rem; }
-  .carousel-arrow--next { right: 0.75rem; }
  
 }
 

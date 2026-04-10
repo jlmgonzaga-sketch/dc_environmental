@@ -149,8 +149,10 @@
 @media (max-width: 768px) {
 
   /* Shorten the hero so the stats bar sits naturally */
+  @media (max-width: 768px) {
+
   .hero {
-     min-height: 100svh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -161,15 +163,19 @@
     padding-bottom: 1rem;
   }
 
-   .carousel-dots {
+  .carousel-dots {
     display: none;
   }
 
-  /* Also hide prev/next arrows on mobile if they're cluttering */
   .carousel-arrow {
     display: none;
   }
 
+  /* Smaller pills on mobile */
+  .hero-pill {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.75rem;
+  }
 }
 
 

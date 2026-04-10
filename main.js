@@ -44,27 +44,31 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(navBackdrop);
 
   function closeNav() {
-  hamburger.classList.remove('open');
-  navLinks.classList.remove('open');
-  navBackdrop.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-  // Make sure body scroll is restored
-  document.body.classList.remove('modal-open');
-}
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    navBackdrop.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 
   hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open', open);
-    navBackdrop.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    const isOpen = hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open', isOpen);
+    navBackdrop.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
   navBackdrop.addEventListener('click', closeNav);
 
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeNav);
+  // Close nav when any link inside is clicked
+  navLinks.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', closeNav);
+  });
+
+  // Close nav on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
   });
 
   // ── Active Nav Link on Scroll ──────────────────────

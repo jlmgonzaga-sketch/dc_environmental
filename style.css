@@ -314,6 +314,34 @@ button.nav-cta:hover { background: var(--forest); transform: translateY(-1px); b
 }
 .hero-actions { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
 
+/* ── Hero Pills ── */
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-pill {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 100px;
+  padding: 0.35rem 1rem;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-pill:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
 /* ── Buttons ── */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;

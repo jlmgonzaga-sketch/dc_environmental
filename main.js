@@ -337,3 +337,53 @@ document.addEventListener('DOMContentLoaded', () => {
 const spinStyle = document.createElement('style');
 spinStyle.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
 document.head.appendChild(spinStyle);
+
+
+// ── Mobile Review Carousel ──
+function initReviewCarousel() {
+  if (window.innerWidth > 768) return;
+
+  const cards = document.querySelectorAll('#testimonials .projects-grid .project-card');
+  // Only use real cards (skip placeholder)
+  const realCards = Array.from(cards).slice(0, 2);
+  let current = 0;
+  let timer;
+
+  // Build nav controls
+  const navEl = document.createElement('div');
+  navEl.className = 'review-nav';
+  navEl.innerHTML = `
+    <button id="reviewPrev" aria-label="Previous review">&#8592;</button>
+    <div class="review-dots">
+      ${realCards.map((_, i) => `<span class="${i === 0 ? 'active' : ''}"></span>`).join('')}
+    </div>
+    <button id="reviewNext" aria-label="Next review">&#8594;</button>
+  `;
+
+  const grid = document.querySelector('#testimonials .projects-grid');
+  grid.after(navEl);
+
+  function showCard(index) {
+    realCards.forEach(c => c.classList.remove('review-active'));
+    navEl.querySelectorAll('.review-dots span').forEach(d => d.classList.remove('active'));
+    realCards[index].classList.add('review-active');
+    navEl.querySelectorAll('.review-dots span')[index].classList.add('active');
+    current = index;
+  }
+
+  function next() { showCard((current + 1) % realCards.length); }
+  function prev() { showCard((current - 1 + realCards.length) % realCards.length); }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  navEl.querySelector('#reviewNext').addEventListener('click', () => { next(); startTimer(); });
+  navEl.querySelector('#reviewPrev').addEventListener('click', () => { prev(); startTimer(); });
+
+  showCard(0);
+  startTimer();
+}
+
+document.addEventListener('DOMContentLoaded', initReviewCarousel);

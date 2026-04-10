@@ -69,8 +69,6 @@
 
   /* ══════════════════════════════
      NAV DRAWER
-     Overrides style.css fullscreen nav
-     with !important on every property
      ══════════════════════════════ */
   .nav-links {
     display: none;
@@ -153,21 +151,19 @@
     transform: none !important;
   }
 
-  /* ── Backdrop ── */
- /* mobile.css */
-.nav-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.40);
-  z-index: 1000;
-  pointer-events: none; /* ADD THIS */
-}
-
-.nav-backdrop.open {
-  display: block;
-  pointer-events: all; /* ADD THIS */
-}
+  /* ── Backdrop — MUST be inside this media query ── */
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.40);
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .nav-backdrop.open {
+    display: block;
+    pointer-events: all;
+  }
 
   /* ── Logo sizing ── */
   .logo-text strong { font-size: 0.82rem; }

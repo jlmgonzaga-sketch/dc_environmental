@@ -27,61 +27,55 @@
   .navbar:not(.scrolled) .hamburger span { background: var(--white); }
 
   /* Slide-in from the RIGHT — not full screen */
-  .nav-links {
+.nav-links {
     display: none;
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     bottom: 0;
-    right: auto;                                   /* only right side */
-    width: min(280px, 80vw);                      /* side drawer width */
-    background: rgba(26, 74, 46, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    left: auto;
+    width: min(220px, 70vw);
+    background: rgba(26, 74, 46, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 0.25rem;
+    gap: 0.15rem;
     z-index: 1000;
-    padding: 2.5rem 1.75rem;
-    box-shadow: 6px 0 32px rgba(0,0,0,0.25);
+    padding: 2.5rem 1.5rem;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.30);
     overflow-y: auto;
-    transition: transform 0.35s cubic-bezier(0.32, 0, 0.17, 1);
-  }
+}
 
   .nav-links.open { display: flex; }
 
-  /* Nav items in drawer */
   .nav-links .nav-item {
-    font-size: 1rem !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-    padding: 0.65rem 0.75rem;
+    font-size: 0.88rem !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    padding: 0.55rem 0.65rem;
     width: 100%;
-    border-radius: 8px;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+}
 
-  .nav-links .nav-item:hover,
-  .nav-links .nav-item.active-link {
-    background: rgba(255, 255, 255, 0.1);
+.nav-links .nav-item:hover,
+.nav-links .nav-item.active-link {
+    background: rgba(255, 255, 255, 0.08);
     color: var(--white) !important;
-  }
+}
 
-  .nav-links .nav-item::after { display: none; }
-
-  /* CTA in drawer */
-  .nav-links .nav-cta {
-    margin-top: 1rem;
+.nav-links .nav-cta {
+    margin-top: 1.25rem;
     background: var(--leaf) !important;
     color: var(--white) !important;
     border-radius: 8px !important;
-    padding: 0.75rem 1.25rem !important;
-    font-size: 0.9rem !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.82rem !important;
     width: 100%;
     text-align: center;
     justify-content: center;
-    box-shadow: 0 4px 16px rgba(46, 125, 82, 0.35);
-  }
+}
 
   /* Hamburger → X */
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

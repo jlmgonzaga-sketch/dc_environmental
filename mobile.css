@@ -154,14 +154,20 @@
   }
 
   /* ── Backdrop ── */
-  .nav-backdrop {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.40);
-    z-index: 1000;
-  }
-  .nav-backdrop.open { display: block; }
+ /* mobile.css */
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.40);
+  z-index: 1000;
+  pointer-events: none; /* ADD THIS */
+}
+
+.nav-backdrop.open {
+  display: block;
+  pointer-events: all; /* ADD THIS */
+}
 
   /* ── Logo sizing ── */
   .logo-text strong { font-size: 0.82rem; }

@@ -186,3 +186,29 @@
     margin: 0;
   }
 }
+
+@media (max-width: 768px) {
+
+  /* Tighten all section padding */
+  .section { padding: 2.5rem 0; }
+
+  /* Hide subtitles to save space */
+  .section-subtitle { display: none; }
+
+  /* Hide placeholder 3rd testimonial card */
+  #testimonials .projects-grid .project-card:last-child { display: none; }
+
+  /* Clamp long testimonial text to 4 lines */
+  .project-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Show only first 2 how-it-works steps */
+  .how-step:nth-child(n+3) { display: none; }
+
+  /* Hide the explore/quick-nav section entirely */
+  #explore { display: none; }
+}

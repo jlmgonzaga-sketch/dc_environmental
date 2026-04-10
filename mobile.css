@@ -212,3 +212,59 @@
   /* Hide the explore/quick-nav section entirely */
   #explore { display: none; }
 }
+
+@media (max-width: 768px) {
+  /* Hide default grid, we'll control display via JS */
+  #testimonials .projects-grid {
+    display: block;
+    position: relative;
+  }
+
+  #testimonials .projects-grid .project-card {
+    display: none;
+  }
+
+  #testimonials .projects-grid .project-card.review-active {
+    display: flex;
+  }
+
+  /* Arrow buttons */
+  .review-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .review-nav button {
+    background: var(--forest);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .review-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .review-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+
+  .review-dots span.active {
+    background: var(--forest);
+  }
+}

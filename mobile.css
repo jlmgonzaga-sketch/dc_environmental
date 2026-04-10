@@ -150,7 +150,7 @@
 
   /* Shorten the hero so the stats bar sits naturally */
   .hero {
-    min-height: 100svh;
+     min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -160,6 +160,18 @@
   .hero-container {
     padding-bottom: 1rem;
   }
+
+   .carousel-dots {
+    display: none;
+  }
+
+  /* Also hide prev/next arrows on mobile if they're cluttering */
+  .carousel-arrow {
+    display: none;
+  }
+
+}
+
 
   /* Slim the hero copy — remove the long paragraph */
   .hero-desc {

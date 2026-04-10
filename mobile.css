@@ -31,9 +31,9 @@
     display: none;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     bottom: 0;
-    left: auto;                                   /* only right side */
+    right: auto;                                   /* only right side */
     width: min(280px, 80vw);                      /* side drawer width */
     background: rgba(26, 74, 46, 0.98);
     backdrop-filter: blur(12px);
@@ -44,7 +44,7 @@
     gap: 0.25rem;
     z-index: 1000;
     padding: 2.5rem 1.75rem;
-    box-shadow: -6px 0 32px rgba(0,0,0,0.25);
+    box-shadow: 6px 0 32px rgba(0,0,0,0.25);
     overflow-y: auto;
     transition: transform 0.35s cubic-bezier(0.32, 0, 0.17, 1);
   }

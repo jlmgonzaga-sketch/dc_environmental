@@ -331,21 +331,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (messengerPopup) messengerPopup.classList.add('hidden');
 
+  // ── Mobile Review Carousel ──────────────────────────
+  function initReviewCarousel() {
+    if (window.innerWidth > 768) return;
+
+    const cards = Array.from(document.querySelectorAll('#testimonials .projects-grid .project-card'));
+    let current = 0;
+
+    function show(index) {
+      cards.forEach(c => c.classList.remove('review-active'));
+      cards[index].classList.add('review-active');
+      current = index;
+    }
+
+    const nav = document.createElement('div');
+    nav.className = 'review-nav';
+    nav.innerHTML = `
+      <button id="reviewPrev" aria-label="Previous review">&#8592;</button>
+      <button id="reviewNext" aria-label="Next review">&#8594;</button>
+    `;
+    const grid = document.querySelector('#testimonials .projects-grid');
+    if (grid) grid.after(nav);
+
+    let timer = setInterval(() => show((current + 1) % cards.length), 5000);
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => show((current + 1) % cards.length), 5000);
+    }
+
+    nav.querySelector('#reviewNext').addEventListener('click', () => {
+      show((current + 1) % cards.length);
+      resetTimer();
+    });
+    nav.querySelector('#reviewPrev').addEventListener('click', () => {
+      show((current - 1 + cards.length) % cards.length);
+      resetTimer();
+    });
+
+    show(0);
+  }
+
+  initReviewCarousel();
+
 }); // end DOMContentLoaded
 
 // ── Spinner keyframe ──
 const spinStyle = document.createElement('style');
 spinStyle.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
 document.head.appendChild(spinStyle);
-
-
-// ── Mobile Review Carousel ──
-@media (max-width: 768px) {
-  #testimonials .projects-grid .project-card {
-    display: none !important;
-  }
-
-  #testimonials .projects-grid .project-card.review-active {
-    display: flex !important;
-  }
-}

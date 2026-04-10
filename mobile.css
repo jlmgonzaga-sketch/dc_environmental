@@ -26,47 +26,54 @@
   .navbar.scrolled .hamburger span { background: var(--charcoal); }
   .navbar:not(.scrolled) .hamburger span { background: var(--white); }
 
-   
  .nav-links {
     display: none;
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    top: 0.75rem;               /* gap from top */
+    right: 0.75rem;             /* gap from right */
+    bottom: 0.75rem;            /* gap from bottom — doesn't reach edge */
     left: auto;
     width: min(200px, 65vw);
     background: var(--forest);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;        /* rounded corners all around */
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;    /* start from top */
+    justify-content: flex-start;
     gap: 0.1rem;
     z-index: 1000;
-    padding: 5rem 1.25rem 2rem;     /* top padding clears the navbar */
-    box-shadow: -6px 0 30px rgba(0,0,0,0.25);
+    padding: 4.5rem 1.25rem 1.75rem;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.30), 0 2px 12px rgba(0,0,0,0.15);
     overflow-y: auto;
+}
+
+/* Subtle logo/brand area at top of drawer */
+.nav-links::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--leaf), var(--water));
+    border-radius: 16px 16px 0 0;
 }
 
 .nav-links .nav-item {
     font-size: 0.85rem !important;
-    color: rgba(255, 255, 255, 0.70) !important;
+    color: rgba(255,255,255,0.65) !important;
     padding: 0.6rem 0.75rem;
     width: 100%;
     border-radius: 6px;
     letter-spacing: 0.02em;
     font-weight: 400;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .nav-links .nav-item:hover,
 .nav-links .nav-item.active-link {
-    background: rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.08);
     color: var(--white) !important;
 }
 
 .nav-links .nav-cta {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     background: var(--leaf) !important;
     color: var(--white) !important;
     border-radius: 8px !important;
@@ -75,7 +82,6 @@
     width: 100%;
     text-align: center;
     justify-content: center;
-    border-bottom: none !important;
 }
 
   /* Hamburger → X */

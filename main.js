@@ -44,12 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(navBackdrop);
 
   function closeNav() {
-    hamburger.classList.remove('open');
-    navLinks.classList.remove('open');
-    navBackdrop.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
+  hamburger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navBackdrop.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  // Make sure body scroll is restored
+  document.body.classList.remove('modal-open');
+}
 
   hamburger.addEventListener('click', () => {
     const open = hamburger.classList.toggle('open');

@@ -136,47 +136,61 @@
      HERO — Full fix
      ══════════════════════════════ */
   .hero {
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;      /* overrides base align-items: center — removes top gap */
-    padding-top: 0;            /* let image bleed behind transparent navbar */
-    padding-bottom: 0;
+    min-height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: stretch !important;   /* kills base align-items:center */
+    padding-top: 0 !important;         /* kills base padding-top:80px — the gap culprit */
+    padding-bottom: 0 !important;
     overflow: hidden;
   }
 
-  /* Fix carousel image — show top portion, don't crop heads off */
+  /* The .container inside .hero — must stretch full width, content sits at bottom */
+  .hero > .container,
+  .hero .hero-container {
+    width: 100% !important;
+    max-width: 100% !important;        /* kills 760px cap that left dead space */
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 1rem !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    flex: 1 !important;                /* fills all remaining vertical space */
+  }
+
+  /* Fix carousel image — show top portion, don't crop */
   .carousel-slide {
     background-position: center top;
     background-size: cover;
   }
 
-  /* Overlay — slightly stronger on mobile for text legibility */
+  /* Overlay — gradient darkens toward bottom where text lives */
   .carousel-overlay {
     background: linear-gradient(
       180deg,
-      rgba(26,74,46,0.55) 0%,
-      rgba(26,74,46,0.45) 40%,
-      rgba(26,74,46,0.80) 75%,
+      rgba(26,74,46,0.40) 0%,
+      rgba(26,74,46,0.35) 35%,
+      rgba(26,74,46,0.75) 70%,
       rgba(26,74,46,0.92) 100%
-    );
+    ) !important;
   }
 
-  /* Content block — clears navbar at top, sits above stats bar */
-  .hero-container {
-    padding-top: 5.5rem;       /* clears fixed navbar (~64px + breathing room) */
-    padding-bottom: 1rem;
-    max-width: 100%;
+  /* Hero content block — no extra top padding needed, flex handles it */
+  .hero-content {
+    padding-bottom: 0.5rem !important;
   }
 
   /* Hide desktop carousel controls */
-  .carousel-dots  { display: none; }
-  .carousel-arrow { display: none; }
-  .carousel-caption { display: none; }
+  .carousel-dots    { display: none !important; }
+  .carousel-arrow   { display: none !important; }
+  .carousel-caption { display: none !important; }
 
-  /* Trim the wave cutout — too big on mobile */
-  .hero::before { height: 48px; }
+  /* Trim the wave cutout — too tall on mobile */
+  .hero::before { height: 40px; }
 
   /* ── Hero Typography ── */
   .hero h1 { font-size: clamp(1.6rem, 6.5vw, 2.1rem); margin-bottom: 1rem; }

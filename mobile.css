@@ -1,8 +1,102 @@
 /* ══════════════════════════════════════════
    DC Environmental Consultancy — mobile.css
-   Font size adjustments only. Load AFTER style.css
+   Load AFTER style.css
    ══════════════════════════════════════════ */
 
+/* ════════════════════════════════
+   NAVBAR & HAMBURGER
+   ════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Larger tap target for hamburger */
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+    padding: 10px;
+    margin-right: -4px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2.5px;
+    border-radius: 3px;
+  }
+
+  .navbar.scrolled .hamburger span { background: var(--charcoal); }
+  .navbar:not(.scrolled) .hamburger span { background: var(--white); }
+
+  /* Slide-in from the RIGHT — not full screen */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;                                   /* only right side */
+    width: min(280px, 80vw);                      /* side drawer width */
+    background: rgba(26, 74, 46, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+    z-index: 1000;
+    padding: 2.5rem 1.75rem;
+    box-shadow: -6px 0 32px rgba(0,0,0,0.25);
+    overflow-y: auto;
+    transition: transform 0.35s cubic-bezier(0.32, 0, 0.17, 1);
+  }
+
+  .nav-links.open { display: flex; }
+
+  /* Nav items in drawer */
+  .nav-links .nav-item {
+    font-size: 1rem !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    padding: 0.65rem 0.75rem;
+    width: 100%;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links .nav-item:hover,
+  .nav-links .nav-item.active-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white) !important;
+  }
+
+  .nav-links .nav-item::after { display: none; }
+
+  /* CTA in drawer */
+  .nav-links .nav-cta {
+    margin-top: 1rem;
+    background: var(--leaf) !important;
+    color: var(--white) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.9rem !important;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(46, 125, 82, 0.35);
+  }
+
+  /* Hamburger → X */
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Logo text — slightly smaller so it doesn't crowd hamburger */
+  .logo-text strong { font-size: 0.82rem; }
+  .logo-text span   { font-size: 0.68rem; }
+}
+
+
+/* ════════════════════════════════
+   TYPOGRAPHY
+   ════════════════════════════════ */
 @media (max-width: 768px) {
   h1 { font-size: clamp(1.55rem, 5.5vw, 2rem); }
   h2 { font-size: clamp(1.35rem, 5vw, 1.8rem); }
@@ -12,7 +106,6 @@
   .hero h1    { font-size: clamp(1.55rem, 6vw, 2rem); }
   .hero-desc  { font-size: 0.95rem; }
   .hero-badge { font-size: 0.72rem; }
-
   .section-label { font-size: 0.7rem; }
 }
 

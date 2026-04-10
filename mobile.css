@@ -31,9 +31,10 @@
     position: fixed;
     top: 0.75rem;               /* gap from top */
     right: 0.75rem;             /* gap from right */
-    bottom: 0.75rem;            /* gap from bottom — doesn't reach edge */
+    bottom: auto;            /* gap from bottom — doesn't reach edge */
     left: auto;
     width: min(200px, 65vw);
+    height: auto;
     background: var(--forest);
     border-radius: 16px;        /* rounded corners all around */
     flex-direction: column;

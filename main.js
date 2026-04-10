@@ -3,12 +3,10 @@ function openContactModal() {
   document.getElementById('contactModal').classList.add('open');
   document.getElementById('modalBackdrop').classList.add('open');
   document.body.classList.add('modal-open');
-  // Reset form if previously submitted
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
   if (form) form.style.display = '';
   if (success) success.style.display = 'none';
-  // Focus first input
   setTimeout(() => {
     const first = document.getElementById('fname');
     if (first) first.focus();
@@ -21,7 +19,6 @@ function closeContactModal() {
   document.body.classList.remove('modal-open');
 }
 
-// Close on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeContactModal();
 });
@@ -41,20 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
 
+  // ── Create nav backdrop once ──
+  const navBackdrop = document.createElement('div');
+  navBackdrop.className = 'nav-backdrop';
+  document.body.appendChild(navBackdrop);
+
+  function closeNav() {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+    navBackdrop.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
   hamburger.addEventListener('click', () => {
     const open = hamburger.classList.toggle('open');
     navLinks.classList.toggle('open', open);
+    navBackdrop.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
+  navBackdrop.addEventListener('click', closeNav);
+
   navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+    a.addEventListener('click', closeNav);
   });
 
   // ── Active Nav Link on Scroll ──────────────────────
@@ -121,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (prevBtn) prevBtn.addEventListener('click', () => { clearInterval(autoplayTimer); goToSlide(current - 1); startAutoplay(); });
   if (nextBtn) nextBtn.addEventListener('click', () => { clearInterval(autoplayTimer); goToSlide(current + 1); startAutoplay(); });
 
-  // Touch / swipe support
   const carouselBg = document.getElementById('carouselBg');
   if (carouselBg) {
     let touchStartX = 0;
@@ -216,9 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ══════════════════════════════════════════
-  // CONTACT FORM — Web3Forms Integration
-  // ══════════════════════════════════════════
+  // ── Contact Form — Web3Forms ──────────────────────
   const WEB3FORMS_KEY = '21d43280-583b-4503-b4f6-670901f26e56';
 
   const contactForm = document.getElementById('contactForm');
@@ -233,13 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = document.getElementById('mservice')?.value.trim();
       const message = document.getElementById('mmessage')?.value.trim();
 
-      // Basic validation
       if (!fname || !lname || !message) {
         alert('Please fill in First Name, Last Name, and Message.');
         return;
       }
 
-      // Disable submit button & show loading state
       const submitBtn = contactForm.querySelector('.btn-submit');
       const originalBtnHTML = submitBtn.innerHTML;
       submitBtn.disabled = true;
@@ -252,25 +255,19 @@ document.addEventListener('DOMContentLoaded', () => {
         Sending...
       `;
 
-      // Build form data for Web3Forms
       const formData = {
         access_key: WEB3FORMS_KEY,
-        // Notification email — goes to dcenviconsultancy@gmail.com
         to: 'dcenviconsultancy@gmail.com',
         subject: `New Inquiry from ${fname} ${lname}${service ? ' — ' + service : ''}`,
         from_name: 'DC Environmental Website',
-        // Auto-reply to the sender if they provided an email
         replyto: email || '',
-        // Fields
         'Full Name': `${fname} ${lname}`,
         'Email': email || 'Not provided',
         'Phone / WhatsApp': phone || 'Not provided',
         'Service Needed': service || 'Not specified',
         'Message': message,
-        // Auto-reply settings
         autoresponse: email ? 'true' : 'false',
         autoresponse_message: `Hi ${fname},\n\nThank you for reaching out to DC Environmental Consultancy Services!\n\nWe have received your inquiry and will get back to you as soon as possible via WhatsApp or email.\n\nFor urgent matters, you may also reach us at:\n📱 WhatsApp: +63 961 730 1048\n📧 Email: dcenviconsultancy@gmail.com\n\nBest regards,\nDC Environmental Consultancy Services\nTower 1, SMDC Sun Residences, España Blvd, Quezon City`,
-        // Botcheck honeypot
         botcheck: '',
       };
 
@@ -284,7 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
 
         if (result.success) {
-          // Show success state
           contactForm.style.display = 'none';
           const success = document.getElementById('formSuccess');
           if (success) success.style.display = 'block';
@@ -301,65 +297,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-});
+  // ── Messenger Chat Widget ──────────────────────────
+  const messengerBtn   = document.getElementById('messengerBtn');
+  const messengerPopup = document.getElementById('messengerPopup');
+  const messengerClose = document.getElementById('messengerClose');
+  const messengerSend  = document.getElementById('messengerSend');
+  const messengerInput = document.getElementById('messengerInput');
 
-// Spinner keyframe (injected once)
+  if (messengerBtn) {
+    messengerBtn.addEventListener('click', () => {
+      messengerPopup.classList.toggle('hidden');
+    });
+  }
+  if (messengerClose) {
+    messengerClose.addEventListener('click', () => {
+      messengerPopup.classList.add('hidden');
+    });
+  }
+  if (messengerSend) {
+    messengerSend.addEventListener('click', () => {
+      const msg = messengerInput.value.trim();
+      if (msg) {
+        window.open('https://m.me/61554171736979', '_blank');
+        messengerInput.value = '';
+      }
+    });
+  }
+  if (messengerInput) {
+    messengerInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') messengerSend.click();
+    });
+  }
+
+  if (messengerPopup) messengerPopup.classList.add('hidden');
+
+}); // end DOMContentLoaded
+
+// ── Spinner keyframe ──
 const spinStyle = document.createElement('style');
 spinStyle.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
 document.head.appendChild(spinStyle);
-
-// ── Messenger Chat Widget ──────────────────────────────
-const messengerBtn   = document.getElementById('messengerBtn');
-const messengerPopup = document.getElementById('messengerPopup');
-const messengerClose = document.getElementById('messengerClose');
-const messengerSend  = document.getElementById('messengerSend');
-const messengerInput = document.getElementById('messengerInput');
-
-if (messengerBtn) {
-  messengerBtn.addEventListener('click', () => {
-    messengerPopup.classList.toggle('hidden');
-  });
-}
-if (messengerClose) {
-  messengerClose.addEventListener('click', () => {
-    messengerPopup.classList.add('hidden');
-  });
-}
-if (messengerSend) {
-  messengerSend.addEventListener('click', () => {
-    const msg = messengerInput.value.trim();
-    if (msg) {
-      window.open('https://m.me/61554171736979', '_blank');
-      messengerInput.value = '';
-    }
-  });
-}
-if (messengerInput) {
-  messengerInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') messengerSend.click();
-  });
-}
-
-// Start popup hidden
-if (messengerPopup) messengerPopup.classList.add('hidden');
-
-// Find something like this:
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open');
-
-  // Add these lines:
-  let backdrop = document.getElementById('navBackdrop');
-  if (!backdrop) {
-    backdrop = document.createElement('div');
-    backdrop.id = 'navBackdrop';
-    backdrop.className = 'modal-backdrop--nav';
-    backdrop.onclick = () => {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      backdrop.classList.remove('open');
-    };
-    document.body.appendChild(backdrop);
-  }
-  backdrop.classList.toggle('open');
-});

@@ -23,6 +23,15 @@
    MOBILE (max 768px)
    ════════════════════════════════ */
 @media (max-width: 768px) {
+   /* ── Navbar offset via body padding (clean approach) ── */
+body {
+  padding-top: 60px; /* match your actual navbar height on mobile */
+}
+
+.hero {
+  margin-top: -60px !important; /* pull hero back under navbar */
+  min-height: 100svh !important; /* compensate so it still fills viewport */
+}
 
   /* ── Custom cursor off on mobile ── */
   #cursor-dot,
@@ -143,6 +152,7 @@
     align-items: stretch !important;   /* kills base align-items:center */
     padding-top: 0 !important;         /* kills base padding-top:80px — the gap culprit */
     padding-bottom: 0 !important;
+      margin-top: 0 !important;
     overflow: hidden;
   }
 

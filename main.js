@@ -342,3 +342,24 @@ if (messengerInput) {
 
 // Start popup hidden
 if (messengerPopup) messengerPopup.classList.add('hidden');
+
+// Find something like this:
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open');
+
+  // Add these lines:
+  let backdrop = document.getElementById('navBackdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.id = 'navBackdrop';
+    backdrop.className = 'modal-backdrop--nav';
+    backdrop.onclick = () => {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      backdrop.classList.remove('open');
+    };
+    document.body.appendChild(backdrop);
+  }
+  backdrop.classList.toggle('open');
+});

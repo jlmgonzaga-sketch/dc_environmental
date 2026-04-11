@@ -20,12 +20,13 @@
     position: relative;
   }
   .page-hero::after {
-    content: '';
-    position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
-    background: var(--cream);
-    clip-path: ellipse(60% 100% at 50% 100%);
-    z-index: 1;
-  }
+  content: '';
+  position: absolute; bottom: -2px; left: 0; right: 0; height: 60px;
+  background: var(--cream);
+  clip-path: ellipse(60% 100% at 50% 100%);
+  z-index: 0;
+  pointer-events: none;
+}
   .page-hero-inner { position: relative; z-index: 3; }
   .page-breadcrumb {
     display: flex; align-items: center; gap: 0.4rem;

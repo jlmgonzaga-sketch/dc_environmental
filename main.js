@@ -39,14 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── Create nav backdrop once ──
-  const navBackdrop = document.createElement('div');
-  navBackdrop.className = 'nav-backdrop';
-  document.body.appendChild(navBackdrop);
+
 
   function closeNav() {
     hamburger.classList.remove('open');
     navLinks.classList.remove('open');
-    navBackdrop.classList.remove('open');
+
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
@@ -54,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
   hamburger.addEventListener('click', () => {
     const isOpen = hamburger.classList.toggle('open');
     navLinks.classList.toggle('open', isOpen);
-    navBackdrop.classList.toggle('open', isOpen);
+ 
     hamburger.setAttribute('aria-expanded', String(isOpen));
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  navBackdrop.addEventListener('click', closeNav);
+ 
 
   // Close nav when any link inside is clicked
   navLinks.querySelectorAll('a, button').forEach(el => {

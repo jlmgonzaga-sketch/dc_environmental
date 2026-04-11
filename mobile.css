@@ -536,30 +536,30 @@
 }
 
 @media (max-width: 768px) {
-  .about-visual { display: none; }
+  .about-visual { display: none !important; }
 
   .mission-vision {
     grid-template-columns: 1fr !important;
-    gap: 0.75rem !important;
-    margin-top: 1.5rem !important;
+    gap: 0.6rem !important;
+    margin-top: 1.25rem !important;
   }
 
   .mv-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.3rem !important;
     padding: 1rem 1.25rem !important;
     border-radius: 0 10px 10px 0 !important;
   }
 
   .mv-card h4 {
-    font-size: 0.72rem !important;
-    margin-bottom: 0.35rem !important;
+    font-size: 0.7rem !important;
+    margin-bottom: 0 !important;
   }
 
   .mv-card p {
     font-size: 0.85rem !important;
     line-height: 1.55 !important;
-  }
-
-  .about-content {
-    padding: 0 !important;
+    margin: 0 !important;
   }
 }

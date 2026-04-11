@@ -518,3 +518,35 @@
   .modal-header      { padding: 1.25rem; }
   .modal-body        { padding: 1.25rem; }
 }
+
+/* ══════════════════════════════
+   EXPERIENCE PAGE — mobile
+   ══════════════════════════════ */
+
+/* Stat cards — compact, no icon */
+#stats .contact-item-icon  { display: none !important; }
+#stats .stat-card          { padding: 1rem !important; }
+#stats .stat-card p        { display: none !important; }
+#stats .stat-number        { font-size: 1.8rem !important; margin-bottom: 0.2rem !important; }
+#stats .stat-label         { font-size: 0.65rem !important; margin-bottom: 0 !important; }
+
+/* Client cards — single column, no image */
+#clients .projects-grid {
+  grid-template-columns: 1fr !important;
+}
+#clients .project-thumb    { display: none !important; }
+#clients .project-card     { border-radius: 10px !important; }
+#clients .project-body     { padding: 1rem !important; }
+#clients .project-body ul  {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 0.3rem 0.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+#clients .project-body li  { font-size: 0.8rem !important; }
+#clients .service-tags     { gap: 0.3rem !important; }
+#clients .tag              { font-size: 0.65rem !important; padding: 0.2rem 0.55rem !important; }
+
+/* What Sets Us Apart — hide cards 3 and 4 */
+.section--alt .how-it-works-grid .how-step:nth-child(n+3) { display: none !important; }
+.section--alt .how-it-works-grid { gap: 0.75rem !important; }
+.section--alt .how-step { padding: 1rem 1.25rem !important; }

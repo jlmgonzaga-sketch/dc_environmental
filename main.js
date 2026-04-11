@@ -332,7 +332,17 @@ if (panel) {
   }
 
   if (messengerPopup) messengerPopup.classList.add('hidden');
+  
+function initReviewCarousel() {
+  if (window.innerWidth > 768) return;
 
+  const cards = Array.from(document.querySelectorAll('#testimonials .projects-grid .project-card'));
+  
+  // ADD THIS LINE
+  if (!cards.length) return;
+  
+  let current = 0;
+  // ... rest of function
   // ── Mobile Review Carousel ──────────────────────────
   function initReviewCarousel() {
     if (window.innerWidth > 768) return;

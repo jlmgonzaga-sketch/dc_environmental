@@ -462,3 +462,66 @@
 @media (max-width: 768px) {
   .hero-stats { display: flex; }
 }
+
+/* ══════════════════════════════════════════
+   INNER PAGE HEROES — mobile only
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── about / services / projects (.page-hero) ── */
+  .page-hero {
+    min-height: auto !important;
+    padding-top: 62px !important;
+    padding-bottom: 2rem !important;
+    align-items: flex-end !important;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .page-hero p {
+    font-size: 0.85rem !important;
+    margin-top: 0.4rem !important;
+    color: rgba(255,255,255,0.70) !important;
+  }
+
+  .page-breadcrumb {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .page-hero::after {
+    height: 36px !important;
+  }
+
+  /* ── experience (.hero--short) ── */
+  .hero--short {
+    min-height: auto !important;
+    margin-top: -62px !important;
+    padding-top: 62px !important;
+    padding-bottom: 2rem !important;
+    justify-content: flex-end !important;
+  }
+
+  .hero--short .hero-content {
+    padding-bottom: 0.5rem !important;
+  }
+
+  .hero--short h1 {
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .hero--short .hero-desc {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.75rem !important;
+    -webkit-line-clamp: 2 !important;
+  }
+
+  .hero--short .hero-breadcrumb {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+}

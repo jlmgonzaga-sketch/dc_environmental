@@ -175,16 +175,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       document.querySelectorAll('.services-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      const panel = document.getElementById(btn.dataset.panel);
-      if (panel) {
-        panel.classList.add('active');
-        panel.querySelectorAll('.fade-in').forEach(el => {
-          el.classList.remove('visible');
-          void el.offsetWidth;
-          fadeObserver.observe(el);
-        });
-      }
+btn.setAttribute('aria-selected', 'true');
+const panel = document.getElementById(btn.dataset.panel);
+if (panel) {
+  panel.classList.add('active');
+  panel.querySelectorAll('.fade-in').forEach(el => {
+    el.classList.add('visible');
+  });
+}
     });
   });
 

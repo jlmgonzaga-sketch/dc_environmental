@@ -81,6 +81,13 @@
     filter: brightness(0) invert(1) !important;
   }
 
+   .navbar.scrolled {
+  padding: 0.45rem 0 !important;
+}
+.page-hero {
+  padding-top: 72px !important;
+}
+
   /* ── Logo sizing ── */
   .logo-text strong { font-size: 0.82rem; }
   .logo-text span   { font-size: 0.68rem; }

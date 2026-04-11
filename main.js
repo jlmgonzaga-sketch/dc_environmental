@@ -172,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.classList.add('active');
         panel.querySelectorAll('.fade-in').forEach(el => {
           el.classList.add('visible');
+           el.style.transitionDelay = '0s';
         });
       }
     });

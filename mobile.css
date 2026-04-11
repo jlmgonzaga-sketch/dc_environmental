@@ -516,3 +516,13 @@
   .modal-header      { padding: 1.25rem; }
   .modal-body        { padding: 1.25rem; }
 }
+
+/* ── Services panel scroll fix ── */
+.services-header {
+  position: sticky;
+  top: 52px;
+  background: var(--cream);
+  z-index: 10;
+  padding: 0.75rem 0;
+  margin-bottom: 0 !important;
+}

@@ -565,10 +565,11 @@
 }
 @media (max-width: 768px) {
   .navbar.scrolled .logo-mark {
-    background: transparent !important;
+    background: var(--forest) !important;
+    border-radius: 8px !important;
   }
 
   .navbar.scrolled .logo-mark img {
-    filter: none !important;
+    filter: brightness(0) invert(1) !important;
   }
 }

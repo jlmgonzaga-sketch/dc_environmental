@@ -329,6 +329,8 @@
   }
   .page-hero::after {
     height: 36px !important;
+     pointer-events: none !important;
+  z-index: 0 !important;
   }
 
   /* experience (.hero--short) */
@@ -515,14 +517,4 @@
   .modal-quick-links { grid-template-columns: 1fr; }
   .modal-header      { padding: 1.25rem; }
   .modal-body        { padding: 1.25rem; }
-}
-
-/* ── Services panel scroll fix ── */
-.services-header {
-  position: sticky;
-  top: 52px;
-  background: var(--cream);
-  z-index: 10;
-  padding: 0.75rem 0;
-  margin-bottom: 0 !important;
 }

@@ -927,16 +927,3 @@ body.modal-open { overflow: hidden; }
   .hero--short { min-height: 48vh; padding-bottom: 3rem; padding-top: 70px; }
 }
 
-/* Base rule — must exist globally so JS-toggled class works correctly */
-.nav-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.40);
-  z-index: 1000;
-  pointer-events: none;
-}
-.nav-backdrop.open {
-  display: block;
-  pointer-events: all;
-}

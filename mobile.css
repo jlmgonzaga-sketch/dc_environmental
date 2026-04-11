@@ -525,3 +525,12 @@
     margin-bottom: 0.6rem !important;
   }
 }
+@media (max-width: 768px) {
+  .page-hero {
+    padding-bottom: 3.5rem !important;
+  }
+
+  .hero--short {
+    padding-bottom: 3.5rem !important;
+  }
+}

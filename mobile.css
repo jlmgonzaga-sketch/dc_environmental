@@ -563,3 +563,12 @@
     margin: 0 !important;
   }
 }
+@media (max-width: 768px) {
+  .navbar.scrolled .logo-mark {
+    background: transparent !important;
+  }
+
+  .navbar.scrolled .logo-mark img {
+    filter: none !important;
+  }
+}

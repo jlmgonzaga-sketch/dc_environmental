@@ -37,7 +37,7 @@
   button { cursor: pointer; }
 
   /* ── Body navbar offset ── */
-  body { padding-top: 62px; }
+  body { padding-top: 0; }
 
   /* ── Container ── */
   .container { padding: 0 1.25rem; }
@@ -85,7 +85,7 @@
   padding: 0.45rem 0 !important;
 }
 .page-hero {
-  padding-top: 72px !important;
+  padding-top: 62px !important;
 }
 
   /* ── Logo sizing ── */
@@ -174,7 +174,7 @@
      HERO (index)
      ══════════════════════════════ */
   .hero {
-    margin-top: -62px !important;
+    margin-top: 0 !important;
     min-height: 100svh !important;
     display: flex !important;
     flex-direction: column !important;
@@ -334,7 +334,7 @@
   /* experience (.hero--short) */
   .hero--short {
     min-height: auto !important;
-    margin-top: -62px !important;
+    margin-top: 0 !important;
     padding-top: 62px !important;
     padding-bottom: 3.5rem !important;
     justify-content: flex-end !important;

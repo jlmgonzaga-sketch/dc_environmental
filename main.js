@@ -38,13 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // ── Create nav backdrop once ──
-
-
   function closeNav() {
     hamburger.classList.remove('open');
     navLinks.classList.remove('open');
-
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
@@ -52,19 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
   hamburger.addEventListener('click', () => {
     const isOpen = hamburger.classList.toggle('open');
     navLinks.classList.toggle('open', isOpen);
- 
     hamburger.setAttribute('aria-expanded', String(isOpen));
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
- 
-
-  // Close nav when any link inside is clicked
   navLinks.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('click', closeNav);
   });
 
-  // Close nav on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeNav();
   });
@@ -175,14 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       document.querySelectorAll('.services-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-btn.setAttribute('aria-selected', 'true');
-const panel = document.getElementById(btn.dataset.panel);
-if (panel) {
-  panel.classList.add('active');
-  panel.querySelectorAll('.fade-in').forEach(el => {
-    el.classList.add('visible');
-  });
-}
+      btn.setAttribute('aria-selected', 'true');
+      const panel = document.getElementById(btn.dataset.panel);
+      if (panel) {
+        panel.classList.add('active');
+        panel.querySelectorAll('.fade-in').forEach(el => {
+          el.classList.add('visible');
+        });
+      }
     });
   });
 
@@ -332,22 +323,14 @@ if (panel) {
   }
 
   if (messengerPopup) messengerPopup.classList.add('hidden');
-  
-function initReviewCarousel() {
-  if (window.innerWidth > 768) return;
 
-  const cards = Array.from(document.querySelectorAll('#testimonials .projects-grid .project-card'));
-  
-  // ADD THIS LINE
-  if (!cards.length) return;
-  
-  let current = 0;
-  // ... rest of function
   // ── Mobile Review Carousel ──────────────────────────
   function initReviewCarousel() {
     if (window.innerWidth > 768) return;
 
     const cards = Array.from(document.querySelectorAll('#testimonials .projects-grid .project-card'));
+    if (!cards.length) return;
+
     let current = 0;
 
     function show(index) {

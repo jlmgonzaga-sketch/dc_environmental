@@ -443,21 +443,12 @@ button.btn-primary { border: none; cursor: pointer; font-family: 'DM Sans', sans
   border-color: var(--forest); box-shadow: 0 4px 16px rgba(26,74,46,0.25);
 }
 .services-panel {
+  display: none;
+}
+.services-panel.active {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  visibility: hidden;
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.services-panel.active {
-  visibility: visible;
-  opacity: 1;
-  height: auto;
-  overflow: visible;
-  pointer-events: all;
 }
 .service-card {
   background: linear-gradient(135deg, rgba(200,221,209,0.15) 0%, rgba(46,125,82,0.08) 100%);

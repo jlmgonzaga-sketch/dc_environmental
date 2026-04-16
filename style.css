@@ -511,7 +511,7 @@ button.btn-primary { border: none; cursor: pointer; font-family: 'DM Sans', sans
 /* ════════════════════════════════
    PROJECTS
    ════════════════════════════════ */
-.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .project-card {
   border-radius: var(--radius); overflow: hidden;
   background: var(--white); border: 2px solid var(--border);

@@ -75,7 +75,6 @@
   /* ── Logo on scrolled navbar (inner pages) ── */
  .navbar.scrolled .logo-mark {
   background: var(--forest) !important;
-  border-radius: var(--radius) !important;
 }
    
   .navbar.scrolled .logo-mark img {

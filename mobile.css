@@ -73,10 +73,11 @@
   .hamburger.open span:nth-child(3)      { transform: translateY(-7.5px) rotate(-45deg); }
 
   /* ── Logo on scrolled navbar (inner pages) ── */
-  .navbar.scrolled .logo-mark {
-    background: var(--forest) !important;
-    border-radius: 8px !important;
-  }
+ .navbar.scrolled .logo-mark {
+  background: var(--forest) !important;
+  border-radius: var(--radius) !important;
+}
+   
   .navbar.scrolled .logo-mark img {
     filter: brightness(0) invert(1) !important;
   }

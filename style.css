@@ -623,7 +623,11 @@ button.btn-primary { border: none; cursor: pointer; font-family: 'DM Sans', sans
   color: var(--forest); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;
 }
 .stat-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
-.clients-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.clients-list { 
+   display: grid; 
+   grid-template-columns: repeat(2, 1fr);
+   gap: 2rem; }
+
 .client-category {
   background: linear-gradient(135deg, rgba(46,125,82,0.06) 0%, rgba(200,221,209,0.1) 100%);
   border: 1px solid var(--light); border-left: 4px solid var(--leaf);

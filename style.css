@@ -140,11 +140,16 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
 /* ── Logo ── */
 .logo { display: flex; align-items: center; gap: 0.75rem; }
 .logo-mark {
-    width: 44px; height: 44px;
-  /* Match the SVG size from index.html */
+  width: 44px; height: 44px;
+  border-radius: var(--radius); /* ← ADD THIS LINE */
   background: var(--forest);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  overflow: hidden; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+   box-shadow: 0 2px 10px rgba(26,74,46,0.15);
+}
+.logo:hover .logo-mark {
+  transform: scale(1.06) rotate(-2deg);
 }
 .navbar.scrolled .logo-mark { background: transparent; }
 .logo:hover .logo-mark { transform: scale(1.08) rotate(-3deg); box-shadow: 0 4px 16px rgba(26,74,46,0.35); }
@@ -157,10 +162,12 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
 /* ── Logo text ── */
 .logo-text { line-height: 1.2; }
 .logo-text strong {
-  display: block; font-family: 'Playfair Display', serif;
-  font-weight: 600; font-size: 24px; letter-spacing: 0.005em;
-  line-height: 1.15; transition: color var(--transition);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 0.01em;
 }
+
 .logo-text strong::after {
   content: '';
   display: block; width: 100%; height: 0.5px;
@@ -169,9 +176,10 @@ body.cursor-tab #cursor-ring { border-color: var(--sky); width: 26px; height: 26
 .navbar.scrolled .logo-text strong::after { background: rgba(26,74,46,0.2); }
 .logo-text span {
   font-family: 'DM Sans', sans-serif;
-  font-size: 10px; letter-spacing: 0.18em;
-  text-transform: uppercase; font-weight: 400;
-  opacity: 0.55; transition: color var(--transition);
+  font-size: 10px;
+  letter-spacing: 0.22em; /* tighter identity feel */
+  text-transform: uppercase;
+  opacity: 0.7;
 }
 .navbar:not(.scrolled) .logo-text strong { color: var(--white); }
 .navbar:not(.scrolled) .logo-text span   { color: rgba(255,255,255,0.65); }
@@ -932,4 +940,6 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 768px) {
   .hero--short { min-height: 48vh; padding-bottom: 3rem; padding-top: 70px; }
 }
+
+
 
